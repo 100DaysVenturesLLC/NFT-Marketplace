@@ -1,16 +1,16 @@
-import React from 'react'
-import HeroSection from './components/HeroSection'
-import Projects from './components/Projects'
-import TopCollection from './components/TopCollection'
+import React from "react";
+import HeroSection from "./components/HeroSection";
+import Projects from "./components/Projects";
+import TopCollection from "./components/TopCollection";
 
-const  Home = () => {
+const Home = () => {
   return (
-    <div className='max-w-8xl mx-auto px-8 sm:px-6 lg:px-32 w-full'> 
-        <HeroSection/>
-        <Projects/>
-<TopCollection/>
-         </div>
-  )
-}
+    <div className=" w-full">
+      <HeroSection />
+      <Projects />
+      <TopCollection />
+    </div>
+  );
+};
 
-export default Home 
+export default Home;

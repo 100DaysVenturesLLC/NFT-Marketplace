@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const { pink } = require('tailwindcss/colors');
+const { pink } = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -10,7 +10,7 @@ module.exports = {
       sans: ["Poppins", "sans-serif"],
       mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
     },
- 
+
     fontWeight: {
       hairline: 100,
       "extra-light": 100,
@@ -25,41 +25,35 @@ module.exports = {
       black: 900,
     },
     screens: {
-      'xs': '375px',
+      xs: "375px",
       ...defaultTheme.screens,
     },
     extend: {
       colors: {
         primary: {
           blue: "#23AEE3",
-        lightblue:"#9B71D8",
-        pink:"#FD3DCE",
-        
+          lightblue: "#9B71D8",
+          pink: "#FD3DCE",
         },
         background: {
-          primary: "#F3F6F9",
+          primary: "#121A23",
           secondary: "#ffffff",
           highlight: "#F4F4F5",
           Error: "#EA3A3D",
-          success: "#C3E6CD",
-          
+          success: " #01FF85",
         },
-      
+
         foreground: {
           primary: "#ffffff",
           secondary: "#1E2028",
           accent: "#0157FF",
-          highlight:"#F4F4F5",
-          neutral:"#A8AAB6",
+          highlight: "#F4F4F5",
+          neutral: "#A8AAB6",
         },
       },
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("@tailwindcss/typography"),
-
-  ],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
     themes: ["light"],
   },

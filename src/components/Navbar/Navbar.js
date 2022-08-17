@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <div>
       <nav className="bg-transparent">
-        <div className="max-w-8xl mx-auto px-8 py-4 sm:px-6 lg:px-32">
+        <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -73,7 +73,7 @@ function Navbar() {
               </div>
             </div>
             <div className="flex items-center space-x-8">
-              <FiUser size={'2em'} />
+              <FiUser size={'1.5em'} />
               <Button>Connect Wallet</Button>
             </div>
             <div className="mr-2 flex md:hidden">
