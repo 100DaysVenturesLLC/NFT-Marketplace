@@ -85,3 +85,7 @@ code {
   background: rgba(48, 165, 81, 0.15);
   border-radius: 8px;
 }
+.overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, #0c111a 32.08%, rgba(12, 17, 26, 0) 93.66%);
+}
