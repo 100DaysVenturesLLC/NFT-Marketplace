@@ -8,7 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="bg-transparent">
+      <nav className="bg-background-primary">
         <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -42,7 +42,7 @@ function Navbar() {
                         <input
                           type="text"
                           id="simple-search"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          class="bg-[#303F50] w-5/6 border border-[#303F50] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Search"
                           required
                         />
@@ -51,31 +51,34 @@ function Navbar() {
                   </div>
                   <a
                     href="#"
-                    className=" hover:bg-gray-700 text-black px-6 py-2 rounded-md text-md font-medium"
+                    className=" hover:bg-gray-700 text-white px-6 py-2 rounded-md text-md font-medium"
                   >
                     Explore
                   </a>
 
                   <a
                     href="#"
-                    className="text-black hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
+                    className="text-white hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
                   >
                     Stats
                   </a>
 
                   <a
                     href="#"
-                    className="text-black hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
+                    className="text-white hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
                   >
                     Resources
                   </a>
                 </div>
               </div>
             </div>
+            <div className="hidden md:block ">
             <div className="flex items-center space-x-8">
-              <FiUser size={'1.5em'} />
-              <Button>Connect Wallet</Button>
+              <FiUser size={'1.5em'} color="white"/>
+              <Button className="text-white border-1">Connect Wallet</Button>
             </div>
+            </div>
+            
             <div className="mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -134,24 +137,24 @@ function Navbar() {
         >
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black absolute w-full">
                 <a
                   href="#"
-                  className="hover:bg-gray-700 text-black block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Dashboard
                 </a>
 
                 <a
                   href="#"
-                  className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Team
                 </a>
 
                 <a
                   href="#"
-                  className="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Projects
                 </a>
@@ -169,6 +172,7 @@ function Navbar() {
                 >
                   Reports
                 </a>
+                <Button className="text-white border-1">Connect Wallet</Button>
               </div>
             </div>
           )}

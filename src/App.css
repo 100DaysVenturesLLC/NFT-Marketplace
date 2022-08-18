@@ -59,9 +59,7 @@ code {
   );
 }
 
-.carousel-container {
-  width: 100%;
-}
+
 .react-multi-carousel-list {
 }
 .react-multi-carousel-track {
@@ -84,4 +82,45 @@ code {
 .price-rate {
   background: rgba(48, 165, 81, 0.15);
   border-radius: 8px;
+}
+.overlay{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #0C111A 32.08%, rgba(12, 17, 26, 0) 93.66%);
+}
+.carouselItem{
+  margin-left: 0;
+}
+.overlay-carousel{
+  background: #0C111A;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+position: absolute;
+left: 0;
+}
+.react-multiple-carousel__arrow::before {
+  font-size: 20px;
+ color: black!important;
+  display: block;
+  font-family: revicons;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+.react-multiple-carousel__arrow:hover {
+  background:white!important;
+}
+.react-multiple-carousel__arrow{
+  background: white!important;
+}
+
+.collection-card-container{
+  background: linear-gradient(0deg, rgba(20, 27, 50, 0.3), rgba(20, 27, 50, 0.3)),
+linear-gradient(235.66deg, rgba(153, 163, 245, 0.6) 0%, rgba(168, 168, 168, 0) 70.29%);
+border: 0.5px solid;
+
+/* border-image-source: linear-gradient(235.66deg, rgba(153, 163, 245, 0.6) 0%, rgba(168, 168, 168, 0) 70.29%); */
+
+background: rgba(20, 27, 50, 0.3);
+backdrop-filter: blur(24px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 16px;
 }

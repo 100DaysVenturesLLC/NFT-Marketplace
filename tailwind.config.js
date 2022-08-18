@@ -36,9 +36,9 @@ module.exports = {
           pink: "#FD3DCE",
         },
         background: {
-          primary: "#121A23",
+          primary: "#0C111A",
           secondary: "#ffffff",
-          highlight: "#F4F4F5",
+          highlight: "#23AEE3",
           Error: "#EA3A3D",
           success: " #01FF85",
         },
@@ -55,6 +55,17 @@ module.exports = {
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
-    themes: ["light"],
+    themes: [
+      {
+        mytheme: {
+          primary: "#a991f7",
+          secondary: "#f6d860",
+          accent: "#37cdbe",
+          neutral: "#3d4451",
+          "base-100": "#ffffff",
+          search: "#303F50",
+        },
+      },
+    ]
   },
 };

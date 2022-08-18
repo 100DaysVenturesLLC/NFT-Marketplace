@@ -1,19 +1,12 @@
-.card-container {
- 
-  width: 380px;
-  height: 480px;
-  margin-left: 3px;
+ .card-container {
 
-}
-.card-subtitle {
+ }
+/* .card-subtitle {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
-
-  /* or 167% */
-
   text-align: center;
   letter-spacing: 0.02em;
 
   color: #ffffff;
-}
+} */ 
