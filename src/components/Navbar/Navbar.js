@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Logo from "../../assets/icons/Ellipse 4.png";
 import { FiUser } from "react-icons/fi";
-import Button from "./Button/Button";
+import Button from "../Button/Button";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="bg-background-primary">
+      <nav className="">
         <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">

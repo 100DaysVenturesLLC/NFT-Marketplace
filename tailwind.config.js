@@ -49,7 +49,10 @@ module.exports = {
           accent: "#0157FF",
           highlight: "#F4F4F5",
           neutral: "#A8AAB6",
-        },
+        success: "rgba(48, 165, 81, 0.15)",
+      error: " #E27A7A",
+       
+      },
       },
     },
   },
@@ -61,11 +64,15 @@ module.exports = {
           primary: "#a991f7",
           secondary: "#f6d860",
           accent: "#37cdbe",
+          success: "#01FF85",
           neutral: "#3d4451",
           "base-100": "#ffffff",
+          
           search: "#303F50",
+          error: "rgba(165, 48, 48, 0.15)",
+          
         },
       },
-    ]
+    ],
   },
 };

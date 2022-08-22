@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import avatar from "../../../assets/icons/avatar.png";
-import { card_data } from "./data";
+import { collectioncard_data } from "../../../static/collectionSpotlight.js";
 
 const Projects = () => {
   const responsive = {
@@ -26,7 +26,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="bg-[#0C111A]">
+    <div className="collection-spotlight">
       <p className="font-bold text-white text-3xl mb-12 text-shadow lg:py-12 lg:px-24">
         Projects you'll love
       </p>
@@ -42,7 +42,7 @@ const Projects = () => {
         partialVisible={false}
       itemClass="carouselItem"
       >
-        {card_data.map((resource, index) => {
+        {collectioncard_data.map((resource, index) => {
           return (
             // <div key={index} class="card bg-transparent ">
             //   <figure class="px-5 pt-5">
