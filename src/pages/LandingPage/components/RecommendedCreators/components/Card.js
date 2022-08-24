@@ -5,7 +5,7 @@ import image9 from "../../../../../assets/images/image 9.png";
 const Card = ({resource,index}) => {
     
   return (
-    <div key={index} className="card card-compact w-[580px] h-[330px] mr-6">
+    <div key={index} className="card card-compact w-[480px] h-[330px] mr-6">
       <div className="realtive w-full h-full">
         <div className=" w-full h-full">
           <figure className="">

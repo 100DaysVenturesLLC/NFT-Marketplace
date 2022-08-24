@@ -29,8 +29,8 @@ const RecommendedCreators = () => {
       <p className="text-3xl mb-12 text-white font-bold text-shadow ">
         Recommended Creators
       </p>
-      <div className="grid grid-cols-1  items-center ">
-        <Carousel responsive={responsive}       itemClass="carouselItem"
+      <div className="grid grid-cols-1 gap-4 items-center ">
+        <Carousel responsive={responsive}       itemClass="carouselItem2"
 >
           {card_data.map((resource, index) => {
             return <Card index={index} resource={resource}/>;
