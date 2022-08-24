@@ -7,9 +7,9 @@ import Button from "../Button/Button";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className="sticky">
       <nav className="">
-        <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
+        <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12  ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">

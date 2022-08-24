@@ -1,6 +1,6 @@
 import React from "react";
 
-import { topcollection_data } from "../../../../static/topCollection";
+import { topcollection_data } from "../../../../mocdata/topCollection";
 import Card from "./components/Card";
 
 const TopCollection = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./components/Card";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { card_data } from "../../../../static/recommendedCreators";
+import { card_data } from "../../../../mocdata/recommendedCreators";
 const RecommendedCreators = () => {
   const responsive = {
     superLargeDesktop: {
