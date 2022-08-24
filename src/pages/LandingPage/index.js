@@ -4,7 +4,7 @@ import Projects from "./components/Projects";
 import RecommendedCreators from "./components/RecommendedCreators";
 import TopCollection from "./components/TopCollection";
 
-const Home = () => {
+const LandingPage = () => {
   return (
     <div className=" w-full bg-[#0c111a]">
       <HeroSection />
@@ -15,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;
