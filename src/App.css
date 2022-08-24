@@ -19,7 +19,7 @@ body,
   margin: 0;
   padding: 0;
 
-  max-height: 100%;
+  /* max-height: 100%; */
   max-width: 100%;
 }
 
@@ -179,4 +179,23 @@ code {
 
 .vertical{
   
+}
+.background-linear-gradient{
+  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.btn-background{
+  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
+box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
+border-radius: 8px;
+}
+.secondary-btn-background{
+  background: linear-gradient(90deg, rgba(35, 174, 227, 0.2) 0%, rgba(155, 113, 216, 0.2) 52.08%, rgba(253, 61, 206, 0.2) 100%);
+backdrop-filter: blur(36px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 6px;
 }
