@@ -5,8 +5,8 @@ import Card from "./components/Card";
 
 const TopCollection = () => {
   return (
-    <div className="lg:py-12 lg:px-24 top-collection">
-      <div className="flex items-center justify-between mb-12">
+    <div className="container mx-auto px-32 max-h-screen    top-collection  max-w-full ">
+      <div className="flex items-center justify-between mb-12 pt-12 ">
         <p className="text-3xl text-white font-bold text-shadow ">
           Top Collection
         </p>

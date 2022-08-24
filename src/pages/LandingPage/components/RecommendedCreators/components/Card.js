@@ -5,7 +5,7 @@ import image9 from "../../../../../assets/images/image 9.png";
 const Card = ({resource,index}) => {
     
   return (
-    <div key={index} className="card card-compact w-[480px] h-[330px] mr-6">
+    <div key={index} className="card card-compact w-[580px] h-[330px] mr-6">
       <div className="realtive w-full h-full">
         <div className=" w-full h-full">
           <figure className="">
@@ -17,7 +17,7 @@ const Card = ({resource,index}) => {
           </figure>
         </div>
         <div className="w-full">
-          <div class="w-full p-5 h-2/5 overlay  absolute bottom-0   flex  ">
+          <div class="w-full p-5 h-1/3 overlay2  absolute bottom-0   flex  ">
             <div class="flex items-center justify-between w-full">
               <div className="flex items-center">
                 <div className="">
@@ -32,7 +32,7 @@ const Card = ({resource,index}) => {
               <div class=" flex  items-center ">
                 <img src={vector}></img>
 
-                <p class="text-xl ">follow</p>
+                <p class="text-xl ml-2 text-background-highlight text-semibold">Follow</p>
               </div>
             </div>
           </div>

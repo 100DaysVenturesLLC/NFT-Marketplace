@@ -28,9 +28,9 @@ const Projects = () => {
   };
 
   return (
-    <div className="collection-spotlight">
-      <p className="font-bold text-white text-3xl mb-12 text-shadow lg:py-12 lg:px-24">
-        Projects you'll love
+    <div className="collection-spotlight container w-full  mx-auto  max-w-full">
+      <p className="font-bold text-white text-3xl pb-12 text-shadow container px-32 pt-12">
+      Collections on spotlight
       </p>
       <div >
         <div className="overlay-carousel">
