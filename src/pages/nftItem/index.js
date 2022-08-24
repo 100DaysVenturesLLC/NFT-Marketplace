@@ -13,7 +13,7 @@ const sections = [
 ]
 
 function NftItem() {
-    const [selected, setSelected] = useState("")
+    const [selected, setSelected] = useState("Overview")
     console.log(selected)
     return (
         <div className='px-40 h-full'>

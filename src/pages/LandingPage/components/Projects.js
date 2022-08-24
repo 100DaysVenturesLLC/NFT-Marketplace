@@ -3,8 +3,10 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import avatar from "../../../assets/icons/avatar.png";
 import { collectioncard_data } from "../../../static/collectionSpotlight.js";
+import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
+  const navigate=useNavigate()
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -62,7 +64,7 @@ const Projects = () => {
             //   </div> */}
             // </div>
 
-            <div key={index} class="card w-[380px] h-[480px] mr-6 my-3 ">
+            <div onClick={()=>{navigate("/nftitem")}} key={index} class="card w-[380px] h-[480px] mr-6 my-3 cursor-pointer">
               <div className="relative w-full h-full ">
                 <div className="w-full h-full">
                   <img
