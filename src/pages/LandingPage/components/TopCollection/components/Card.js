@@ -1,10 +1,11 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import ethlogo from "../../../../../assets/icons/Etherium-icon.png";
 
 const Card = ({ resource, index }) => {
+  const navigate = useNavigate()
   return (
-    <div className=" collection-card-container justify-between flex items-center px-8 py-4 ">
+    <div onClick={()=>{navigate("/collection")}} className=" cursor-pointer collection-card-container justify-between flex items-center px-8 py-4 ">
       <div className="flex items-center">
         <div className="flex ">
           <div className="text-[#6A8099] text-shadow">1</div>
