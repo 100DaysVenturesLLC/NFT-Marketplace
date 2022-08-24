@@ -4,6 +4,7 @@ import { MdIosShare } from "react-icons/md"
 import image1 from "../../assets/images/image1.jpg"
 import TopSection from './components/topsection/topSection'
 import Overview from './components/overview/overview'
+import Bids from './components/bids/bids'
 
 const sections = [
     { name: "Overview", id: 1 },
@@ -33,9 +34,11 @@ function NftItem() {
                             })}
                         </div>
                     </div>
-                    <div>
+                    <div className='pb-10'>
                         {selected==="Overview" && <Overview/>}
+                        {selected==="Bids" && <Bids/>}
                     </div>
+                    <div className='text-foreground-primary text-shadow text-xl font-semibold pb-6'>More From This Collection</div>
                     </div>
                 </div>
                 <div className='px-14 basis-1/2'>
@@ -88,7 +91,7 @@ function NftItem() {
                     </div>
                 </div>
             </div>
-
+           
         </div>
     )
 }
