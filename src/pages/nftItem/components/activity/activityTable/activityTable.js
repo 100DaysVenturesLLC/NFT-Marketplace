@@ -1,18 +1,18 @@
 import React from 'react'
 
-function Table() {
-    return (
-        <div class="overflow-x-auto">
+function ActivityTable() {
+  return (
+    <div class="overflow-x-auto">
             <table class="table w-full">
                 <tbody>
                     <tr>
                         {/* <th></th> */}
                         <td className='bg-[#121a23]'>
-                            <div className='text-base font-semibold text-foreground-primary'>Cy Ganderton</div>
+                            <div className='text-base font-semibold text-foreground-primary'><span className='text-[#23AEE3] pr-2'>Pransky</span><span>listed for</span></div>
                             <div className='flex'>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>7 weeks ago</div>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>helo</div>
-                                <div className='text-[#BFCBD9] text-sm background-linear-gradient'>Floor Bid</div>
+                                <div className='text-[#BFCBD9] text-sm pr-4'>8/8/22</div>
+                                <div className='text-[#BFCBD9] text-sm pr-2'>8:21 AM</div>
+                                
                             </div>
                         </td>
                         <td className='bg-[#121a23]'>
@@ -25,11 +25,11 @@ function Table() {
                     <tr>
                         {/* <th></th> */}
                         <td className='bg-[#121a23]'>
-                            <div className='text-base font-semibold text-foreground-primary'>Cy Ganderton</div>
+                            <div className='text-base font-semibold text-foreground-primary'><span className='text-[#23AEE3] pr-2'>Pransky</span><span>listed for</span></div>
                             <div className='flex'>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>7 weeks ago</div>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>helo</div>
-                                <div className='text-[#BFCBD9] text-sm background-linear-gradient'>Floor Bid</div>
+                                <div className='text-[#BFCBD9] text-sm pr-4'>8/8/22</div>
+                                <div className='text-[#BFCBD9] text-sm pr-2'>8:21 AM</div>
+                                
                             </div>
                         </td>
                         <td className='bg-[#121a23]'>
@@ -42,11 +42,11 @@ function Table() {
                     <tr>
                         {/* <th></th> */}
                         <td className='bg-[#121a23]'>
-                            <div className='text-base font-semibold text-foreground-primary'>Cy Ganderton</div>
+                            <div className='text-base font-semibold text-foreground-primary'><span className='text-[#23AEE3] pr-2'>Pransky</span><span>listed for</span></div>
                             <div className='flex'>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>7 weeks ago</div>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>helo</div>
-                                <div className='text-[#BFCBD9] text-sm background-linear-gradient'>Floor Bid</div>
+                                <div className='text-[#BFCBD9] text-sm pr-4'>8/8/22</div>
+                                <div className='text-[#BFCBD9] text-sm pr-2'>8:21 AM</div>
+                                
                             </div>
                         </td>
                         <td className='bg-[#121a23]'>
@@ -59,11 +59,11 @@ function Table() {
                     <tr>
                         {/* <th></th> */}
                         <td className='bg-[#121a23]'>
-                            <div className='text-base font-semibold text-foreground-primary'>Cy Ganderton</div>
+                            <div className='text-base font-semibold text-foreground-primary'><span className='text-[#23AEE3] pr-2'>Pransky</span><span>listed for</span></div>
                             <div className='flex'>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>7 weeks ago</div>
-                                <div className='text-[#BFCBD9] text-sm pr-2'>helo</div>
-                                <div className='text-[#BFCBD9] text-sm background-linear-gradient'>Floor Bid</div>
+                                <div className='text-[#BFCBD9] text-sm pr-4'>8/8/22</div>
+                                <div className='text-[#BFCBD9] text-sm pr-2'>8:21 AM</div>
+                                
                             </div>
                         </td>
                         <td className='bg-[#121a23]'>
@@ -77,7 +77,7 @@ function Table() {
                 </tbody>
             </table>
         </div>
-    )
+  )
 }
 
-export default Table
+export default ActivityTable
