@@ -13,7 +13,7 @@ const Collection = () => {
   return (
     <div class="max-w-8xl mx-auto lg:py-32 container lg:px-8  ">
       {/* Pics */}
-      <div class="relative mb-40">
+      <div class="relative pb-40">
         <div className="w-full">
           <img
             src={Rectangle}
@@ -29,7 +29,7 @@ const Collection = () => {
         <div className="ml-10">
           <div className="token-group">
             <div class="text-white">
-              <h3 class="font-bold text-[32px]">0x5d8e2c078...52b1</h3>
+              <h3 class="text-3xl font-bold ">PROOF Collective</h3>
               <div class="flex">
                 <p class="font-thin mr-2"> Created by</p>
                 <p class=""> XYZ Official</p>
@@ -64,12 +64,34 @@ const Collection = () => {
           </div>
         </div> */}
         </div>
-        <div className="w-[380px] h-[208px] border border-gray-700 rounded-2xl backdrop-blur-lg collection-follow hero-section">
-<div>
-    <p></p>
-</div>
+        <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg collection-follow hero-section">
+          <div className="flex justify-between p-8">
+            <div className="">
+              <p className="pb-2">Floor</p>
+              <p className="pb-2">Volume</p>
+              <p>Items</p>
+            </div>
+          
+            <div>
+              <p className="pb-2">0.07 ETH</p>
+              <p className="pb-2">3.12 ETH</p>
+              <p>49</p>
+            </div>
+          </div>
+          <div className="flex justify-between p-8">
+            <div className="">
+              <p className="pb-2">Floor</p>
+              <p className="pb-2">Volume</p>
+            
+            </div>
+          
+            <div>
+              <p className="pb-2">0.07 ETH</p>
+              <p className="pb-2">3.12 ETH</p>
+        
+            </div>
+          </div>
         </div>
-       
       </div>
       {/* Followers Box */}
 

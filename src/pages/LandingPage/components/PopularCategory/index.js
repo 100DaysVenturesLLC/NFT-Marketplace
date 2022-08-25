@@ -24,8 +24,8 @@ const PopularCategory = () => {
     },
   };
   return (
-    <div className="popularcategory">
-      <div className="container  mx-auto max-h-screen max-w-full px-32">
+    <div className=" ">
+      <div className="container  mx-auto max-h-screen py-16 max-w-full px-32">
         <div className="flex flex-col  ">
           <p className="text-3xl text-white font-bold text-shadow  mb-12 pt-12">
             Popular Categories
