@@ -5,7 +5,7 @@ import heroimage from "../../../assets/images/NFT Frame Art 1.png";
 const HeroSection = () => {
   return (
     <div className="hero-section ">
-  <div className=" container mx-auto px-32 max-h-screen  py-32">
+  <div className=" container mx-auto px-8 max-h-screen  py-32">
       <div class="grid lg:grid-cols-2 sm:grid-cols-3 gap-4  items-center">
         <div>
           <p className="text-5xl text-white font-bold text-shadow">

@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "./components/HeroSection";
+import PopularCategory from "./components/PopularCategory";
 import Projects from "./components/Projects";
 import RecommendedCreators from "./components/RecommendedCreators";
 import TopCollection from "./components/TopCollection";
@@ -11,6 +12,8 @@ const LandingPage = () => {
       <Projects />
       <TopCollection />
       <RecommendedCreators/>
+      <PopularCategory/>
+      
     </div>
   );
 };
