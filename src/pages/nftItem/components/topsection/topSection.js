@@ -6,7 +6,7 @@ import image1 from "../../../../assets/images/image1.jpg"
 
 function TopSection() {
   return (
-    <div className='px-14 basis-1/2'>
+    <div className='px-14 basis-1/2 '>
     <div className='text-sm font-bold text-foreground-primary py-6'>Modernist Masks</div>
     <div className='text-3xl font-bold text-foreground-primary pb-10'>Cratey's #108</div>
     <div className='columns-2 pb-6'>

@@ -43,11 +43,12 @@ function NftItem() {
     const [selected, setSelected] = useState("Overview")
     console.log(selected)
     return (
-        <div className='px-40 h-full'>
+        <div>
+             <div className='px-40 h-full nft-item'>
             <div className='mt-14 pb-6 flex flex-row'>
                 <div className="basis-1/2 ">
                     <div className='px-14'>
-                        <figure className='flex justify-center pb-6'>
+                        <figure className='flex justify-center pb-6 '>
                             <img className='w-full' src={image1} alt="pic" />
                         </figure>
                         <div className='pt-6 flex justify-center pb-14'>
@@ -82,6 +83,8 @@ function NftItem() {
                 </Carousel>
             </div>
         </div>
+        </div>
+       
     )
 }
 
