@@ -94,7 +94,7 @@ code {
   backdrop-filter: blur(15px);
 }
 .carouselItem2 {
-  margin-right: 150px;
+  margin-right: 10px;
 }
 .carouselItem {
   margin-right: 5px;
@@ -192,7 +192,12 @@ code {
   background-position: center left;
   background-repeat: no-repeat;
 }
-
+.popularcategory{
+  background-image: url(./assets/images/Ellipse\ 2.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  width: 100%;
+}
 .vertical {
 }
 .background-linear-gradient {

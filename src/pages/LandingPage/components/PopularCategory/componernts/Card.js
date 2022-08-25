@@ -1,12 +1,12 @@
 import Employee from "../../../../../assets/images/Employee.png";
 
-const Card = () => {
+const Card = ({resource,index}) => {
   return (
-    <div class="bg-white">
-      <div class="card w-[280px] h-[278px] bg-gray-700 text-white shadow-xl ">
+    <div key={index} className="card card-compact w-2/4 h-[278px]">
+      <div class="card  bg-gray-700 text-white shadow-xl ">
         <div class="card-body  ">
           <h2 class="card-title flex justify-center font-semibold Montserrat">
-            PFP
+        {resource.title}
           </h2>
         </div>
         <figure>
