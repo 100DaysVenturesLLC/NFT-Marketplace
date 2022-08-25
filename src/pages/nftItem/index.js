@@ -8,7 +8,7 @@ import Bids from './components/bids/bids'
 import Properties from './components/properties/properties'
 import Activity from './components/activity/activity'
 import NftItemCard from '../../components/Card/nftItemCard/nftItemCard'
-import { collectioncard_data } from '../../static/collectionSpotlight'
+import { collectioncard_data } from '../../mocdata/collectionSpotlight'
 import Carousel from "react-multi-carousel";
 
 

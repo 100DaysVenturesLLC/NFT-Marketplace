@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./components/Card";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { card_data } from "../../../../static/recommendedCreators";
+import { card_data } from "../../../../mocdata/recommendedCreators";
 const RecommendedCreators = () => {
   const responsive = {
     superLargeDesktop: {
@@ -25,14 +25,15 @@ const RecommendedCreators = () => {
   };
 
   return (
-    <div className="bg-background-primary creators lg:py-12 lg:px-24 w-full">
-      <p className="text-3xl mb-12 text-white font-bold text-shadow ">
+    <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32">
+      <p className="text-3xl pb-12 text-white font-bold text-shadow px-32  pt-12 ">
         Recommended Creators
       </p>
-      <div className="grid grid-cols-1  items-center   ">
-        <Carousel responsive={responsive}>
+      <div className="grid grid-cols-1 gap-4 items-center ">
+        <Carousel responsive={responsive}       itemClass="carouselItem2"
+>
           {card_data.map((resource, index) => {
-            return <Card index={index} resource={resource} />;
+            return <Card index={index} resource={resource}/>;
           })}
         </Carousel>
       </div>

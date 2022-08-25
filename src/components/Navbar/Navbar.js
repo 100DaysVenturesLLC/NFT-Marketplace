@@ -7,9 +7,9 @@ import Button from "../Button/Button";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className="sticky">
       <nav className="">
-        <div className="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
+        <div className="max-w-8xl container mx-auto lg:py-2 lg:px-32  ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -64,11 +64,12 @@ function Navbar() {
                   </a>
 
                   <a
-                    href="#"
+                    href="/createnft"
                     className="text-white hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
                   >
-                    Resources
+                 Create
                   </a>
+
                 </div>
               </div>
             </div>
