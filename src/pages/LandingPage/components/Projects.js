@@ -2,11 +2,11 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import avatar from "../../../assets/icons/avatar.png";
-import { collectioncard_data } from "../../../static/collectionSpotlight.js";
+import { collectioncard_data } from "../../../static/collectionSpotlight";
 import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -28,9 +28,9 @@ const Projects = () => {
   };
 
   return (
-    <div className="collection-spotlight">
-      <p className="font-bold text-white text-3xl mb-12 text-shadow lg:py-12 lg:px-24">
-        Projects you'll love
+    <div className="collection-spotlight container w-full  mx-auto  max-w-full">
+      <p className="font-bold text-white text-3xl pb-12 text-shadow container px-32 pt-12">
+      Collections on spotlight
       </p>
       <div >
         <div className="overlay-carousel">
@@ -64,7 +64,7 @@ const Projects = () => {
             //   </div> */}
             // </div>
 
-            <div onClick={()=>{navigate("/nftitem")}} key={index} class="card w-[380px] h-[480px] mr-6 my-3 cursor-pointer">
+            <div onClick={()=> navigate("/nftitem")} key={index} class="card w-[380px] h-[480px] mr-6 my-3 cursor-pointer ">
               <div className="relative w-full h-full ">
                 <div className="w-full h-full">
                   <img
