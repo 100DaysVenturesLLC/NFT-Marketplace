@@ -23,7 +23,7 @@ const NftItemCard = () => {
                         </div>
                         <div class="mr-7">
                             <p class="text-[12px] leading-[16px]">Instant Price</p>
-                            <p class="text-[16px] leading-[24px]  mt-[10px]">0.001 ETH</p>
+                            <p class="text-[16px] leading-[24px]  mt-[10px] background-linear-gradient">0.001 ETH</p>
                         </div>
                     </div>
                 </div>
