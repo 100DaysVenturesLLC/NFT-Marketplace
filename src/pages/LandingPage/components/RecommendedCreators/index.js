@@ -25,7 +25,8 @@ const RecommendedCreators = () => {
   };
 
   return (
-    <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32">
+
+ <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32 recommededcreator">
       <p className="text-3xl pb-12 text-white font-bold text-shadow px-32  pt-12 ">
         Recommended Creators
       </p>
@@ -38,6 +39,8 @@ const RecommendedCreators = () => {
         </Carousel>
       </div>
     </div>
+
+   
   );
 };
 
