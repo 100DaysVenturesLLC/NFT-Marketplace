@@ -5,6 +5,8 @@ import image1 from "../../assets/images/image1.jpg"
 import TopSection from './components/topsection/topSection'
 import Overview from './components/overview/overview'
 import Bids from './components/bids/bids'
+import Properties from './components/properties/properties'
+import Activity from './components/activity/activity'
 import NftItemCard from '../../components/Card/nftItemCard/nftItemCard'
 import { collectioncard_data } from '../../static/collectionSpotlight'
 import Carousel from "react-multi-carousel";
@@ -61,6 +63,8 @@ function NftItem() {
                         <div className='pb-10'>
                             {selected === "Overview" && <Overview />}
                             {selected === "Bids" && <Bids />}
+                            {selected === "Properties" && <Properties />}
+                            {selected === "Activity" && <Activity />}
                         </div>
                         <div className='text-foreground-primary text-shadow text-xl font-semibold pb-10'>More From This Collection</div>
                     </div>

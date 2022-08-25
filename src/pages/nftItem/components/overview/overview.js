@@ -7,7 +7,7 @@ function Overview() {
     return (
         <div>
             <div className='text-foreground-primary text-shadow text-xl font-semibold pb-6'>
-                Rank
+                Latest Bids
             </div>
             <div className='pb-14'><Table /></div>
             <div className='w-full h-[280px] text-white py-6 px-6 bg-[#121a23] rounded-2xl mb-14'>
