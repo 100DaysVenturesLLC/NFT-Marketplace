@@ -233,3 +233,14 @@ backdrop-filter: blur(24px);
 }
 
 
+/* Popular category */
+.popular-card{
+  background: linear-gradient(0deg, #0C111A 35.25%, rgba(12, 17, 26, 0) 84.53%);
+box-shadow: 0px 40px 76px -32px rgba(132, 145, 179, 0.7);
+backdrop-filter: blur(24px);
+border: 1px solid;
+
+border: conic-gradient(from 180deg at 50% 50%, #23AEE3 0deg, #867CDA 69.37deg, #9B71D8 155.62deg, #FD3DCE 260.62deg, #23AEE3 360deg);
+
+
+}

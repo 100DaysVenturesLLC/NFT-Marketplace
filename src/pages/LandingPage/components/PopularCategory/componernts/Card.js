@@ -1,16 +1,20 @@
 import Employee from "../../../../../assets/images/Employee.png";
 
-const Card = ({resource,index}) => {
+const Card = ({ resource, index }) => {
   return (
-    <div key={index} className="card card-compact w-2/4 h-[278px]">
-      <div class="card  bg-gray-700 text-white shadow-xl ">
+    <div key={index} className="card card-compact  w-[278px] popular-card">
+      <div class="card   text-white  ">
         <div class="card-body  ">
-          <h2 class="card-title flex justify-center font-semibold Montserrat">
-        {resource.title}
+          <h2 class="card-title flex justify-center font-semibold Montserrat pb-12  py-2">
+            {resource.title}
           </h2>
         </div>
         <figure>
-          <img class="w-[164px] h-[167px]" src={Employee} alt="Employee" />
+          <img
+            class=""
+            src={resource.imageUrl}
+            alt="Employee"
+          />
         </figure>
       </div>
     </div>

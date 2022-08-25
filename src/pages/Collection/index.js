@@ -11,7 +11,7 @@ import Button from "../../components/Button/Button";
 const Collection = () => {
   const [active, setActive] = useState("onsale");
   return (
-    <div class="max-w-8xl mx-auto lg:py-32 container lg:px-32  ">
+    <div class="max-w-8xl mx-auto lg:py-32 container lg:px-8  ">
       {/* Pics */}
       <div class="relative mb-40">
         <div className="w-full">
