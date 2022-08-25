@@ -51,8 +51,8 @@ function TopSection() {
         Last sale price <span className='text-base text-foreground-primary font-semibold pl-2'>81.8 ETH</span>
     </div>
     <div className='flex'>
-        <div className='btn btn-background'>Buy Now for 81.8 Eth</div>
-        <div className='btn secondary-btn-background w-48 ml-4'>Place a Bid</div>
+        <div className='btn btn-background text-foreground-primary'>Buy Now for 81.8 Eth</div>
+        <div className='btn secondary-btn-background w-48 ml-4 text-foreground-primary'>Place a Bid</div>
     </div>
 </div>
   )

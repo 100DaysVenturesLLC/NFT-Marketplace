@@ -1,9 +1,8 @@
 import React from 'react'
-import Table from '../overview/table/table'
-
+import ActivityTable from './activityTable/activityTable'
 function Activity() {
   return (
-    <div><Table/></div>
+    <div><ActivityTable/></div>
   )
 }
 
