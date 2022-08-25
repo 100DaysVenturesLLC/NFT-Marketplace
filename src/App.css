@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Montserrat;
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-display: swap;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0C111A;
-}
-
-html {
-
+  background-color: #0c111a;
+  font-family: Montserrat;
 }
 
 html,
@@ -75,12 +78,12 @@ code {
 .vertical-line {
   border: 1px solid;
   border-color: radial-gradient(
-      72.64% 5101250.17% at 44.34% -1450.36%,
-      #4b5d80 0%,
-      rgba(15, 20, 33, 0) 100%
-    );
-   
-    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    72.64% 5101250.17% at 44.34% -1450.36%,
+    #4b5d80 0%,
+    rgba(15, 20, 33, 0) 100%
+  );
+
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
 }
 .price-rate {
   background: rgba(48, 165, 81, 0.15);
@@ -90,9 +93,9 @@ code {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, #0c111a 32.08%, rgba(12, 17, 26, 0) 93.66%);
 }
-.overlay2{
+.overlay2 {
   background: rgba(12, 17, 26, 0.75);
-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 .carouselItem2 {
   margin-right: 150px;
@@ -168,7 +171,7 @@ backdrop-filter: blur(15px);
   background-position: center left;
   background-repeat: no-repeat;
 }
-.collection-spotlight{
+.collection-spotlight {
   background-image: url(./assets/images/Ellipse\ 2.png);
   background-position: left;
   background-repeat: no-repeat;
@@ -179,34 +182,50 @@ backdrop-filter: blur(15px);
   background-repeat: no-repeat;
 }
 
-
-.creators
-{
+.creators {
   background-position: left;
   background-repeat: no-repeat;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-
-.vertical{
-  
+.vertical {
 }
-.background-linear-gradient{
-  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+.background-linear-gradient {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.btn-background{
-  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
-box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
-border-radius: 8px;
+.btn-background {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
+  border-radius: 8px;
 }
-.secondary-btn-background{
-  background: linear-gradient(90deg, rgba(35, 174, 227, 0.2) 0%, rgba(155, 113, 216, 0.2) 52.08%, rgba(253, 61, 206, 0.2) 100%);
-backdrop-filter: blur(36px);
-/* Note: backdrop-filter has minimal browser support */
+.secondary-btn-background {
+  background: linear-gradient(
+    90deg,
+    rgba(35, 174, 227, 0.2) 0%,
+    rgba(155, 113, 216, 0.2) 52.08%,
+    rgba(253, 61, 206, 0.2) 100%
+  );
+  backdrop-filter: blur(36px);
+  /* Note: backdrop-filter has minimal browser support */
 
-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.collection-card {
+  background-image: url("./assets/images/Ellipse\ 6.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6.48649px 6.48649px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collection-card-title {
+  font-size: 16px;
+  line-height: 31px;
 }
