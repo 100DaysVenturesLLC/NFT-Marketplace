@@ -68,15 +68,15 @@ function NftItem() {
                 <div>
                     <TopSection />
                 </div>
-                
+
             </div>
-            <div className="grid grid-cols-1  items-center   ">
-                                <Carousel responsive={responsive}>
-                                    {collectioncard_data.map((resource, index) => {
-                                        return <NftItemCard />;
-                                    })}
-                                </Carousel>
-                            </div>
+            <div className="grid grid-cols-1  items-center  pl-12 ">
+                <Carousel responsive={responsive}>
+                    {collectioncard_data.map((resource, index) => {
+                        return <NftItemCard />;
+                    })}
+                </Carousel>
+            </div>
         </div>
     )
 }
