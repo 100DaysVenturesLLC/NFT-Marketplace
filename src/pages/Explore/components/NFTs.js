@@ -1,8 +1,8 @@
 import React from 'react'
-import CollectionCard from '../../../components/Cards/CollectionCard'
 import cards from "./mockdata.json"
+import NFTCard from '../../../components/Cards/NFTCard'
 
-const Collections = () => {
+const NFTs = () => {
     return (
         <section className="py-3">
             <div class="drawer h-full">
@@ -13,7 +13,7 @@ const Collections = () => {
                         <div className="grid grid-cols-3 gap-3">
                             {cards.map((item) => {
                                 return (
-                                    <CollectionCard />
+                                    <NFTCard />
                                 )
                             })}
 
@@ -23,8 +23,7 @@ const Collections = () => {
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto backdrop-filter backdrop-blur-lg bg-opacity-10 w-80 text-base-content">
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        search
                     </ul>
                 </div>
             </div>
@@ -32,4 +31,4 @@ const Collections = () => {
     )
 }
 
-export default Collections
+export default NFTs

@@ -188,8 +188,6 @@ code {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.vertical {
-}
 .background-linear-gradient {
   background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
   -webkit-background-clip: text;
@@ -228,4 +226,27 @@ code {
 .collection-card-title {
   font-size: 16px;
   line-height: 31px;
+}
+
+.nft-card {
+  background: rgba(18, 26, 35, 0.2);
+  box-shadow: 0px 8px 36px rgba(132, 145, 179, 0.18);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+}
+
+.nft-card-price {
+  background: linear-gradient(
+    90deg,
+    #23aee3 0%,
+    #9b71d8 37.94%,
+    #fd3dce 71.77%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 600;
 }
