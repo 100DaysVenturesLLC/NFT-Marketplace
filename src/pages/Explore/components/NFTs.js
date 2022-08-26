@@ -10,7 +10,7 @@ const NFTs = () => {
                 <div class="drawer-content w-full h-full flex flex-col gap-2">
                     <label for="my-drawer" class="drawer-button text-white cursor-pointer w-full my-4">Filters</label>
                     <div className="flex justify-center">
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-3 gap-3 pb-6">
                             {cards.map((item) => {
                                 return (
                                     <NFTCard />
