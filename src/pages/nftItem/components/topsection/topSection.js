@@ -31,7 +31,7 @@ function TopSection() {
             <div className='flex text-[#BFCBD9] pl-6'><MdIosShare className='text-xl' /><div className='pl-4'>225</div></div>
         </div>
     </div>
-    <div className='bg-[#121a23] backdrop-blur-xl w-full h-32 rounded-lg border mb-6'>
+    <div className='bg-[#121a23] backdrop-blur-xl bg-opacity-20 w-full h-32 rounded-lg border mb-6'>
         <div className='columns-2 p-6'>
             <div>
                 <div className='text-foreground-primary opacity-60 text-xs font-semibold pb-2'>Price</div>

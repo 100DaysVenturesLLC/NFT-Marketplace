@@ -1,7 +1,7 @@
 import Image1 from "../../../assets/images/image1.jpg";
 const NftItemCard = () => {
     return (
-        <div class="card card-compact w-[280px] h-[358px] bg-[#121a23]">
+        <div class="card card-compact w-[280px] h-[358px] bg-[#121a23] backdrop-blur-xl bg-opacity-30">
             <div class="mt-1">
                 <div class=" grid justify-items-center">
                     <div
