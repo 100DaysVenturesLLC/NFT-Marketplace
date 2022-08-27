@@ -10,7 +10,7 @@ const Dropdown = () => {
         <Menu as="div" className="relative inline-block text-left">
           <div className="place-items-center flex relative">
             <Menu.Button className="inline-flex w-full justify-center rounded-lg bg-[#121A23]  px-6 py-4 text-sm  font-bold text-white border border-gray-700 ">
-              {title}
+         {title}
               <svg
                 className="fill-current ml-4"
                 xmlns="http://www.w3.org/2000/svg"

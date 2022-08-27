@@ -15,9 +15,11 @@ import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { MdShare } from "react-icons/md";
 import Dropdown from "../../components/DropDown";
-
-
-
+import NFTCard from "../../components/Cards/NFTCard";
+import card_data from "../../mocdata/trendingNFT";
+import CollectionCard from "../../components/Cards/CollectionCard";
+import { collection_data } from "../../mocdata/collectiondata";
+import { collectioncard_data } from "../../mocdata/collectionSpotlight";
 
 const Collection = ({ option, setOption, title }) => {
   const [active, setActive] = useState("onsale");
@@ -178,6 +180,13 @@ const Collection = ({ option, setOption, title }) => {
           <Dropdown />
           <Dropdown />
           <Dropdown />
+        </div>
+
+        {/* Card */}
+        <div className="grid grid-cols-4 grid-rows-3 gap-4 pt-12">
+        {collection_data.map((resource, index) => {
+                return <NFTCard index={index} resource={resource} />;
+              })}
         </div>
       </div>
     </div>
