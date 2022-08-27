@@ -65,7 +65,7 @@ function TopSection() {
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div className="modal bg-blur-2xl">
                 <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
-                    <label onClick={()=>{setStep(1)}} for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label onClick={()=>{setStep(1)}} for="my-modal-3" className=" bg-transparent absolute right-14 top-6 text-2xl text-foreground-primary">✕</label>
                     {step === 1 &&
                         <div>
                             <div className='text-foreground-primary text-shadow text-3xl font-bold pb-6'>
