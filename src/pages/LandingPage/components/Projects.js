@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import avatar from "../../../assets/icons/avatar.png";
-import { collectioncard_data } from "../../../mocdata/collectionSpotlight.js";
+import { collectioncard_data } from "../../../mocdata/collectionSpotlight";
 import { useNavigate } from "react-router-dom";
 
 const Projects = () => {

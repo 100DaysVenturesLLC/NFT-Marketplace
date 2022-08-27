@@ -7,9 +7,9 @@ import Button from "../Button/Button";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="sticky">
-      <nav className="">
-        <div className="max-w-8xl container mx-auto lg:py-2 lg:px-32  ">
+    <nav className="sticky top-0 z-10  backdrop-filter backdrop-blur-lg bg-opacity-10">
+     
+        <div className="max-w-8xl container  lg:py-2  lg:px-8 mx-auto  ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -181,7 +181,7 @@ function Navbar() {
           )}
         </Transition>
       </nav>
-    </div>
+ 
   );
 }
 
