@@ -2,60 +2,83 @@ import Rectangle from "../../assets/images/Rectangle.jpeg";
 import Robo from "../../assets/images/Robo.jpeg";
 import { FiUserPlus, FiShare } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
+import download from "../../assets/images/download.png";
+import dot from "../../assets/images/3dot.png";
 import { TbCopy } from "react-icons/tb";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { useState } from "react";
-const Collection = () => {
-  const [active, setActive] = useState("onsale");
-  return (
-    <div class="max-w-8xl mx-auto lg:py-2 lg:px-24 sm:px-12 ">
-      {/* Pics */}
-      <div class="relative mb-40">
-       <div className="w-full">
-<img src={Rectangle} className="h-[275px] w-full rounded-lg"/>
-       </div>
-       <div className="absolute top-[180px] left-10">
-<img src={Robo} className="h-[180px] w-[180px] rounded-lg"/>
-       </div>
-       <div>
+import { useState, useEffect } from "react";
+import twitter from "../../assets/icons/twitter.png";
+import ethicon from "../../assets/icons/etherscan.png";
+import icon from "../../assets/icons/Vector (2).png";
+import Button from "../../components/Button/Button";
+import { toast } from "react-toastify";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { MdShare } from "react-icons/md";
+import Dropdown from "../../components/DropDown";
 
-       </div>
-      </div>
-      {/* Followers Box */}
-      {/* <div
-        class="w-[380px] h-[208px]  bg-transparent  text-white absolute ml-[930px]  mt-[25px] border-[1px] rounded-2xl
-          "
-      >
-        <div class="flex flex-row justify-between mt-[18px]">
-          <p class="font-thin ml-[25px]">Followers</p>
-          <p class="mr-[25px]">40</p>
-        </div>
-        <br />
-        <div class="flex flex-row justify-between">
-          <p class="font-thin ml-[25px]">Following </p>
-          <p class="mr-[25px]">22</p>
-        </div>
-        <br />
-        <div>
-          <hr class="border-1 border-white ml-[25px] mr-[25px] mt-[15px]" />
-          <div class="flex flex-row justify-between  mt-[20px]">
-            <p class=" ml-[25px]     font-thin">Address</p>
-            <p class="flex flex-row  mr-[25px]  ">
-              0xae5...e6c2 <TbCopy class="ml-[15px]" />
-            </p>
+
+
+
+const Collection = ({ option, setOption, title }) => {
+  const [active, setActive] = useState("onsale");
+  const [snackopen, setSnackOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("trending");
+
+  const [copyText, setCopyText] = useState("");
+
+  const handleClick = () => {
+    setSnackOpen(true);
+    toast.success("Copied to clipboard", {
+      toastId: "toast-message",
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  return (
+    <div className="collection">
+      <div class=" max-w-8xl mx-auto lg:py-32 container lg:px-8  ">
+        {/* Pics */}
+        <div class="relative pb-40">
+          <div className="w-full">
+            <img
+              src={Rectangle}
+              className="h-[275px] w-full rounded-2xl object-cover"
+            />
           </div>
-        </div>
-      </div> */}
-      {/* Title Text */}
-      <div class="mt-[35px]  ml-[163px]">
-        <div class="text-white">
-          <h3 class="font-bold text-[32px]">0x5d8e2c078...52b1</h3>
-          <div class="flex flex-row">
-            <p class="font-thin"> Created by</p>
-            <p class="ml-[14px]"> XYZ Official</p>
+          <div className="absolute top-[180px] left-10">
+            <img src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
           </div>
+          <div></div>
         </div>
-        {/* <div class="flex flex-row justify-between">
+        <div class="flex justify-between">
+          <div className="ml-10">
+            <div className="token-group">
+              <div class="text-white">
+                <h3 class="text-3xl font-bold pb-3">PROOF Collective</h3>
+                <div class="flex pb-6">
+                  <p class="font-thin mr-2"> Created by</p>
+                  <p class=""> XYZ Official</p>
+                </div>
+                <p className="text-[#BFCBD9]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Cursus eu
+                  <br /> quam venenatis, diam enim dolor, feugiat diam placerat.
+                </p>
+              </div>
+            </div>
+            <div className="button-group pt-8 flex ">
+              <img src={twitter} className="pr-6" alt="" />
+              <img src={ethicon} className="pr-6" alt="" />
+              <img src={icon} alt="" />
+            </div>
+
+            {/* <div class="flex flex-row justify-between">
           <div class="mt-[25px]">
             <button class="btn bg-white text-black    w-[147px] h-[48px] ">
               <FiUserPlus class=" w-[22.5px] h-[21px] mr-[2px] " />
@@ -69,160 +92,92 @@ const Collection = () => {
             </button>
           </div>
         </div> */}
-      </div>
-      {/* Sort By: */}
-      {/* <div class="absolute mt-[83px] ml-[1130px]">
-        <p class="text-[#BFCBD9]">Sort By</p>
-        <div class="dropdown  ">
-          <label
-            tabindex="0"
-            class="btn m-1  border-[1px] rounded-lg bg-[#303F50] w-[180px] h-[48px]"
-          >
-            Recently Listed
-            <RiArrowDropDownLine class=" w-[22.5px] h-[25px] ml-[2px] " />
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-      {/* BUTTONS */}
-      <div class=" flex flex-row  w-[697px] h-[42px] justify-evenly ml-[130px] mt-[50px] pb-15 items-center text-[#6A8099]  ">
-        <div
-          class={
-            active === "onsale"
-              ? "border-b-2 border-[#6A8099] w-[117px] h-[40px]"
-              : "border-b-2 border-red-500 w-[117px] h-[40px]"
-          }
-        >
-          <button class="btn-ghost   ">On Sale</button>
-          {/* <hr class="border-[1px]  border-black mt-[2px] w-[117px] hover:bg-white " /> */}
-        </div>
-        <div class="border-b-2 border-[#6A8099] w-[117px] h-[40px] ">
-          <div class="flex flex-row ">
-            <button class="btn-ghost  ">Sold</button>
-            <p>22</p>
           </div>
-          {/* <hr class="border-[1px]  border-black mt-[2px] w-[117px] " /> */}
-        </div>
-        <div class="border-b-2 border-[#6A8099] w-[117px] h-[40px]">
-          <div class="flex flex-row ">
-            <button class="btn-ghost ">Owned</button> <p>22</p>
+
+          <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
+            <div className="flex justify-between p-8">
+              <div className="">
+                <p className="pb-2 font-light text-base text-white">Floor</p>
+                <p className="pb-2 font-light text-base text-white">Volume</p>
+
+                <p className="font-light text-base text-white">Items</p>
+              </div>
+
+              <div>
+                <p className="pb-2 font-semibold text-base text-white">
+                  0.07 ETH
+                </p>
+                <p className="pb-2 font-semibold text-base text-white">
+                  3.12 ETH
+                </p>
+                <p className=" font-semibold text-base text-white">49</p>
+              </div>
+            </div>
+            <div className="border-b-2 border-[#6A8099] w-3/4  "></div>
+            <div className="flex justify-between p-8">
+              <div className="">
+                <p className="pb-2 font-light text-base text-white">
+                  Blockchain
+                </p>
+                <p className="pb-2 font-light text-base text-white">Address</p>
+              </div>
+
+              <div>
+                <p className="pb-2 font-semibold text-base text-white">
+                  Ethereum
+                </p>
+                <CopyToClipboard>
+                  <p className="pb-2 font-semibold text-base text-white">
+                    0xae5...e6c2
+                  </p>
+                  {/* <img src=""  /> */}
+                </CopyToClipboard>
+              </div>
+            </div>
           </div>
-          {/* <hr class="border-[1px]  border-black mt-[2px] w-[117px]" /> */}
         </div>
-        <div class="border-b-2 border-[#6A8099] w-[117px] h-[40px]">
-          <button class="btn-ghost ">Created</button>
-          {/* <hr class="border-[1px]  border-black mt-[2px] w-[117px] " /> */}
+
+        <div className="collections-tab-group">
+          <button
+            className={
+              activeTab === "trending"
+                ? "collection-tab-active"
+                : "collection-tab-non-active"
+            }
+            onClick={() => setActiveTab("trending")}
+          >
+            Trending
+          </button>
+          <button
+            className={
+              activeTab === "top"
+                ? "collection-tab-active"
+                : "collection-tab-non-active"
+            }
+            onClick={() => setActiveTab("top")}
+          >
+            Top
+          </button>
         </div>
-        <div class="border-b-2 border-[#6A8099] w-[117px] h-[40px]">
-          <button class="btn-ghost ">Liked</button>
-          {/* <hr class="border-[1px]  border-black mt-[2px]  w-[117px]" /> */}
-        </div>
-        <div class="border-b-2 border-[#6A8099] w-[117px] h-[40px]">
-          <button class="btn-ghost mr-[5px] ">Activity</button>
-          {/* <hr class="border-[1px]  border-black mt-[2px] w-[117px] " /> */}
-        </div>
-      </div>
-      {/* Dropdown */}
-      <div class="ml-[130px] mt-[15px]">
-        <div class="dropdown ">
-          <label
-            tabindex="0"
-            class="btn m-1  border-[1px] rounded-lg bg-transparent w-[180px] h-[48px]"
-          >
-            Blockchain
-            <RiArrowDropDownLine class=" w-[22.5px] h-[25px] ml-[2px] " />
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-        {/* 2nd */}
-        <div class="dropdown ">
-          <label
-            tabindex="0"
-            class="btn m-1  border-[1px] rounded-lg bg-transparent w-[180px] h-[48px]"
-          >
-            Category
-            <RiArrowDropDownLine class=" w-[22.5px] h-[25px] ml-[2px] " />
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-        {/* 3rd */}
-        <div class="dropdown ">
-          <label
-            tabindex="0"
-            class="btn m-1  border-[1px] rounded-lg bg-transparent w-[180px] h-[48px]"
-          >
-            Collection
-            <RiArrowDropDownLine class=" w-[22.5px] h-[25px] ml-[2px] " />
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-        {/* 4th Dropdown */}
-        <div class="dropdown ">
-          <label
-            tabindex="0"
-            class="btn m-1  border-[1px] rounded-lg bg-transparent w-[180px] h-[48px]"
-          >
-            Price Range
-            <RiArrowDropDownLine class=" w-[22.5px] h-[25px] ml-[2px] " />
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* Bottom text */}
-      <div class="mt-[225px]">
-        <div class="flex flex-col items-center text-white">
-          <h1> No Sale Found</h1>
-          <p>We Coudn't find anything for this criteria</p>
+
+        {/* {activeTab === "trending" && <SingleCollections />}
+          {activeTab === "top" && <AllCollectionCard />}
+          {activeTab === "art" && <NoItems />}
+          {activeTab === "collectibles" && <NoItems />}
+          {activeTab === "domainnames" && <NoItems />}
+          {activeTab === "music" && <NoItems />}
+          {activeTab === "photography" && <NoItems />}
+          {activeTab === "sports" && <NoItems />}
+          {activeTab === "tradingcards" && <NoItems />}
+          {activeTab === "utility" && <NoItems />}
+          {activeTab === "virtualworlds" && <NoItems />} */}
+
+        {/* Dropdown */}
+        <div className="flex gap-4">
+          <Dropdown Option="asdasd" title="asdasd" />
+          <Dropdown />
+          <Dropdown />
+          <Dropdown />
         </div>
       </div>
     </div>

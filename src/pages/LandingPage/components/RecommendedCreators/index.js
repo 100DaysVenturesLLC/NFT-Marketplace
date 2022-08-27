@@ -25,15 +25,14 @@ const RecommendedCreators = () => {
   };
 
   return (
-    <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32">
+    <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32 recommededcreator">
       <p className="text-3xl pb-12 text-white font-bold text-shadow px-32  pt-12 ">
         Recommended Creators
       </p>
       <div className="grid grid-cols-1 gap-4 items-center ">
-        <Carousel responsive={responsive}       itemClass="carouselItem2"
->
+        <Carousel responsive={responsive} itemClass="carouselItem2">
           {card_data.map((resource, index) => {
-            return <Card index={index} resource={resource}/>;
+            return <Card index={index} resource={resource} />;
           })}
         </Carousel>
       </div>

@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Montserrat;
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-display: swap;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0C111A;
-}
-
-html {
-
+  background-color: #0c111a;
+  font-family: Montserrat;
 }
 
 html,
@@ -75,12 +78,12 @@ code {
 .vertical-line {
   border: 1px solid;
   border-color: radial-gradient(
-      72.64% 5101250.17% at 44.34% -1450.36%,
-      #4b5d80 0%,
-      rgba(15, 20, 33, 0) 100%
-    );
-   
-    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    72.64% 5101250.17% at 44.34% -1450.36%,
+    #4b5d80 0%,
+    rgba(15, 20, 33, 0) 100%
+  );
+
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
 }
 .price-rate {
   background: rgba(48, 165, 81, 0.15);
@@ -90,12 +93,12 @@ code {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, #0c111a 32.08%, rgba(12, 17, 26, 0) 93.66%);
 }
-.overlay2{
+.overlay2 {
   background: rgba(12, 17, 26, 0.75);
-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 .carouselItem2 {
-  margin-right: 150px;
+  margin-right: 120px;
 }
 .carouselItem {
   margin-right: 5px;
@@ -165,9 +168,10 @@ backdrop-filter: blur(15px);
 
 .top-collection {
   background-image: url(./assets/images/Ellipse\ 2.png);
-  background-position: center left;
+  background-position: left;
   background-repeat: no-repeat;
 }
+
 .nft-item {
   background-image: url(./assets/images/Ellipse\ 2.png);
   background-position: left top;
@@ -178,9 +182,8 @@ backdrop-filter: blur(15px);
   background-position: right center;
   background-repeat: no-repeat;
 }
-.collection-spotlight{
+.collection-spotlight {
   background-image: url(./assets/images/Ellipse\ 2.png);
-  background-position: left;
   background-repeat: no-repeat;
 }
 .createnft {
@@ -188,35 +191,210 @@ backdrop-filter: blur(15px);
   background-position: center left;
   background-repeat: no-repeat;
 }
+.recommededcreator {
+  background-image: url(./assets/images/bluegradient.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-
-.creators
-{
+.creators {
   background-position: left;
   background-repeat: no-repeat;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-
-
-.vertical{
-  
+.hero-section {
+  background-image: url(./assets/images/Hero\ Section\ Pattern.svg);
+  background-position: center left;
+  background-repeat: no-repeat;
 }
-.background-linear-gradient{
-  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+.popularcategory {
+  background-image: url(./assets/images/Category\ BG.svg);
+  background-position: initial;
+  background-repeat: no-repeat;
+}
+.collection {
+  background-image: url(./assets/images/Ellipse.png);
+  background-repeat: no-repeat;
+}
+.vertical {
+}
+.background-linear-gradient {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.btn-background{
-  background: linear-gradient(90deg, #23AEE3 0%, #9B71D8 52.08%, #FD3DCE 100%);
-box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
-border-radius: 8px;
+.background-linear-gradient {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.secondary-btn-background{
-  background: linear-gradient(90deg, rgba(35, 174, 227, 0.2) 0%, rgba(155, 113, 216, 0.2) 52.08%, rgba(253, 61, 206, 0.2) 100%);
-backdrop-filter: blur(36px);
-/* Note: backdrop-filter has minimal browser support */
 
-border-radius: 6px;
+.btn-background {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
+  border-radius: 8px;
+}
+.secondary-btn-background {
+  background: linear-gradient(
+    90deg,
+    rgba(35, 174, 227, 0.2) 0%,
+    rgba(155, 113, 216, 0.2) 52.08%,
+    rgba(253, 61, 206, 0.2) 100%
+  );
+  backdrop-filter: blur(36px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 6px;
+}
+
+.collection-card {
+  background-image: url("./assets/images/Ellipse\ 6.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6.48649px 6.48649px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collection-card-title {
+  font-size: 16px;
+  line-height: 31px;
+}
+
+.nft-card {
+  background: rgba(18, 26, 35, 0.2);
+  box-shadow: 0px 8px 8px rgba(132, 145, 179, 0.18);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+}
+
+.nft-card-price {
+  background: linear-gradient(
+    90deg,
+    #23aee3 0%,
+    #9b71d8 37.94%,
+    #fd3dce 71.77%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.user-card {
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+}
+
+/* Collection page */
+
+.collection-follow {
+  background: rgba(18, 26, 35, 0.3);
+  backdrop-filter: blur(24px);
+}
+
+/* Popular category */
+.popular-card {
+  background: linear-gradient(0deg, #0c111a 35.25%, rgba(12, 17, 26, 0) 84.53%);
+  box-shadow: 0px 40px 76px -32px rgba(132, 145, 179, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid;
+
+  border: conic-gradient(
+    from 180deg at 50% 50%,
+    #23aee3 0deg,
+    #867cda 69.37deg,
+    #9b71d8 155.62deg,
+    #fd3dce 260.62deg,
+    #23aee3 360deg
+  );
+}
+
+/* Stats Page */
+
+.table-odd-row {
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+  background: rgba(20, 27, 50, 0.3);
+  backdrop-filter: blur(24px);
+  /* border-radius: 16px; */
+}
+
+.table-even-row {
+  background: transparent;
+}
+
+.activity-table-row {
+  background: rgba(20, 27, 50, 0.3);
+  backdrop-filter: blur(24px);
+
+  /* Note: backdrop-filter has minimal browser support */
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+}
+
+/* Stats Page Ends */
+/* Collection Tab*/
+.collections-tab-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 30%;
+
+  padding-bottom: 20px;
+}
+.collections-tab-group .collection-tab-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #23AEE3;
+  border: none;
+  outline: none;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #23AEE3;
+  ;
+}
+.collections-tab-group .collection-tab-non-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  border: none;
+  outline: none;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.collections-tab-group-light .collection-tab-non-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.collections-tab-group .collection-tab-non-active:hover {
+  color: #23AEE3;
+  ;
 }
