@@ -15,7 +15,6 @@ body {
   font-family: Montserrat;
 }
 
-
 html,
 body,
 #root {
@@ -173,8 +172,6 @@ code {
   background-repeat: no-repeat;
 }
 
-
-
 .nft-item {
   background-image: url(./assets/images/Ellipse\ 2.png);
   background-position: left top;
@@ -214,7 +211,10 @@ code {
   background-image: url(./assets/images/Category\ BG.svg);
   background-position: initial;
   background-repeat: no-repeat;
- 
+}
+.collection {
+  background-image: url(./assets/images/Ellipse.png);
+  background-repeat: no-repeat;
 }
 .vertical {
 }
@@ -290,9 +290,7 @@ code {
 
 .user-card {
   border: 0.5px solid rgba(168, 168, 168, 0.1);
-
 }
-
 
 /* Collection page */
 
@@ -316,4 +314,63 @@ code {
     #fd3dce 260.62deg,
     #23aee3 360deg
   );
+}
+/* Collection Tab*/
+.collections-tab-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 30%;
+
+  padding-bottom: 20px;
+}
+.collections-tab-group .collection-tab-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #23AEE3;
+  border: none;
+  outline: none;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #23AEE3;
+  ;
+}
+.collections-tab-group .collection-tab-non-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  border: none;
+  outline: none;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.collections-tab-group-light .collection-tab-non-active {
+  background: transparent;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.collections-tab-group .collection-tab-non-active:hover {
+  color: #23AEE3;
+  ;
 }
