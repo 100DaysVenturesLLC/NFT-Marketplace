@@ -1,10 +1,9 @@
 import React from 'react'
-import CollectionCard from '../../../components/Cards/CollectionCard'
 import cards from "./mockdata.json"
+import UserCard from '../../../components/Cards/UserCard'
 import { BiFilterAlt, BiArrowToLeft } from "react-icons/bi"
-import bc from "../../../assets/icons/Group(3).png"
 
-const Collections = () => {
+const Users = () => {
     return (
         <section className="py-3">
             <div class="drawer h-full">
@@ -18,10 +17,10 @@ const Collections = () => {
                         <BiArrowToLeft />
                     </label>
                     <div className="flex justify-center">
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-3 gap-3 pb-6">
                             {cards.map((item) => {
                                 return (
-                                    <CollectionCard />
+                                    <UserCard />
                                 )
                             })}
 
@@ -30,7 +29,7 @@ const Collections = () => {
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto bg-[#0C111A] w-80 text-base-content flex flex-col gap-3">
+                    <ul class="menu p-4 overflow-y-auto bg-[#0C111A] w-80 text-base-content">
                         <form class="flex items-center">
                             <label for="simple-search text-white" class="sr-only">
                                 Search
@@ -55,20 +54,11 @@ const Collections = () => {
                                     type="text"
                                     id="simple-search"
                                     class="w-full font-bold bg-transparent border text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 dark:text-white"
-                                    placeholder="Search Collection"
+                                    placeholder="Search by users"
                                     required
                                 />
                             </div>
                         </form>
-                        <div tabindex="0" class="collapse text-gray-100 text-sm collapse-arrow border border-y-zinc-800 border-x-transparent">
-                            <div class="collapse-title font-bold flex gap-3 items-center">
-                                <img src={bc} alt="bc-icon" />
-                                All Blockchains
-                            </div>
-                            <div class="collapse-content">
-                                <p>tabindex="0" attribute is necessary to make the div focusable</p>
-                            </div>
-                        </div>
                     </ul>
                 </div>
             </div>
@@ -76,4 +66,4 @@ const Collections = () => {
     )
 }
 
-export default Collections
+export default Users

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Collections from './components/Collections';
 import NFTs from './components/NFTs';
+import Users from './components/Users';
 
 const Explore = () => {
 
@@ -35,6 +36,7 @@ const Explore = () => {
             <div className="render-tabs">
                 {activeTab === "collections" && <Collections />}
                 {activeTab === "nft" && <NFTs />}
+                {activeTab === "users" && <Users />}
             </div>
         </section>
     )
