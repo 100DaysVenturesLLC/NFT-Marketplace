@@ -5,6 +5,7 @@ import CreateNFT from "../pages/CreateNFT";
 import LandingPage from "../pages/LandingPage/index";
 import NftItem from "../pages/nftItem";
 import Explore from "../pages/Explore"
+import Stats from "../pages/Stats";
 
 export const PublicRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const PublicRoutes = () => {
       <Route path="/collection" element={<Collection />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/nftitem" element={<NftItem />} />
+      <Route path="/stats" element={<Stats />} />
     </Routes>
   );
 };

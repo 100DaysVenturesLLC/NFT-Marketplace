@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
-import Collections from './components/Collections';
-import NFTs from './components/NFTs';
-import Users from './components/Users';
+import Activity from './components/Activity';
+import RankingTable from './components/RankingTable';
 
-const Explore = () => {
+const Stats = () => {
 
-    const [activeTab, setActiveTab] = useState("collections");
+
+    const [activeTab, setActiveTab] = useState("rankings");
 
     const tabs = [
         {
-            label: "Collections",
-            link: "collections"
+            label: "Rankings",
+            link: "rankings"
         },
         {
-            label: "NFTs",
-            link: "nft"
-        },
-        {
-            label: "Users",
-            link: "users"
+            label: "Activity",
+            link: "activity"
         },
     ]
 
@@ -34,12 +30,11 @@ const Explore = () => {
                 })}
             </div>
             <div className="render-tabs">
-                {activeTab === "collections" && <Collections />}
-                {activeTab === "nft" && <NFTs />}
-                {activeTab === "users" && <Users />}
+                {activeTab === "rankings" && <RankingTable />}
+                {activeTab === "activity" && <Activity />}
             </div>
         </section>
     )
 }
 
-export default Explore
+export default Stats

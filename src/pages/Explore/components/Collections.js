@@ -3,6 +3,11 @@ import CollectionCard from '../../../components/Cards/CollectionCard'
 import cards from "./mockdata.json"
 import { BiFilterAlt, BiArrowToLeft } from "react-icons/bi"
 import bc from "../../../assets/icons/Group(3).png"
+import eth from "../../../assets/filter-icons/cib_ethereum.png"
+import poly from "../../../assets/filter-icons/polygon-matic-logo 1.png"
+import flow from "../../../assets/filter-icons/flow.png"
+import solana from "../../../assets/filter-icons/solana-sol-logo 1.png"
+import tezos from "../../../assets/filter-icons/Tezos.png"
 
 const Collections = () => {
     return (
@@ -18,7 +23,7 @@ const Collections = () => {
                         <BiArrowToLeft />
                     </label>
                     <div className="flex justify-center">
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-4 gap-6">
                             {cards.map((item) => {
                                 return (
                                     <CollectionCard />
@@ -60,13 +65,48 @@ const Collections = () => {
                                 />
                             </div>
                         </form>
-                        <div tabindex="0" class="collapse text-gray-100 text-sm collapse-arrow border border-y-zinc-800 border-x-transparent">
+                        <div class="collapse text-gray-100 text-sm collapse-arrow border border-y-zinc-800 border-x-transparent">
+                            <input type="checkbox" class="peer" />
                             <div class="collapse-title font-bold flex gap-3 items-center">
                                 <img src={bc} alt="bc-icon" />
                                 All Blockchains
                             </div>
-                            <div class="collapse-content">
-                                <p>tabindex="0" attribute is necessary to make the div focusable</p>
+                            <div class="collapse-content flex flex-col gap-4">
+                                <div className="flex justify-between">
+                                    <div class="font-bold flex gap-3 items-center">
+                                        <img src={eth} alt="icon" />
+                                        Ethereuem
+                                    </div>
+                                    <input type="radio" name="radio-6" class="radio bg-grey checked:bg-blue-500" />
+                                </div>
+                                <div className="flex justify-between">
+                                    <div class="font-bold flex gap-3 items-center">
+                                        <img src={poly} alt="icon" />
+                                        Polygon
+                                    </div>
+                                    <input type="radio" name="radio-6" class="radio bg-grey checked:bg-blue-500" />
+                                </div>
+                                <div className="flex justify-between">
+                                    <div class="font-bold flex gap-3 items-center">
+                                        <img src={flow} alt="icon" />
+                                        Flow
+                                    </div>
+                                    <input type="radio" name="radio-6" class="radio bg-grey checked:bg-blue-500" />
+                                </div>
+                                <div className="flex justify-between">
+                                    <div class="font-bold flex gap-3 items-center">
+                                        <img src={solana} alt="icon" />
+                                        Solana
+                                    </div>
+                                    <input type="radio" name="radio-6" class="radio bg-grey checked:bg-blue-500" />
+                                </div>
+                                <div className="flex justify-between">
+                                    <div class="font-bold flex gap-3 items-center">
+                                        <img src={tezos} alt="icon" />
+                                        Tezos
+                                    </div>
+                                    <input type="radio" name="radio-6" class="radio bg-grey checked:bg-blue-500" />
+                                </div>
                             </div>
                         </div>
                     </ul>

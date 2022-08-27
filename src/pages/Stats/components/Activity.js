@@ -1,9 +1,9 @@
 import React from 'react'
-import cards from "./mockdata.json"
 import UserCard from '../../../components/Cards/UserCard'
 import { BiFilterAlt, BiArrowToLeft } from "react-icons/bi"
+import ActivityTable from './ActivityTable'
 
-const Users = () => {
+const Activity = () => {
     return (
         <section className="py-3">
             <div class="drawer h-full">
@@ -16,16 +16,7 @@ const Users = () => {
                         </div>
                         <BiArrowToLeft />
                     </label>
-                    <div className="flex justify-center">
-                        <div className="grid grid-cols-4 gap-6 pb-6">
-                            {cards.map((item) => {
-                                return (
-                                    <UserCard />
-                                )
-                            })}
-
-                        </div>
-                    </div>
+                    <ActivityTable />
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
@@ -66,4 +57,4 @@ const Users = () => {
     )
 }
 
-export default Users
+export default Activity
