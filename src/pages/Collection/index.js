@@ -176,10 +176,11 @@ const Collection = ({ option, setOption, title }) => {
 
         {/* Dropdown */}
         <div className="flex gap-4">
-          <Dropdown Option="asdasd" title="asdasd" />
-          <Dropdown />
-          <Dropdown />
-          <Dropdown />
+          <Dropdown setOption={setOption}
+             title="Blockchain" />
+          <Dropdown title="Category" />
+          <Dropdown title="Sale Type" />
+          <Dropdown title="Price Range"/>
         </div>
 
         {/* Card */}

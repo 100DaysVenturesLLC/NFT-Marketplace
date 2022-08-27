@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-const Dropdown = () => {
+const Dropdown = (props) => {
   const [option, setOption, title] = useState("");
   return (
     <>
@@ -10,7 +10,7 @@ const Dropdown = () => {
         <Menu as="div" className="relative inline-block text-left">
           <div className="place-items-center flex relative">
             <Menu.Button className="inline-flex w-full justify-center rounded-lg bg-[#121A23]  px-6 py-4 text-sm  font-bold text-white border border-gray-700 ">
-         {title}
+              {props.title}
               <svg
                 className="fill-current ml-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ const Dropdown = () => {
                           : "text-gray-900"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
-                      {option}
+                      {props.option}
                     </button>
                   )}
                 </Menu.Item>
@@ -58,35 +58,7 @@ const Dropdown = () => {
                           : "text-gray-900"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
-                      {option}
-                    </button>
-                  )}
-                </Menu.Item>
-              </div>
-              <div className="px-1 py-1">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {option}
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {option}
+                           {props.option}
                     </button>
                   )}
                 </Menu.Item>
@@ -101,7 +73,35 @@ const Dropdown = () => {
                           : "text-gray-900"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
-                      {option}
+                        {props.option}
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active
+                          ? "bg-foreground-accent text-white"
+                          : "text-gray-900"
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                  {props.option}
+                    </button>
+                  )}
+                </Menu.Item>
+              </div>
+              <div className="px-1 py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active
+                          ? "bg-foreground-accent text-white"
+                          : "text-gray-900"
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                         {props.option}
                     </button>
                   )}
                 </Menu.Item>
