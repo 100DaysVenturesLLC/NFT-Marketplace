@@ -188,7 +188,7 @@ code {
 }
 .createnft {
   background-image: url(./assets/images/Ellipse\ 3.png);
-  background-position: center left;
+
   background-repeat: no-repeat;
 }
 .recommededcreator {
@@ -326,17 +326,16 @@ code {
 .collections-tab-group .collection-tab-active {
   background: transparent;
   cursor: pointer;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #23AEE3;
+  color: #23aee3;
   border: none;
   outline: none;
   padding-bottom: 20px;
-  border-bottom: 2px solid #23AEE3;
-  ;
+  border-bottom: 2px solid #23aee3;
 }
 .collections-tab-group .collection-tab-non-active {
   background: transparent;
@@ -371,6 +370,12 @@ code {
 }
 
 .collections-tab-group .collection-tab-non-active:hover {
-  color: #23AEE3;
-  ;
+  color: #23aee3;
+}
+
+.preview-box {
+  background: rgba(18, 26, 35, 0.2);
+  box-shadow: 0px 8px 36px rgba(132, 145, 179, 0.18);
+
+  border-radius: 16px;
 }
