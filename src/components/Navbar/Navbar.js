@@ -13,7 +13,9 @@ function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img className="h-8 w-8" src={Logo} alt="Workflow" />
+                <a href="/">
+                  <img className="h-8 w-8" src={Logo} alt="Workflow" />
+                </a>
               </div>
 
               <div className="hidden md:block">
@@ -50,7 +52,7 @@ function Navbar() {
                     </form>
                   </div>
                   <a
-                    href="#"
+                    href="/explore"
                     className=" hover:bg-gray-700 text-white px-6 py-2 rounded-md text-md font-medium"
                   >
                     Explore
@@ -67,19 +69,19 @@ function Navbar() {
                     href="/createnft"
                     className="text-white hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-medium"
                   >
-                 Create
+                    Create
                   </a>
 
                 </div>
               </div>
             </div>
             <div className="hidden md:block ">
-            <div className="flex items-center space-x-8">
-              <FiUser size={'1.5em'} color="white"/>
-              <Button className="text-white border-1">Connect Wallet</Button>
+              <div className="flex items-center space-x-8">
+                <FiUser size={'1.5em'} color="white" />
+                <Button className="text-white border-1">Connect Wallet</Button>
+              </div>
             </div>
-            </div>
-            
+
             <div className="mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}

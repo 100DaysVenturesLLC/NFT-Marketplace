@@ -2,14 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Montserrat;
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-display: swap;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0c111a;
+  font-family: Montserrat;
 }
 
-html {
-}
 
 html,
 body,
@@ -180,8 +185,7 @@ code {
   background-position: right center;
   background-repeat: no-repeat;
 }
-.collection-spotlight{
-
+.collection-spotlight {
   background-image: url(./assets/images/Ellipse\ 2.png);
   background-repeat: no-repeat;
 }
@@ -221,6 +225,13 @@ code {
   background-clip: text;
 }
 
+.background-linear-gradient {
+  background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .btn-background {
   background: linear-gradient(90deg, #23aee3 0%, #9b71d8 52.08%, #fd3dce 100%);
   box-shadow: 0px 8px 16px rgba(155, 113, 216, 0.4);
@@ -238,6 +249,50 @@ code {
 
   border-radius: 6px;
 }
+
+.collection-card {
+  background-image: url("./assets/images/Ellipse\ 6.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6.48649px 6.48649px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collection-card-title {
+  font-size: 16px;
+  line-height: 31px;
+}
+
+.nft-card {
+  background: rgba(18, 26, 35, 0.2);
+  box-shadow: 0px 8px 36px rgba(132, 145, 179, 0.18);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+}
+
+.nft-card-price {
+  background: linear-gradient(
+    90deg,
+    #23aee3 0%,
+    #9b71d8 37.94%,
+    #fd3dce 71.77%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.user-card {
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+
+}
+
 
 /* Collection page */
 
