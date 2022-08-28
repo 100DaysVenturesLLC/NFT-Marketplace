@@ -20,7 +20,7 @@ const Stats = () => {
 
     return (
         <section className="container mx-auto px-8 py-16 w-screen min-h-screen max-h-full">
-            <div className="flex py-4">
+            {/* <div className="flex py-4">
                 <div class="relative inline-block text-left">
                     <div>
                         <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -42,6 +42,7 @@ const Stats = () => {
                     </div>
                 </div>
             </div>
+            */}
             <div className="tabs flex justify-start border-b w-full">
                 {tabs.map((item) => {
                     return (
