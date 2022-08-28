@@ -10,7 +10,7 @@ function Overview() {
                 Latest Bids
             </div>
             <div className='pb-14'><Table /></div>
-            <div className='w-full h-[280px] text-white py-6 px-6 bg-[#121a23] rounded-2xl mb-14'>
+            <div className='w-full h-[280px] text-white py-6 px-6 bg-[#121a23] backdrop-blur-xl bg-opacity-30  rounded-2xl mb-14'>
                 <div className='text-foreground-primary text-shadow text-xl font-semibold pb-6'>
                     About XYZ Official
                 </div>
@@ -23,7 +23,7 @@ function Overview() {
                 </div>
             </div>
 
-            <div className='w-full h-[280px] text-white py-6 px-6 bg-[#121a23] rounded-2xl'>
+            <div className='w-full h-[280px] text-white py-6 px-6 bg-[#121a23] bg-opacity-30 backdrop-blur-xl rounded-2xl'>
                 <div className='text-foreground-primary text-shadow text-xl font-semibold pb-4'>
                     Details
                 </div>
