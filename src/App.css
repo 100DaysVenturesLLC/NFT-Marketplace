@@ -267,9 +267,10 @@ code {
 
 .nft-card {
   background: rgba(18, 26, 35, 0.2);
-  box-shadow: 0px 8px 36px rgba(132, 145, 179, 0.18);
+  box-shadow: 0px 8px 8px rgba(132, 145, 179, 0.18);
   backdrop-filter: blur(24px);
   border-radius: 16px;
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
 }
 
 .nft-card-price {
@@ -315,6 +316,29 @@ code {
     #23aee3 360deg
   );
 }
+
+/* Stats Page */
+
+.table-odd-row {
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+  background: rgba(20, 27, 50, 0.3);
+  backdrop-filter: blur(24px);
+  /* border-radius: 16px; */
+}
+
+.table-even-row {
+  background: transparent;
+}
+
+.activity-table-row {
+  background: rgba(20, 27, 50, 0.3);
+  backdrop-filter: blur(24px);
+
+  /* Note: backdrop-filter has minimal browser support */
+  border: 0.5px solid rgba(168, 168, 168, 0.1);
+}
+
+/* Stats Page Ends */
 /* Collection Tab*/
 .collections-tab-group {
   display: grid;

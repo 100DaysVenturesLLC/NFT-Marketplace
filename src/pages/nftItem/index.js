@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { FaRegHeart } from "react-icons/fa"
-import { MdIosShare } from "react-icons/md"
 import image1 from "../../assets/images/image1.jpg"
 import TopSection from './components/topsection/topSection'
 import Overview from './components/overview/overview'
@@ -52,7 +50,7 @@ function NftItem() {
                             <img className='w-full' src={image1} alt="pic" />
                         </figure>
                         <div className='pt-6 flex justify-center pb-14'>
-                            <div className='w-full h-[80px] bg-[#303f50] backdrop-blur-2xl opacity-90 rounded-2xl p-4 py-3 flex justify-around' >
+                            <div className='w-full h-[80px] bg-[#303f50] backdrop-blur-2xl bg-opacity-20 rounded-2xl p-4 py-3 flex justify-around' >
                                 {sections.map((item) => {
                                     return (<div onClick={() => { setSelected(item.name) }} className={selected == item.name ? "text-foreground-primary border border-[#9b71d8]  rounded-xl cursor-pointer bg-[#9b71d8] text-base font-bold px-[14px] py-[16px]" : "text-foreground-primary cursor-pointer text-base font-bold px-[14px] py-[16px]"}><div>
                                         {item.name}
