@@ -30,7 +30,7 @@ const CreateNFT = () => {
             <p className="font-semibold text-xl text-white mt-12 mb-2">
               Upload file
             </p>
-            <div class="flex flex-col justify-center w-full items-center">
+            <div class="flex flex-col justify-center items-center">
               <div class="flex items-center justify-start w-full">
                 <label class="flex flex-col w-full h-[330px] border-2 rounded-lg border-dashed border-gray-500 ">
                   <div class="flex flex-col place-items-center justify-center mt-32">
@@ -67,11 +67,29 @@ const CreateNFT = () => {
                     (Optional)
                   </font>{" "}
                 </label>
-                <input
-                  type="text"
-                  placeholder="Type here"
-                  class="input input-bordered w-full py-16 text-white  bg-[#0C111A] border border-gray-500"
-                />
+                <textarea
+                  className="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+       bg-clip-padding
+        border border-solid border-gray-300
+        rounded-lg
+        transition
+        bg-[#0c111a]
+        ease-in-out
+        m-0
+        focus:text-gray-700  focus:border-blue-600 focus:outline-none
+        "
+                  id="exampleFormControlTextarea1"
+                  rows={3}
+                  placeholder="Your message"
+                ></textarea>
               </div>
               <div className="flex flex-col mt-10">
                 <label className="text-base text-white font-semibold  mb-2">
@@ -84,114 +102,122 @@ const CreateNFT = () => {
               </div>
             </div>
             <div className=" mt-24">
-            <div className="flex">
-              <label className="text-base text-white font-semibold  mb-2">
-                Properties
-                <font className="color-[#BFCBD9] font-normal text-base  ml-2">
-                  (Optional)
-                </font>
-              </label>
-            </div>
-            <div className="">
-              {Array.from(Array(counter)).map((c, index) => {
-                return (
-                  <div className="flex gap-2 mb-4">
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
-                    />
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
-                    />
-                  </div>
-                );
-              })}
+              <div className="flex">
+                <label className="text-base text-white font-semibold  mb-2">
+                  Properties
+                  <font className="color-[#BFCBD9] font-normal text-base  ml-2">
+                    (Optional)
+                  </font>
+                </label>
+              </div>
+              <div className="">
+                {Array.from(Array(counter)).map((c, index) => {
+                  return (
+                    <div className="flex gap-2 mb-4">
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                      />
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+
+              <Button
+                className="text-white border-1 mb-10"
+                onClick={handleClick}
+              >
+                Add More Property
+              </Button>
             </div>
 
-            <Button className="text-white border-1 mb-10" onClick={handleClick}>
-              Add More Property
-            </Button>
-            </div>
-          
             <div>
-            <div className="flex">
-              <label className="text-base text-white font-semibold  mb-2">
-                Levels
-                <font className="color-[#BFCBD9] font-normal text-base ml-2">
-                  (Optional)
-                </font>
-              </label>
-            </div>
-            <div className="">
-              {Array.from(Array(level)).map((c, index) => {
-                return (
-                  <div className="flex gap-4 mb-4">
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
-                    />
+              <div className="flex">
+                <label className="text-base text-white font-semibold  mb-2">
+                  Levels
+                  <font className="color-[#BFCBD9] font-normal text-base ml-2">
+                    (Optional)
+                  </font>
+                </label>
+              </div>
+              <div className="">
+                {Array.from(Array(level)).map((c, index) => {
+                  return (
+                    <div className="flex gap-4 mb-4">
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                      />
 
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
-                    />
-                  </div>
-                );
-              })}
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <Button
+                className="text-white border-1 mb-10 w-2/5"
+                onClick={handleClick}
+              >
+                Add More Levels
+              </Button>
             </div>
-            <Button className="text-white border-1 mb-10 w-2/5" onClick={handleClick}>
-              Add More Levels
-            </Button>
-            </div>
-           
+
             <div>
-            <div className="flex">
-              <label className="text-base text-white font-semibold  mb-2">
-                Stats
-                <font className="color-[#BFCBD9] font-normal text-base ml-2">
-                  (Optional)
-                </font>
-              </label>
-            </div>
-            <div className="">
-              {Array.from(Array(stats)).map((c, index) => {
-                return (
-                  <div className="flex gap-4 mb-4">
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
-                    />
+              <div className="flex">
+                <label className="text-base text-white font-semibold  mb-2">
+                  Stats
+                  <font className="color-[#BFCBD9] font-normal text-base ml-2">
+                    (Optional)
+                  </font>
+                </label>
+              </div>
+              <div className="">
+                {Array.from(Array(stats)).map((c, index) => {
+                  return (
+                    <div className="flex gap-4 mb-4">
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                      />
 
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
-                    />
-                  </div>
-                );
-              })}
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <Button
+                className="text-white border-1 mb-10 w-2/5"
+                onClick={handleClick}
+              >
+                Add More Stats
+              </Button>
             </div>
-            <Button className="text-white border-1 mb-10 w-2/5" onClick={handleClick}>
-              Add More Stats
-            </Button>
-            </div>
-           
 
             <div className="bg-[#121A23] backdrop-blur-xl p-8 rounded-lg place-items-center mb-6">
               <div className="flex justify-between">

@@ -28,8 +28,8 @@ const Projects = () => {
   };
 
   return (
-    <div className="collection-spotlight container w-full  mx-auto  max-w-full">
-      <p className="font-bold text-white text-3xl pb-12 text-shadow container px-32 pt-12">
+    <div className="collection-spotlight container max-h-full  mx-auto  max-w-full">
+      <p className="font-bold text-white text-3xl pb-12 mx-auto text-shadow container px-8 pt-12">
       Collections on spotlight
       </p>
       <div >
