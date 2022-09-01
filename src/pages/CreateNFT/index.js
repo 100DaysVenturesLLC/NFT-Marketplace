@@ -6,11 +6,14 @@ import overlay from "../../assets/images/Ellipse 3.png";
 import Dropdown from "../../components/DropDown";
 import lock from "../../assets/icons/lock.png";
 import Toggle from "../../components/ToggleButton";
+import PutOnSale from "../nftItem/components/topsection/sellSections/putOnSale";
+import CreateCollection from "./components/CreateCollection";
 const CreateNFT = () => {
   const [addproperty, setAddProperty] = useState();
   const [counter, setCounter] = useState(1);
   const [level, setLevel] = useState(1);
   const [stats, setStats] = useState(1);
+  const [step, setStep] = useState(1)
 
   const handleClick = () => {
     if (counter) {
@@ -23,16 +26,17 @@ const CreateNFT = () => {
   };
   return (
     <div className="createnft">
-      <div className="lg:px-60 lg:py-32 flex flex-col  container mx-auto">
+      <div className="container mx-auto">
+      <div className="pl-60  lg:py-32 flex flex-col">
         <p className="text-3xl text-white font-bold text-shadow ">Create NFT</p>
-        <div className="flex justify-between ">
-          <div className="columns-4xl mr-5">
+        <div className="flex ">
+          <div className="columns-2xl mr-5">
             <p className="font-semibold text-xl text-white mt-12 mb-2">
               Upload file
             </p>
             <div class="flex flex-col justify-center items-center">
               <div class="flex items-center justify-start w-full">
-                <label class="flex flex-col w-full h-[330px] border-2 rounded-lg border-dashed border-gray-500 ">
+                <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500 ">
                   <div class="flex flex-col place-items-center justify-center mt-32">
                     <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
                       Choose File
@@ -69,22 +73,22 @@ const CreateNFT = () => {
                 </label>
                 <textarea
                   className="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-       bg-clip-padding
-        border border-solid border-gray-300
-        rounded-lg
-        transition
-        bg-[#0c111a]
-        ease-in-out
-        m-0
-        focus:text-gray-700  focus:border-blue-600 focus:outline-none
+                  form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded-lg
+                  transition
+                  bg-[#0c111a]
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700  focus:border-blue-600 focus:outline-none
         "
                   id="exampleFormControlTextarea1"
                   rows={6}
@@ -171,7 +175,7 @@ const CreateNFT = () => {
                 })}
               </div>
               <Button
-                className="text-white border-1 mb-10 w-2/5"
+                className="text-white border-1 mb-10 px-10"
                 onClick={handleClick}
               >
                 Add More Levels
@@ -212,7 +216,7 @@ const CreateNFT = () => {
                 })}
               </div>
               <Button
-                className="text-white border-1 mb-10 w-2/5"
+                className="text-white border-1 mb-10 px-12"
                 onClick={handleClick}
               >
                 Add More Stats
@@ -254,14 +258,16 @@ const CreateNFT = () => {
                 <Toggle />
               </div>
             </div>
-         
-              <label for="my-modal" className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mr-3 w-2/5 btn">
-                Create
-              </label>
-      
+
+            <label
+              htmlFor="my-modal-3" 
+              className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mr-3 w-1/4 btn"
+            >
+              Create
+            </label>
           </div>
 
-          <div className="columns-xs">
+          <div className="columns-xs sticky">
             <p className="mt-12 mb-2 font-semibold text-xl text-white">
               Preview
             </p>
@@ -269,21 +275,22 @@ const CreateNFT = () => {
               Upload file and choose collection to preview your brand new NFT
             </div>
           </div>
-
         </div>
-        
-        <label for="my-modal-3" class="btn modal-button">open modal</label>
+
+
 
 <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box relative">
-    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-  </div>
-</div>
-      </div>
+<div class="modal bg-blur-2xl">
+<div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
+  <label  for="my-modal-3" className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary">✕</label>
+    <CreateCollection/>
     </div>
+    </div>
+
+</div>
+      </div> 
+    </div>
+  
   );
 };
 
