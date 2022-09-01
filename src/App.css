@@ -215,6 +215,7 @@ code {
 .collection {
   background-image: url(./assets/images/Ellipse.png);
   background-repeat: no-repeat;
+  width: 100%;
 }
 .vertical {
 }

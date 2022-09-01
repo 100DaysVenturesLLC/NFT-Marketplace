@@ -20,7 +20,7 @@ import card_data from "../../mocdata/trendingNFT";
 import CollectionCard from "../../components/Cards/CollectionCard";
 import { collection_data } from "../../mocdata/collectiondata";
 import { collectioncard_data } from "../../mocdata/collectionSpotlight";
-
+import copybutton from "../../assets/images/carbon_copy.png"
 const Collection = ({ option, setOption, title }) => {
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
@@ -43,8 +43,8 @@ const Collection = ({ option, setOption, title }) => {
   };
 
   return (
-    <div className="collection">
-      <div class=" max-w-8xl mx-auto lg:py-32 container lg:px-8  ">
+    <div className="collection max-w-screen">
+      <div class=" mx-auto lg:py-32 container lg:px-8  ">
         {/* Pics */}
         <div class="relative pb-40">
           <div className="w-full">
@@ -115,8 +115,11 @@ const Collection = ({ option, setOption, title }) => {
                 <p className=" font-semibold text-base text-white">49</p>
               </div>
             </div>
-            <div className="border-b-2 border-[#6A8099] w-3/4  "></div>
-            <div className="flex justify-between p-8">
+            <div className="px-4">
+            <div className="border-b-2 border-[#6A8099] w-full  "></div>
+            </div>
+        
+            <div className="flex justify-between p-8 items-center">
               <div className="">
                 <p className="pb-2 font-light text-base text-white">
                   Blockchain
@@ -124,15 +127,19 @@ const Collection = ({ option, setOption, title }) => {
                 <p className="pb-2 font-light text-base text-white">Address</p>
               </div>
 
-              <div>
-                <p className="pb-2 font-semibold text-base text-white">
+              <div className="flex flex-col ml-auto">
+                <p className="pb-2  font-semibold text-base text-white ml-auto">
                   Ethereum
                 </p>
                 <CopyToClipboard>
-                  <p className="pb-2 font-semibold text-base text-white">
+                  <div className="flex">
+                  <p className="font-semibold text-base text-white">
                     0xae5...e6c2
                   </p>
-                  {/* <img src=""  /> */}
+                 
+                  <img src={copybutton} className="ml-2" />
+                  </div>
+            
                 </CopyToClipboard>
               </div>
             </div>
