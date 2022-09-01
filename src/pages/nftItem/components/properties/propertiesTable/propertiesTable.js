@@ -12,51 +12,51 @@ function PropertiesTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className='border-none'>
                         {/* <th></th> */}
-                        <td className='bg-[#121a23]'>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='flex'>
                                 <div className='text-[#BFCBD9] text-sm pr-2'>Background</div>
                             </div>
                             <div className='text-base font-semibold text-foreground-primary'>Purple</div>
                         </td>
-                        <td className='bg-[#121a23] '>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='text-base font-semibold text-foreground-primary'><span className='float-right'>12.9%</span></div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr className='border-none'>
                         {/* <th></th> */}
-                        <td className='bg-[#121a23]'>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='flex'>
                                 <div className='text-[#BFCBD9] text-sm pr-2'>Background</div>
                             </div>
                             <div className='text-base font-semibold text-foreground-primary'>Purple</div>
                         </td>
-                        <td className='bg-[#121a23] '>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='text-base font-semibold text-foreground-primary'><span className='float-right'>12.9%</span></div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr className='border-none'>
                         {/* <th></th> */}
-                        <td className='bg-[#121a23]'>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='flex'>
                                 <div className='text-[#BFCBD9] text-sm pr-2'>Background</div>
                             </div>
                             <div className='text-base font-semibold text-foreground-primary'>Purple</div>
                         </td>
-                        <td className='bg-[#121a23] '>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='text-base font-semibold text-foreground-primary'><span className='float-right'>12.9%</span></div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr className='border-none'>
                         {/* <th></th> */}
-                        <td className='bg-[#121a23]'>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='flex'>
                                 <div className='text-[#BFCBD9] text-sm pr-2'>Background</div>
                             </div>
                             <div className='text-base font-semibold text-foreground-primary'>Purple</div>
                         </td>
-                        <td className='bg-[#121a23] '>
+                        <td className='bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none'>
                             <div className='text-base font-semibold text-foreground-primary'><span className='float-right'>12.9%</span></div>
                         </td>
                     </tr>
