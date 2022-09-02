@@ -17,7 +17,8 @@ const HeroSection = () => {
               <Button className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3">
                 Create Collection
               </Button>
-              <Button className="hero-button text-white font-sm font-bold  rounded-lg">
+              
+              <Button className="hero-button text-white font-sm font-bold  rounded-lg dark-bg-white">
                 Explore Marketplace
               </Button>
             </div>

@@ -5,6 +5,7 @@ import { FiUser } from "react-icons/fi";
 import DarkModeToggle from "react-dark-mode-toggle";
 import Button from "../Button/Button";
 import useDarkMode from "../../hook/useDarkMode";
+import user from "../../assets/icons/user.svg"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,7 +117,7 @@ function Navbar() {
               />
               <div className="hidden md:block ">
                 <div className="flex items-center space-x-8">
-                  <FiUser size={"1.5em"} color="white" />
+                  <FiUser size={"1.5em"} color="white" className="dark:fill-black"/>
                   <Button className="text-white border-1 dark:text-foreground-secondary dark:border-black">
                     Connect Wallet
                   </Button>
