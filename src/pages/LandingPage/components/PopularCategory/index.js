@@ -25,9 +25,9 @@ const PopularCategory = () => {
   };
   return (
     <div className=" ">
-      <div className="container   mx-auto max-h-full max-w-full ">
+      <div className="container   mx-auto max-h-full max-w-full dark:bg-white ">
         <div className="flex flex-col  ">
-          <p className="text-3xl text-white container px-8 mx-auto font-bold text-shadow pb-12 pt-12">
+          <p className="text-3xl text-white container px-8 mx-auto font-bold text-shadow pb-12 pt-12 dark:text-foreground-secondary">
             Popular Categories
           </p>
 

@@ -56,7 +56,10 @@ function Navbar() {
                 <div className="ml-10 flex  space-x-4 items-center">
                   <div>
                     <form class="flex items-center">
-                      <label for="simple-search text-white dark:text-black" class="sr-only">
+                      <label
+                        for="simple-search text-white dark:text-black"
+                        class="sr-only"
+                      >
                         Search
                       </label>
                       <div class="relative w-full">
@@ -87,28 +90,28 @@ function Navbar() {
                   </div>
                   <a
                     href="/explore"
-                    className="hover:bg-gray-700 dark:text-gray-400 text-white px-6 py-2 dark:text-red rounded-md text-md font-bold"
+                    className=" dark:text-foreground-secondary text-white px-6 py-2 dark:text-red rounded-md text-md font-bold"
                   >
                     Explore
                   </a>
 
                   <a
                     href="/stats"
-                    className="text-white dark:text-foreground-secondary hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-bold"
+                    className="text-white dark:text-foreground-secondary hover:text-white px-6 py-2 rounded-md text-md font-bold"
                   >
                     Stats
                   </a>
 
                   <a
                     href="/createnft"
-                    className="text-white dark:text-foreground-secondary hover:bg-gray-700 hover:text-white px-6 py-2 rounded-md text-md font-bold"
+                    className="text-white dark:text-foreground-secondary  hover:text-white px-6 py-2 rounded-md text-md font-bold"
                   >
                     Create
                   </a>
                 </div>
               </div>
             </div>
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-8 ">
               <DarkModeToggle
                 onChange={toggleDarkMode}
                 checked={lightToggle}
@@ -116,8 +119,13 @@ function Navbar() {
                 // onClick={handleThemeSwitch}
               />
               <div className="hidden md:block ">
+
                 <div className="flex items-center space-x-8">
                   <FiUser size={"1.5em"} color="white" className="dark:fill-black"/>
+
+                <div className="flex items-center space-x-8  ">
+                  <FiUser size={"1.5em"} color="black " />
+
                   <Button className="text-white border-1 dark:text-foreground-secondary dark:border-black">
                     Connect Wallet
                   </Button>
@@ -170,6 +178,7 @@ function Navbar() {
               </button>
             </div>
           </div>
+        </div>
         </div>
 
         <Transition
