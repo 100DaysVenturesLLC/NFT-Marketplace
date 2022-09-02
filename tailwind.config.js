@@ -3,6 +3,7 @@
 const { pink } = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
+  darkMode: 'class',
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     fontFamily: {
@@ -45,7 +46,7 @@ module.exports = {
 
         foreground: {
           primary: "#ffffff",
-          secondary: "#1E2028",
+          secondary: "#121A23",
           accent: "#0157FF",
           highlight: "#F4F4F5",
           neutral: "#A8AAB6",

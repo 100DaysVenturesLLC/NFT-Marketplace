@@ -5,10 +5,10 @@ import Card from "./components/Card";
 
 const TopCollection = () => {
   return (
-    <div className="top-collection">
+    <div className="top-collection dark:bg-white">
       <div className="container  mx-auto px-8 max-h-full w-full">
         <div className="flex items-center justify-between pb-12 pt-12 ">
-          <p className="text-3xl text-white font-bold text-shadow ">
+          <p className="text-3xl text-white font-bold text-shadow dark:text-foreground-secondary">
             Top Collection
           </p>
           <p className="text-background-highlight font-bold text-sm">

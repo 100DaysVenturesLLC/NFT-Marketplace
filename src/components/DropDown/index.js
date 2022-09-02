@@ -9,8 +9,9 @@ const Dropdown = (props) => {
       <div className="">
         <Menu as="div" className="relative inline-block text-left w-full">
           <div className="place-items-center flex relative">
-            <Menu.Button className="inline-flex w-full rounded-lg bg-[#0c111a]  px-8 py-4 text-sm  font-bold text-white border border-gray-700 ">
+            <Menu.Button className="inline-flex w-full rounded-lg bg-[#0c111a]  px-8  py-4 text-sm  font-bold text-white border border-gray-700 ">
               {props.title}
+          
               <svg
                 className="fill-current ml-auto"
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +35,7 @@ const Dropdown = (props) => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="relative right-0 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="px-1 py-1 ">
                 <Menu.Item>
                   {({ active }) => (

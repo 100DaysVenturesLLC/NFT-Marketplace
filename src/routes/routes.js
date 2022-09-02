@@ -9,8 +9,8 @@ import Stats from "../pages/Stats";
 
 export const PublicRoutes = () => {
   return (
-
-    <Routes>
+<div className="">
+<Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/createnft" element={<CreateNFT />} />
       <Route path="/collection" element={<Collection />} />
@@ -18,6 +18,8 @@ export const PublicRoutes = () => {
       <Route path="/nftitem" element={<NftItem />} />
       <Route path="/stats" element={<Stats />} />
     </Routes>
+</div>
+  
   );
 };
 
