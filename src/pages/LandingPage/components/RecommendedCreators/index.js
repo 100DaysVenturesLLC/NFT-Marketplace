@@ -25,8 +25,8 @@ const RecommendedCreators = () => {
   };
 
   return (
-    <div className="bg-background-primary container  w-full  mx-auto max-h-screen max-w-full py-32 recommededcreator">
-      <p className="text-3xl pb-12 text-white font-bold text-shadow px-32  pt-12 ">
+    <div className="container    mx-auto max-h-full max-w-full py-32 recommededcreator">
+      <p className="text-3xl pb-12 mx-auto text-white font-bold text-shadow container px-8   ">
         Recommended Creators
       </p>
       <div className="grid grid-cols-1 gap-4 items-center ">

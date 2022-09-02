@@ -1,12 +1,12 @@
 import Frame from "../../assets/images/Rectangle 3.png";
-const NFTCard = () => {
+const NFTCard = ({resource,index}) => {
     return (
         <div class="card card-compact w-[280px] h-[358px] bg-black nft-card">
             <div class="mt-1">
                 <div class=" grid justify-items-center">
                     <div class="flex flex-row flex justify-between flex items-center w-[248px] h-[16px] text-white  text-[12px] leading-[16px] font-Montserrat mt-3 pb-[4px]">
-                        <p class=" ml-1 font-bold">Modernist Masks</p>
-                        <p class="font-light mr-1">20h:35m:08s</p>
+                        <p class=" ml-1 font-bold">{resource.title}</p>
+                        <p class="font-light mr-1">{resource.time}</p>
                     </div>
                 </div>
                 <figure>
@@ -17,12 +17,12 @@ const NFTCard = () => {
                         <div class="ml-3">
                             <p class="text-[12px] leading-[14px]">Last Traded</p>
                             <p class="text-[16px] leading-[24px] mt-[10px] font-thin ">
-                                0.001 ETH
+                             {resource.lastTraded}
                             </p>
                         </div>
                         <div class="mr-7">
                             <p class="text-[12px] leading-[16px]">Instant Price</p>
-                            <p class="nft-card-price mt-[10px]">0.001 ETH</p>
+                            <p class="nft-card-price mt-[10px]">{resource.instantPrice}</p>
                         </div>
                     </div>
                 </div>
