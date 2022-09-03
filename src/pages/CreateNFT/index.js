@@ -25,28 +25,28 @@ const CreateNFT = () => {
     }
   };
   return (
-    <div className="createnft">
-      <div className="container mx-auto">
+    <div className="createnft dark:bg-white ">
+      <div className="container mx-auto ">
         <div className="pl-60  lg:py-16 flex flex-col">
-          <p className="text-3xl text-white font-bold text-shadow ">
+          <p className="text-3xl text-white font-bold text-shadow dark:text-foreground-secondary ">
             Create NFT
           </p>
           <div className="flex ">
             <div className="columns-2xl mr-5">
-              <p className="font-semibold text-xl text-white mt-12 mb-2">
+              <p className="font-semibold text-xl text-white mt-12 mb-2 dark:text-foreground-secondary">
                 Upload file
               </p>
               <div class="flex flex-col justify-center items-center">
                 <div class="flex items-center justify-start w-full">
                   <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500 ">
                     <div class="flex flex-col place-items-center justify-center mt-32">
-                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
+                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm dark:text-foreground-secondary">
                         Choose File
                       </div>
-                      <p className="mt-12 text-white text-base font-semibold">
+                      <p className="mt-12 text-white text-base font-semibold dark:text-foreground-secondary">
                         Files Supported
                       </p>
-                      <p className="text-[#BFCBD9] font-light text-base">
+                      <p className="text-[#BFCBD9] font-light text-base dark:text-foreground-secondary">
                         JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
                       </p>
                     </div>
@@ -57,17 +57,17 @@ const CreateNFT = () => {
               </div>
               <div className="flex flex-col mt-32">
                 <div className="flex flex-col ">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Name
                   </label>
                   <input
                     type="text"
                     placeholder="Type here"
-                    class="input input-bordered w-full text-white bg-[#0C111A] border border-gray-500"
+                    class="input input-bordered w-full text-white bg-[#0C111A] border border-gray-500 dark:bg-white"
                   />
                 </div>
                 <div className="flex flex-col mt-16">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Description{" "}
                     <font className="text-color-[#BFCBD9] font-normal text-base">
                       (Optional)
@@ -91,27 +91,27 @@ const CreateNFT = () => {
                   ease-in-out
                   m-0
                   focus:text-gray-700  focus:border-blue-600 focus:outline-none
-        "
+                  dark:bg-white"
                     id="exampleFormControlTextarea1"
                     rows={6}
                     placeholder="Your message"
                   ></textarea>
                 </div>
                 <div className="flex flex-col mt-10">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Collection
                   </label>
-                  <Dropdown title="No Collection Found" />
-                  <div className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <Dropdown title="No Collection Found " />
+                  <div className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 ">
                     Create Collection
                   </div>
                 </div>
               </div>
               <div className=" mt-24">
                 <div className="flex">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Properties
-                    <font className="color-[#BFCBD9] font-normal text-base  ml-2">
+                    <font className="color-[#BFCBD9] font-normal text-base  ml-2 dark:text-foreground-secondary">
                       (Optional)
                     </font>
                   </label>
@@ -123,12 +123,12 @@ const CreateNFT = () => {
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 dark:bg-white"
                         />
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500 dark:bg-white"
                         />
                       </div>
                     );
@@ -136,7 +136,7 @@ const CreateNFT = () => {
                 </div>
 
                 <Button
-                  className="text-white border-1 mb-10"
+                  className="text-white border-1 mb-10 dark:text-foreground-secondary"
                   onClick={handleClick}
                 >
                   Add More Property
@@ -145,9 +145,9 @@ const CreateNFT = () => {
 
               <div>
                 <div className="flex">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Levels
-                    <font className="color-[#BFCBD9] font-normal text-base ml-2">
+                    <font className="color-[#BFCBD9] font-normal text-base ml-2 dark:text-foreground-secondary">
                       (Optional)
                     </font>
                   </label>
@@ -159,25 +159,25 @@ const CreateNFT = () => {
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 dark:bg-white "
                         />
 
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500 dark:bg-white"
                         />
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500 dark:bg-white"
                         />
                       </div>
                     );
                   })}
                 </div>
                 <Button
-                  className="text-white border-1 mb-10 px-10"
+                  className="text-white border-1 mb-10 px-10 dark:text-foreground-secondary"
                   onClick={handleClick}
                 >
                   Add More Levels
@@ -186,9 +186,9 @@ const CreateNFT = () => {
 
               <div>
                 <div className="flex">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Stats
-                    <font className="color-[#BFCBD9] font-normal text-base ml-2">
+                    <font className="color-[#BFCBD9] font-normal text-base ml-2 dark:text-foreground-secondary">
                       (Optional)
                     </font>
                   </label>
@@ -200,37 +200,37 @@ const CreateNFT = () => {
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500  dark:bg-white"
                         />
 
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500 dark:bg-white"
                         />
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500 dark:bg-white"
                         />
                       </div>
                     );
                   })}
                 </div>
                 <Button
-                  className="text-white border-1 mb-10 px-12"
+                  className="text-white border-1 mb-10 px-12 dark:text-foreground-secondary"
                   onClick={handleClick}
                 >
                   Add More Stats
                 </Button>
               </div>
 
-              <div className="bg-[#121A23] backdrop-blur-xl p-8 rounded-lg place-items-center mb-6">
+              <div className="bg-[#121A23] backdrop-blur-xl p-8 rounded-lg place-items-center mb-6 dark:bg-white">
                 <div className="flex justify-between">
-                  <div className="flex items-center">
+                  <div className="flex items-center ">
                     <img src={lock} alt="" className="mb-6" />
-                    <div className="flex-col ml-4">
-                      <p className="text-base text-white font-semibold">
+                    <div className="flex-col ml-4 ">
+                      <p className="text-base text-white font-semibold dark:text-foreground-secondary">
                         Unlockable Content
                       </p>
                       <p className="text-[#BFCBD9] text-base font-light">
@@ -243,12 +243,12 @@ const CreateNFT = () => {
                 </div>
               </div>
 
-              <div className="bg-[#121A23] backdrop-blur-xl p-8 rounded-lg place-items-center mb-10 ">
+              <div className="bg-[#121A23] backdrop-blur-xl p-8 rounded-lg place-items-center mb-10 dark:bg-white">
                 <div className="flex justify-between">
                   <div className="flex items-center">
                     <img src={lock} alt="" className="mb-6" />
                     <div className="flex-col ml-4">
-                      <p className="text-base text-white font-semibold">
+                      <p className="text-base text-white font-semibold dark:text-foreground-secondary">
                         Unlockable Content
                       </p>
                       <p className="text-[#BFCBD9] text-base font-light">
@@ -270,7 +270,7 @@ const CreateNFT = () => {
             </div>
             <div className="">
               <div className="columns-xs sticky top-20 ">
-                <p className="mt-12 mb-2 font-semibold text-xl text-white">
+                <p className="mt-12 mb-2 font-semibold text-xl text-white dark:text-foreground-secondary">
                   Preview
                 </p>
                 <div className="preview-box grid place-items-center items-center p-8 text-center w-[280px] h-[330px]">
