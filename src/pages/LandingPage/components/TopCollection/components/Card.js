@@ -33,20 +33,25 @@ const Card = ({ resource, index }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className=" mt-2  pl-12">
+        <div className=" mt-2 items-center">
+          <div className=" items-center flex justify-end">
           <p
             className={
               resource.rate < 0
-                ? "text-foreground-error bg-error rounded-md px-6 py-1  text-xl font-semibond "
+                ? "text-foreground-error bg-error rounded-lg py-1 px-6 text-xl font-semibond "
                 : "text-success bg-foreground-success text-xl rounded-lg rounded-md px-6 py-1 font-semibond"
             }
           >
             {resource.rate}
           </p>
+
+          </div>
+        
         </div>
-        <div className="bg-[#5C789918] rounded-lg px-6 py-1 mt-2">
+        <div className="bg-[#5C789918] rounded-lg px-4 py-1 flex mt-2 items-center">
+        <img src={ethlogo} alt="" className="ml-2 mr-2" />
           <p className="flex text-white text-xl font-semibond dark:text-foreground-secondary ">
-            <img src={ethlogo} alt="" className="mr-2" />
+           
             {resource.eth_rate}
           </p>
         </div>

@@ -5,7 +5,8 @@ import { FiUser } from "react-icons/fi";
 import DarkModeToggle from "react-dark-mode-toggle";
 import Button from "../Button/Button";
 import useDarkMode from "../../hook/useDarkMode";
-import user from "../../assets/icons/user.svg"
+import user from "../../assets/icons/user.svg";
+import { CgMenuRight, CgClose } from "react-icons/cg";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ function Navbar() {
     setTheme(colorTheme);
     setLightToggle(checked);
   };
+  const genericHamburgerLine = `h-1 w-6 my-1  bg-black transition ease transform duration-300`;
 
   // useEffect(() => {
   // 	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -81,7 +83,7 @@ function Navbar() {
                         <input
                           type="text"
                           id="simple-search"
-                          className="bg-[#303F50] dark:bg-white w-5/6 text-white bg-text-black border border-[#303F50] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className="bg-[#303F50] backdrop-filter backdrop-blur  dark:bg-white w-5/6 text-white bg-text-black border border-gray-600 backdrop-blur text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Search"
                           required
                         />
@@ -111,7 +113,7 @@ function Navbar() {
                 </div>
               </div>
             </div>
-            <div className="flex items-center space-x-8 ">
+            <div className="flex justify-end items-center space-x-8 ">
               <DarkModeToggle
                 onChange={toggleDarkMode}
                 checked={lightToggle}
@@ -119,66 +121,47 @@ function Navbar() {
                 // onClick={handleThemeSwitch}
               />
               <div className="hidden md:block ">
-
                 <div className="flex items-center space-x-8">
-                  <FiUser size={"1.5em"} color="white" className="dark:fill-black"/>
+          
 
-                <div className="flex items-center space-x-8  ">
-                  <FiUser size={"1.5em"} color="black " />
+                  <div className="flex items-center space-x-8  ">
+                    <FiUser size={"1.5em"} color="white" />
 
-                  <Button className="text-white border-1 dark:text-foreground-secondary dark:border-black">
-                    Connect Wallet
-                  </Button>
+                    <Button className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
+                      Connect Wallet
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="mr-2 flex md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-              >
-                <span className="sr-only text-white">Open main menu</span>
-                {!isOpen ? (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
-              </button>
+              <div className="flex md:hidden">
+
+<button
+className="lg:hidden flex top-0 right-0 z-20 relative w-10 h-10 text-white focus:outline-none"
+onClick={() => setIsOpen(!isOpen)}
+>
+<div className="absolute w-5 transform dark:bg-black -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+    <span
+    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
+      isOpen ? "rotate-45 delay-200" : "-translate-y-1.5"
+    }`}
+    ></span>
+    <span
+    className={`absolute h-0.5 bg-white dark:bg-black transform transition-all duration-200 ease-in-out ${
+      isOpen ? "w-0 opacity-50" : "w-5 delay-200 opacity-100"
+    }`}
+    ></span>
+    <span
+    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
+      isOpen ? "-rotate-45 delay-200" : "translate-y-1.5"
+    }`}
+    ></span>
+</div>
+</button>
+
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <Transition
@@ -194,43 +177,43 @@ function Navbar() {
             <div className="md:hidden" id="mobile-menu">
               <div
                 ref={ref}
-                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black absolute w-full"
+                className="px-2 pt-2 pb-3 space-y-1 flex  flex-col items-center sm:px-3 bg-background-primary dark:bg-white absolute w-full"
               >
                 <a
                   href="#"
-                  className="hover:bg-gray-700 text-white dark:text-black block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-700 text-white dark:text-foreground-secondary block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Dashboard
                 </a>
 
                 <a
                   href="#"
-                  className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-white dark:text-foreground-secondary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Team
                 </a>
 
                 <a
                   href="#"
-                  className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-white dark:text-foreground-secondary  hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Projects
                 </a>
 
                 <a
                   href="#"
-                  className="text-gray-300 dark:text-bg-slate-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-300 dark:text-foreground-secondary dark:text-bg-slate-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Calendar
                 </a>
 
                 <a
                   href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-300 dark:text-foreground-secondary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Reports
                 </a>
-                <Button className="text-white border-1">Connect Wallet</Button>
+               
               </div>
             </div>
           )}

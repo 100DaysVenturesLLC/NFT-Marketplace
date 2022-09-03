@@ -25,7 +25,7 @@ const CreateNFT = () => {
     }
   };
   return (
-    <div className="createnft">
+    <div className="createnft dark:bg-white">
       <div className="container mx-auto">
         <div className="pl-60  lg:py-16 flex flex-col">
           <p className="text-3xl text-white font-bold text-shadow ">
