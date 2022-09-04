@@ -4,32 +4,32 @@ import heroimage from "../../../assets/images/NFT Frame Art 1.png";
 
 const HeroSection = () => {
   return (
-
-    <div className="hero-section">
-      <div className="container mx-auto px-8 max-h-screen py-16">
+    <div className="hero-section dark:bg-white">
+      <div className="container mx-auto px-8 max-h-screen py-16 ">
         <div class="grid lg:grid-cols-2 sm:grid-cols-3 gap-4  items-center">
           <div>
-            <p className="text-5xl text-white font-bold text-shadow">
+            <p className="text-5xl text-white font-bold text-shadow dark:text-foreground-secondary">
               The only NFT <br />
               Marketplace you need
             </p>
-            <div className="flex mt-12">
+            <div className="flex mt-12 dark:bg-white">
               <Button className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3">
                 Create Collection
               </Button>
-              <Button className="hero-button text-white font-sm font-bold  rounded-lg">
+
+              
+              <Button className="hero-button text-white font-sm font-bold  rounded-lg dark:text-foreground-secondary dark:bg-white">
+
                 Explore Marketplace
               </Button>
             </div>
           </div>
           <div className="flex justify-end">
             <img src={heroimage} alt="" />
-
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 
