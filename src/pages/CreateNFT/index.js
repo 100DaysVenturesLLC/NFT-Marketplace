@@ -4,11 +4,14 @@ import upload from "../../assets/images/upload.png";
 import { Link } from "react-router-dom";
 import overlay from "../../assets/images/Ellipse 3.png";
 import Dropdown from "../../components/DropDown";
+import { useWeb3React } from "@web3-react/core";
 import lock from "../../assets/icons/lock.png";
 import Toggle from "../../components/ToggleButton";
 import PutOnSale from "../nftItem/components/topsection/sellSections/putOnSale";
 import CreateCollection from "./components/CreateCollection";
 import { create } from "ipfs-http-client";
+import { CollectionAddress } from "../../utils/constants/constants";
+
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
 const projectSecret = "287cf1e138ac39c18b1f38b12463ceef";
@@ -29,16 +32,15 @@ const CreateNFT = () => {
   const [level, setLevel] = useState(1);
   const [stats, setStats] = useState(1);
   const [step, setStep] = useState(1);
+  const { account, active } = useWeb3React();
 
-  const handleClick = () => {
-    if (counter) {
-      setCounter(counter + 1);
-    } else if (level) {
-      setLevel(level + 1);
-    } else {
-      setStats(stats + 1);
-    }
-  };
+  const [formInput, updateFormInput] = useState({
+    externallink: "",
+    name: "",
+    description: "",
+  });
+
+
   const [fileUrl, setFileUrl] = useState(null);
 
   async function onChange(e) {
@@ -66,6 +68,94 @@ const CreateNFT = () => {
     setFileUrl(url);
   };
 
+  const [formValues, setFormValues] = useState([]);
+  let addFormFields = () => {
+    setFormValues([...formValues, { trait_type: "", value: "" }]);
+  };
+  let handleChange = (i, e) => {
+    let newFormValues = [...formValues];
+    newFormValues[i][e.target.name] = e.target.value;
+    setFormValues(newFormValues);
+  };
+
+  const [formLevelsValues, setFormLevelsValues] = useState([]);
+  let addLevelsFields = () => {
+    setFormLevelsValues([...formLevelsValues, { trait_type: "", value: "" }]);
+  };
+  let handleLevelsChange = (i, e) => {
+    let newFormLevelsValues = [...formLevelsValues];
+    newFormLevelsValues[i][e.target.name] = e.target.value;
+    setFormLevelsValues(newFormLevelsValues);
+  };
+
+  const [formStatsValues, setFormStatsValues] = useState([]);
+  let addStatsFields = () => {
+    setFormStatsValues([...formStatsValues, { trait_type: "", value: "" }]);
+  };
+  let handleStatsChange = (i, e) => {
+    let newFormStatsValues = [...formStatsValues];
+    newFormStatsValues[i][e.target.name] = e.target.value;
+    setFormStatsValues(newFormStatsValues);
+  };
+
+  const [explicitCheck, setExplicitCheck] = useState(false);
+  const handleToggleExplicitCheck = () => {
+    setExplicitCheck(!explicitCheck);
+  };
+  const [unlockableCheck, setUnlockableCheck] = useState(false);
+  const handleToggleUnlockableCheck = () => {
+    setUnlockableCheck(!unlockableCheck);
+  };
+
+  const [selectedCollection, setSelectedCollection] = useState(CollectionAddress);
+
+  async function createData() {
+    if (active) {
+      try {
+        const { name, description } = formInput;
+
+        // if (validate({ name, description, externallink })) {
+        //   return
+        // }
+
+        if (!name || !description || !fileUrl) return;
+        /* first, upload to IPFS */
+
+        if (formLevelsValues.length !== 0) {
+          Array.prototype.push.apply(formValues, formLevelsValues);
+        }
+        if (formStatsValues.length != 0) {
+          Array.prototype.push.apply(formValues, formStatsValues);
+        }
+
+        /* Checkboxes */
+
+        const data = JSON.stringify({
+          name,
+          description,
+          image: fileUrl,
+          attributes: [...formValues],
+          unlockable: unlockableCheck,
+          explicit: explicitCheck,
+          // externalUrl,
+          // attributes,
+        });
+
+        console.log("ye create karne ka data hai", data);
+        let ipfsResponse = await ipfs.add(data);
+        const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
+        /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
+        console.log(url);
+        // await mintnft(selectedCollection, url);
+      } catch (error) {
+        console.log("Error uploading file: ", error);
+      }
+    }
+    else {
+      alert("connect wallet");
+    }
+  }
+
   return (
     <div className="createnft dark:bg-white">
       <div className="container mx-auto">
@@ -91,7 +181,7 @@ const CreateNFT = () => {
                           onChange={selectImage1}
                         />
                         <img
-                          className="w-full h-[330px] rounded-lg object-cover cursor-pointer"
+                          className="w-full h-[327px] rounded-lg object-cover cursor-pointer"
                           src={fileUrl}
                           alt=""
                         />
@@ -123,6 +213,9 @@ const CreateNFT = () => {
                     type="text"
                     placeholder="Type here"
                     class="input input-bordered w-full text-white bg-[#0C111A] border border-gray-500"
+                    onChange={(e) =>
+                      updateFormInput({ ...formInput, name: e.target.value })
+                    }
                   />
                 </div>
                 <div className="flex flex-col mt-16">
@@ -137,6 +230,9 @@ const CreateNFT = () => {
                     id="exampleFormControlTextarea1"
                     rows={6}
                     placeholder="Your message"
+                    onChange={(e) =>
+                      updateFormInput({ ...formInput, description: e.target.value })
+                    }
                   ></textarea>
                 </div>
                 <div className="flex flex-col mt-10">
@@ -144,7 +240,7 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown title="No Collection Found" />
-                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer">
+                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
                     Create Collection
                   </label>
                 </div>
@@ -159,18 +255,24 @@ const CreateNFT = () => {
                   </label>
                 </div>
                 <div className="">
-                  {Array.from(Array(counter)).map((c, index) => {
+                  {formValues.map((element, index) => {
                     return (
                       <div className="flex gap-2 mb-4">
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+                          name="trait_type"
+                          value={element.trait_type || ""}
+                          onChange={(e) => handleChange(index, e)}
                         />
                         <input
                           type="text"
                           placeholder="Type here"
                           class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          name="value"
+                          value={element.value || ""}
+                          onChange={(e) => handleChange(index, e)}
                         />
                       </div>
                     );
@@ -179,7 +281,7 @@ const CreateNFT = () => {
 
                 <Button
                   className="text-white border-1 mb-10"
-                  onClick={handleClick}
+                  onClick={addFormFields}
                 >
                   Add More Property
                 </Button>
@@ -195,24 +297,24 @@ const CreateNFT = () => {
                   </label>
                 </div>
                 <div className="">
-                  {Array.from(Array(level)).map((c, index) => {
+                  {formLevelsValues.map((element, index) => {
                     return (
-                      <div className="flex gap-4 mb-4">
+                      <div className="flex gap-2 mb-4">
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
-                        />
-
-                        <input
-                          type="text"
-                          placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+                          name="trait_type"
+                          value={element.trait_type || ""}
+                          onChange={(e) => handleLevelsChange(index, e)}
                         />
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          name="value"
+                          value={element.value || ""}
+                          onChange={(e) => handleLevelsChange(index, e)}
                         />
                       </div>
                     );
@@ -220,7 +322,7 @@ const CreateNFT = () => {
                 </div>
                 <Button
                   className="text-white border-1 mb-10 px-10"
-                  onClick={handleClick}
+                  onClick={addLevelsFields}
                 >
                   Add More Levels
                 </Button>
@@ -236,24 +338,24 @@ const CreateNFT = () => {
                   </label>
                 </div>
                 <div className="">
-                  {Array.from(Array(stats)).map((c, index) => {
+                  {formStatsValues.map((element, index) => {
                     return (
-                      <div className="flex gap-4 mb-4">
+                      <div className="flex gap-2 mb-4">
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500 "
-                        />
-
-                        <input
-                          type="text"
-                          placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+                          name="trait_type"
+                          value={element.trait_type || ""}
+                          onChange={(e) => handleStatsChange(index, e)}
                         />
                         <input
                           type="text"
                           placeholder="Type here"
-                          class="input input-bordered w-2/5 text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          class="input input-bordered w-full text-sm  bg-[#0C111A] text-white border border-gray-500"
+                          name="value"
+                          value={element.value || ""}
+                          onChange={(e) => handleStatsChange(index, e)}
                         />
                       </div>
                     );
@@ -261,7 +363,7 @@ const CreateNFT = () => {
                 </div>
                 <Button
                   className="text-white border-1 mb-10 px-12"
-                  onClick={handleClick}
+                  onClick={addStatsFields}
                 >
                   Add More Stats
                 </Button>
@@ -273,15 +375,15 @@ const CreateNFT = () => {
                     <img src={lock} alt="" className="mb-6" />
                     <div className="flex-col ml-4">
                       <p className="text-base text-white font-semibold">
-                        Unlockable Content
+                        Explicit
                       </p>
                       <p className="text-[#BFCBD9] text-base font-light">
-                        Include unlockable content that can only be
+                        Explicit content that can only be
                         <br /> revealed by the owner
                       </p>
                     </div>
                   </div>
-                  <Toggle />
+                  <Toggle onChange={handleToggleExplicitCheck} />
                 </div>
               </div>
 
@@ -299,12 +401,13 @@ const CreateNFT = () => {
                       </p>
                     </div>
                   </div>
-                  <Toggle />
+                  <Toggle onChange={handleToggleUnlockableCheck} />
                 </div>
               </div>
 
               <label
                 className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mr-3 w-1/4 btn"
+                onClick={createData}
               >
                 Create
               </label>
