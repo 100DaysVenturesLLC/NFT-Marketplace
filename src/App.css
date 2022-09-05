@@ -405,3 +405,8 @@ code {
 
   border-radius: 16px;
 }
+
+.active-dark {
+  color: darkred;
+  border-bottom: #0c111a;
+}

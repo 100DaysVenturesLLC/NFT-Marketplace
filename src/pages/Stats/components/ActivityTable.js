@@ -61,14 +61,14 @@ const RankingTable = () => {
                 </tr>
               </thead>
 
-              <tbody class="rounded-lg text-left">
+              <tbody class="rounded-lg text-left ">
                 {tabledata.map((item) => {
                   return (
                     <tr className="activity-table-row">
-                      <td class="text-sm text-white text-left font-medium px-6 py-4 whitespace-nowrap w-[44px] dark:text-[#6A8099] ">
+                      <td class="text-sm text-white text-left font-medium px-6 py-4 whitespace-nowrap w-[44px] dark:text-[#6A8099] dark:bg-white">
                         <BsTag />
                       </td>
-                      <td class="text-sm text-white font-light py-4  whitespace-nowrap flex justify-start w-[368px]">
+                      <td class="text-sm text-white font-light py-4  whitespace-nowrap flex justify-start w-[368px] dark:bg-white ">
                         <div class="flex flex-row pl-[20px] pr-[45px ]  mr-[25px] items-center dark:text-foreground-secondary">
                           <div class="">
                             <img
@@ -86,7 +86,7 @@ const RankingTable = () => {
                           </div>
                         </div>
                       </td>
-                      <td class="text-sm text-white font-normal px-6 py-4 w-[368px] whitespace-nowrap">
+                      <td class="text-sm text-white font-normal px-6 py-4 w-[368px] whitespace-nowrap dark:bg-white">
                         <div class="flex flex-row items-center dark:text-foreground-secondary ">
                           <div class="flex flex-row">
                             <img
@@ -104,13 +104,13 @@ const RankingTable = () => {
                           </div>
                         </div>
                       </td>
-                      <td class="text-sm text-white font-normal px-6 py-4 whitespace-nowrap w-[128px] dark:text-foreground-secondary">
+                      <td class="text-sm text-white font-normal px-6 py-4 whitespace-nowrap w-[128px] dark:text-foreground-secondary dark:bg-white">
                         {item.qty}
                       </td>
-                      <td class="text-sm text-[#23AEE3] font-normal px-6 py-4 whitespace-nowrap ">
+                      <td class="text-sm text-[#23AEE3] font-normal px-6 py-4 whitespace-nowrap dark:bg-white ">
                         {item.from}
                       </td>
-                      <td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                      <td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap dark:bg-white">
                         <div class="flex flex-row items-center">
                           <div>
                             <img
@@ -123,7 +123,7 @@ const RankingTable = () => {
                           </div>
                         </div>
                       </td>
-                      <td class="text-sm text-white font-normal px-6 py-4 whitespace-nowrap dark:text-foreground-secondary">
+                      <td class="text-sm text-white font-normal px-6 py-4 whitespace-nowrap dark:text-foreground-secondary dark:bg-white">
                         {item.time}
                       </td>
                       {/* <td class="text-sm text-white font-normal px-6 py-4 whitespace-nowrap">
