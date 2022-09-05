@@ -110,6 +110,12 @@ function Navbar() {
                   >
                     Create
                   </a>
+                  <a
+                    href="/profile"
+                    className="text-white dark:text-foreground-secondary  hover:text-white px-6 py-2 rounded-md text-md font-bold"
+                  >
+                Profile
+                  </a>
                 </div>
               </div>
             </div>
