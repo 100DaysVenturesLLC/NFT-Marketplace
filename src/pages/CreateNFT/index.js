@@ -8,6 +8,21 @@ import lock from "../../assets/icons/lock.png";
 import Toggle from "../../components/ToggleButton";
 import PutOnSale from "../nftItem/components/topsection/sellSections/putOnSale";
 import CreateCollection from "./components/CreateCollection";
+import { create } from "ipfs-http-client";
+
+const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
+const projectSecret = "287cf1e138ac39c18b1f38b12463ceef";
+const auth =
+  "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+const ipfs = create({
+  host: "ipfs.infura.io",
+  port: 5001,
+  protocol: "https",
+  headers: {
+    authorization: auth,
+  },
+});
+
 const CreateNFT = () => {
   const [addproperty, setAddProperty] = useState();
   const [counter, setCounter] = useState(1);
@@ -24,6 +39,32 @@ const CreateNFT = () => {
       setStats(stats + 1);
     }
   };
+  const [fileUrl, setFileUrl] = useState(null);
+  async function onChange(e) {
+    const file = e.target.files[0];
+    let ipfsResponse;
+    try {
+      ipfsResponse = await ipfs.add(file);
+      console.log("response on IPFS success", ipfsResponse);
+    } catch (e) {
+      console.log("error during ipfs upload", e);
+    }
+    const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
+    setFileUrl(url);
+  }
+  async function selectImage1(e) {
+    const file = e.target.files[0];
+    let ipfsResponse;
+    try {
+      ipfsResponse = await ipfs.add(file);
+      console.log("response on IPFS success", ipfsResponse);
+    } catch (e) {
+      console.log("error during ipfs upload", e);
+    }
+    const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
+    setFileUrl(url);
+  };
+
   return (
     <div className="createnft dark:bg-white">
       <div className="container mx-auto">
@@ -38,24 +79,41 @@ const CreateNFT = () => {
               </p>
               <div class="flex flex-col justify-center items-center">
                 <div class="flex items-center justify-start w-full">
-                  <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500 ">
-                    <div class="flex flex-col place-items-center justify-center mt-32">
-                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
-                        Choose File
+                  {fileUrl ?
+                    <label className="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
+                      <label htmlFor="upload-document">
+                        <input
+                          class="hidden"
+                          id="upload-document"
+                          name="upload-document"
+                          type="file"
+                          onChange={selectImage1}
+                        />
+                        <img
+                          className="w-full h-[330px] rounded-lg object-cover cursor-pointer"
+                          src={fileUrl}
+                          alt=""
+                        />
+                      </label></label>
+                    :
+                    <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
+                      <div class="flex flex-col place-items-center justify-center mt-32">
+                        <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
+                          Choose File
+                        </div>
+                        <p className="mt-12 text-white text-base font-semibold">
+                          Files Supported
+                        </p>
+                        <p className="text-[#BFCBD9] font-light text-base">
+                          JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
+                        </p>
                       </div>
-                      <p className="mt-12 text-white text-base font-semibold">
-                        Files Supported
-                      </p>
-                      <p className="text-[#BFCBD9] font-light text-base">
-                        JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
-                      </p>
-                    </div>
-
-                    <input type="file" class="opacity-0 " />
-                  </label>
+                      <input type="file" class="opacity-0" id="upload-photo" onChange={onChange} />
+                    </label>
+                  }
                 </div>
               </div>
-              <div className="flex flex-col mt-32">
+              <div className="flex flex-col mt-16">
                 <div className="flex flex-col ">
                   <label className="text-base text-white font-semibold  mb-2">
                     Name
@@ -74,24 +132,7 @@ const CreateNFT = () => {
                     </font>{" "}
                   </label>
                   <textarea
-                    className="
-                  form-control
-                  block
-                  w-full
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded-lg
-                  transition
-                  bg-[#0c111a]
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700  focus:border-blue-600 focus:outline-none
-        "
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-solid border-gray-300 rounded-lg transition bg-[#0c111a] ease-in-out m-0 focus:text-gray-700  focus:border-blue-600 focus:outline-none"
                     id="exampleFormControlTextarea1"
                     rows={6}
                     placeholder="Your message"
@@ -102,9 +143,9 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown title="No Collection Found" />
-                  <div className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
                     Create Collection
-                  </div>
+                  </label>
                 </div>
               </div>
               <div className=" mt-24">
@@ -262,7 +303,6 @@ const CreateNFT = () => {
               </div>
 
               <label
-                htmlFor="my-modal-3"
                 className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mr-3 w-1/4 btn"
               >
                 Create

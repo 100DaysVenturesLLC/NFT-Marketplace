@@ -24,14 +24,14 @@ const NFTs = () => {
                         <BiArrowToLeft />
                     </label>
                     <div className="flex justify-center">
-                        <div className="grid grid-cols-4 gap-6 pb-6">
+                        {/* <div className="grid grid-cols-4 gap-6 pb-6">
                             {cards.map((item) => {
                                 return (
                                     <NFTCard />
                                 )
                             })}
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div class="drawer-side">
