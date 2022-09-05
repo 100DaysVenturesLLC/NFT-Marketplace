@@ -40,6 +40,7 @@ const CreateNFT = () => {
     }
   };
   const [fileUrl, setFileUrl] = useState(null);
+
   async function onChange(e) {
     const file = e.target.files[0];
     let ipfsResponse;
@@ -143,7 +144,7 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown title="No Collection Found" />
-                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer">
                     Create Collection
                   </label>
                 </div>
