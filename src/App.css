@@ -345,8 +345,8 @@ code {
 /* Collection Tab*/
 .collections-tab-group {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 30%;
+  grid-template-columns: repeat(6, 1fr);
+  width: 56%;
 
   padding-bottom: 20px;
 }
