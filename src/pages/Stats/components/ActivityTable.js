@@ -84,7 +84,7 @@ const RankingTable = () => {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="text-sm text-white font-normal px-6 py-4 w-[368px]whitespace-nowrap">
+                                            <td class="text-sm text-white font-normal px-6 py-4 w-[368px] whitespace-nowrap">
                                                 <div class="flex flex-row items-center">
                                                     <div class="flex flex-row">
                                                         <img
