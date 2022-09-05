@@ -2,7 +2,11 @@ const webpack = require('webpack')
 
 module.exports = {
   webpack: {
+<<<<<<< HEAD
     configure: {
+=======
+    configure: {  
+>>>>>>> 7bbdbae9ee259a9445ec7af0d094b23c75c40f2a
       resolve: {
         alias: {
           assert: 'assert',
