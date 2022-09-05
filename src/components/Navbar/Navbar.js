@@ -12,7 +12,7 @@ import { useConnectWallet } from "@web3-onboard/react";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [colorTheme, setTheme] = useDarkMode();
-  const [{ wallet, connecting }, connect, disconnect,connected] = useConnectWallet()
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
 
   const [lightToggle, setLightToggle] = React.useState(
     colorTheme === "dark" ? true : false
@@ -23,7 +23,7 @@ function Navbar() {
     setLightToggle(checked);
   };
   const genericHamburgerLine = `h-1 w-6 my-1  bg-black transition ease transform duration-300`;
-  console.log(wallet?.accounts[0])
+  console.log(wallet?.accounts[0].address)
 
   // useEffect(() => {
   // 	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -129,10 +129,12 @@ function Navbar() {
 
                   <div className="flex items-center space-x-8  ">
                     <FiUser size={"1.5em"} color="white" />
-
-                    <Button onClick={()=>{connect()}} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
+                    {wallet ? <Button onClick={async() => {await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
+                      {wallet?.accounts[0].address.slice(0, 5)}...{wallet?.accounts[0].address.slice(-5)}
+                    </Button> : <Button onClick={async() => {await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
                       Connect Wallet
-                    </Button>
+                    </Button>}
+
                   </div>
                 </div>
               </div>
