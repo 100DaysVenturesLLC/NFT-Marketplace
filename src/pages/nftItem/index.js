@@ -68,8 +68,8 @@ function NftItem() {
           <div className="basis-1/2 ">
             <div className="px-14">
               <div className="flex justify-center pb-6">
-                <div className="rounded-lg w-[580px] h-[478px]">
-                <img className="w-full h-full object-cover rounded-lg" src={metadata.image} alt="pic" />
+                <div className="rounded-2xl w-[580px] h-[478px]">
+                <img className="w-full h-full object-cover rounded-" src={metadata.image} alt="pic" />
                 </div>
               </div>
               <div className="pt-6 flex justify-center pb-14">
@@ -103,11 +103,9 @@ function NftItem() {
               </div>
             </div>
           </div>
-          {/* <div> */}
             <TopSection metadata={metadata} nftData={nftData}/>
-          {/* </div> */}
         </div>
-        <div className="grid grid-cols-1  items-center  pl-12 ">
+        <div className="grid grid-cols-1  items-center  pl-12 pb-10">
           <Carousel responsive={responsive}>
             {collectioncard_data.map((resource, index) => {
               return <NftItemCard />;

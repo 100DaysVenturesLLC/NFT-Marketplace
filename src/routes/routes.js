@@ -14,7 +14,7 @@ export const PublicRoutes = () => {
 <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/createnft" element={<CreateNFT />} />
-      <Route path="/collection" element={<Collection />} />
+      <Route path="/collections/:contractAddress" element={<Collection />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/profile" element={<Profile />} />
 

@@ -2,6 +2,7 @@ import Card from "../../assets/images/card1.png";
 import Ellipse from "../../assets/images/Ellipse 5.png";
 
 const CollectionCard = ({resource,index}) => {
+ 
     return (
         <div key={index}>
             <div class="card card-compact w-[280px] h-[302px] shadow-xl collection-card flex flex-col justify-center">

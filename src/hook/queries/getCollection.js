@@ -4,9 +4,8 @@ import { BACKEND_URL } from '../../utils/config/config';
 
 const getCollection = async(data) => {
         const response = await axios.get(
-            `${BACKEND_URL}/collections/:${data.contractAddress}`
+            `${BACKEND_URL}/collections/details/${data}`
         );
-        console.log(response.data);
         return response.data;
 }
 
