@@ -33,7 +33,7 @@ const CreateNFT = () => {
   const [stats, setStats] = useState(1);
   const [step, setStep] = useState(1);
   const { account, active } = useWeb3React();
-
+  const [open,setOpen] = useState(false)
   const [formInput, updateFormInput] = useState({
     externallink: "",
     name: "",
@@ -244,7 +244,7 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown title="No Collection Found" />
-                  <label htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <label onClick={()=>setOpen(true)}htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
                     Create Collection
                   </label>
                 </div>
@@ -429,16 +429,17 @@ const CreateNFT = () => {
             </div>
           </div>
 
-          <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+          <input type="checkbox" checked={open} id="my-modal-3" class="modal-toggle" />
           <div class="modal bg-blur-2xl">
             <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
               <label
                 for="my-modal-3"
                 className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
+                onClick={()=>setOpen(false)}
               >
                 ✕
               </label>
-              <CreateCollection />
+              <CreateCollection open={open} setOpen={setOpen}/>
             </div>
           </div>
         </div>

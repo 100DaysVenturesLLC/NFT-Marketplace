@@ -23,7 +23,7 @@ const ipfs = create({
 });
 
 
-const CreateCollection = () => {
+const CreateCollection = ({setOpen,open}) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
@@ -65,6 +65,9 @@ const CreateCollection = () => {
   const account = wallet?.accounts[0].address
 
   const sendCollectionData = async () => {
+    if(!account){
+      alert("Plese connect your wallet")
+    }
     var form_data = new FormData();
     const { name, customCollectionURL, symbol } = formInput;
     console.log(account,"ye acc address hai")
@@ -97,12 +100,38 @@ const CreateCollection = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.data));  
+        setFileUrl(null)
+        setAvatarFileUrl(null)
+        wipeData()
+        setOpen(false)
       })
       .catch(function (error) {
         console.log(error);
       });
   };
+  const wipeData = () =>{
+    setAvatarFileUrl(null)
+    setAvatarFile(null)
+    setBannerFile(null)
+    setFileUrl(null)
+    setAddress(null)
+    updateFormInput({
+      customCollectionURL: "",
+      name: "",
+      symbol: "",
+      description: "",
+    })
+  }
+  useEffect(()=>{
+    if(!open){
+      wipeData()
+    }
+  },[open])
+  useEffect(() => {
+   
+  }, [fileUrl,avatarfileUrl,formInput])
+  
 
 
 
@@ -226,6 +255,7 @@ const CreateCollection = () => {
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+            value={formInput.name}
             onChange={(e) =>
               updateFormInput({ ...formInput, name: e.target.value })
             }
@@ -240,6 +270,7 @@ const CreateCollection = () => {
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+            value={formInput.symbol}
             onChange={(e) =>
               updateFormInput({ ...formInput, symbol: e.target.value })
             }
@@ -253,6 +284,7 @@ const CreateCollection = () => {
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+            value={formInput.description}
             onChange={(e) =>
               updateFormInput({ ...formInput, description: e.target.value })
             }
@@ -260,12 +292,13 @@ const CreateCollection = () => {
         </div>
         <div className="mt-4 mb-4">
           <label htmlFor="" className="font-semibold text-base text-white">
-            Short url (Optional)
+            External url 
           </label>
           <input
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+            value={formInput.customCollectionURL}
             onChange={(e) =>
               updateFormInput({ ...formInput, customCollectionURL: e.target.value })
             }
