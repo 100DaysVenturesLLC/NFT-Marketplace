@@ -46,7 +46,6 @@ const CreateNFT = () => {
   const [userCollections,setUserCollections] =useState();
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [formStatsValues, setFormStatsValues] = useState([]);
-  const [tokenId,setTokenId] = useState()
   const [formInput, updateFormInput] = useState({
     externallink: "",
     name: "",
@@ -62,8 +61,8 @@ const CreateNFT = () => {
   async function mintnft(collection, url) {
     console.log("checking 3 parameters", collection, url,);
     const {receipt,tokenId} = await mintNFT(collection, url, account);
-    setTokenId(tokenId)
     console.log(receipt);
+    return tokenId
   }
 
   async function onChange(e) {
@@ -156,19 +155,21 @@ const CreateNFT = () => {
         unlockable: unlockableCheck,
         explicit: explicitCheck,
       };
-      const backendPayload = {
-        metadata: JSON.stringify(data),
-        contractAddress: "0xa30ddc46cbbfa2c0563eb26a3e3e9c6bf32bfa0c",
-        owner: account,
-        tokenId
-      }
+      
 
       console.log("ye create karne ka data hai", data);
       let ipfsResponse = await ipfs.add(JSON.stringify(data));
       const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       console.log(url);
-      await mintnft(selectedCollection, url);
+      const {contractAddress} = userCollections[selectedCollection]
+      const tokenId = await mintnft(contractAddress, url);
+      const backendPayload = {
+        metadata: JSON.stringify(data),
+        contractAddress,
+        owner: account,
+        tokenId
+      }
       var config = {
         method: 'post',
         url: `${BACKEND_URL}/collectibles/create`,
@@ -179,7 +180,7 @@ const CreateNFT = () => {
         .then(function (response) {
           console.log(response.data);
           setFileUrl(null)
-          navigate(`/collectible/${0}/${tokenId}`)
+          navigate(`/collectible/${contractAddress}/${tokenId}`)
         })
         .catch(function (error) {
           console.log(error);
