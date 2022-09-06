@@ -20,7 +20,7 @@ import card_data from "../../mocdata/trendingNFT";
 import CollectionCard from "../../components/Cards/CollectionCard";
 import { collection_data } from "../../mocdata/collectiondata";
 import { collectioncard_data } from "../../mocdata/collectionSpotlight";
-import copybutton from "../../assets/images/carbon_copy.png"
+import copybutton from "../../assets/images/carbon_copy.png";
 const Collection = ({ option, setOption, title }) => {
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
@@ -43,7 +43,7 @@ const Collection = ({ option, setOption, title }) => {
   };
 
   return (
-    <div className="collection max-w-screen">
+    <div className="collection max-w-screen dark:bg-white ">
       <div class=" mx-auto lg:py-32 container lg:px-8  ">
         {/* Pics */}
         <div class="relative pb-40">
@@ -58,16 +58,16 @@ const Collection = ({ option, setOption, title }) => {
           </div>
           <div></div>
         </div>
-        <div class="flex justify-between">
+        <div class="flex justify-between ">
           <div className="ml-10">
             <div className="token-group">
-              <div class="text-white">
+              <div class="text-white dark:text-foreground-secondary">
                 <h3 class="text-3xl font-bold pb-3">PROOF Collective</h3>
                 <div class="flex pb-6">
                   <p class="font-thin mr-2"> Created by</p>
                   <p class=""> XYZ Official</p>
                 </div>
-                <p className="text-[#BFCBD9]">
+                <p className="text-[#BFCBD9] dark:text-[#121A23]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Cursus eu
                   <br /> quam venenatis, diam enim dolor, feugiat diam placerat.
@@ -96,62 +96,51 @@ const Collection = ({ option, setOption, title }) => {
         </div> */}
           </div>
 
-          <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
+          <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter  ">
             <div className="flex justify-between p-8">
-              <div className="">
-                <p className="pb-2 font-light text-base text-white">Floor</p>
-                <p className="pb-2 font-light text-base text-white">Volume</p>
+              <div className=" font-light text-base text-white dark:text-foreground-secondary">
+                <p className="pb-2">Floor</p>
+                <p className="pb-2 ">Volume</p>
 
-                <p className="font-light text-base text-white">Items</p>
+                <p className="">Items</p>
               </div>
 
-              <div>
-                <p className="pb-2 font-semibold text-base text-white">
-                  0.07 ETH
-                </p>
-                <p className="pb-2 font-semibold text-base text-white">
-                  3.12 ETH
-                </p>
-                <p className=" font-semibold text-base text-white">49</p>
+              <div class="font-semibold text-base text-white dark:text-foreground-secondary">
+                <p className="pb-2 ">0.07 ETH</p>
+                <p className="pb-2 ">3.12 ETH</p>
+                <p className=" ">49</p>
               </div>
             </div>
             <div className="px-4">
-            <div className="border-b-2 border-[#6A8099] w-full  "></div>
+              <div className="border-b-2 border-[#6A8099] w-full  "></div>
             </div>
-        
+
             <div className="flex justify-between p-8 items-center">
-              <div className="">
-                <p className="pb-2 font-light text-base text-white">
-                  Blockchain
-                </p>
-                <p className="pb-2 font-light text-base text-white">Address</p>
+              <div className="font-light text-base text-white dark:text-foreground-secondary">
+                <p className="pb-2 ">Blockchain</p>
+                <p className="pb-2 ">Address</p>
               </div>
 
-              <div className="flex flex-col ml-auto">
-                <p className="pb-2  font-semibold text-base text-white ml-auto">
-                  Ethereum
-                </p>
+              <div className="flex flex-col ml-auto font-semibold text-base text-white dark:text-foreground-secondary">
+                <p className="pb-2   ml-auto">Ethereum</p>
                 <CopyToClipboard>
                   <div className="flex">
-                  <p className="font-semibold text-base text-white">
-                    0xae5...e6c2
-                  </p>
-                 
-                  <img src={copybutton} className="ml-2" />
+                    <p className="">0xae5...e6c2</p>
+
+                    <img src={copybutton} className="ml-2" />
                   </div>
-            
                 </CopyToClipboard>
               </div>
             </div>
           </div>
         </div>
-
+        {/* Active Tabs */}
         <div className="collections-tab-group">
           <button
             className={
               activeTab === "trending"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
+                ? "collection-tab-active "
+                : " collection-tab-non-active  dark:border-[#6A8099] dark:border-2 dark:text-[#6A8099]"
             }
             onClick={() => setActiveTab("trending")}
           >
@@ -161,7 +150,7 @@ const Collection = ({ option, setOption, title }) => {
             className={
               activeTab === "top"
                 ? "collection-tab-active"
-                : "collection-tab-non-active"
+                : "collection-tab-non-active dark:border-[#6A8099] dark:border-2 dark:text-[#6A8099]"
             }
             onClick={() => setActiveTab("top")}
           >
@@ -183,18 +172,17 @@ const Collection = ({ option, setOption, title }) => {
 
         {/* Dropdown */}
         <div className="flex gap-4">
-          <Dropdown setOption={setOption}
-             title="Blockchain" />
+          <Dropdown setOption={setOption} title="Blockchain" />
           <Dropdown title="Category" />
           <Dropdown title="Sale Type" />
-          <Dropdown title="Price Range"/>
+          <Dropdown title="Price Range" />
         </div>
 
         {/* Card */}
         <div className="grid grid-cols-4 grid-rows-3 gap-4 pt-12">
-        {collection_data.map((resource, index) => {
-                return <NFTCard index={index} resource={resource} />;
-              })}
+          {collection_data.map((resource, index) => {
+            return <NFTCard index={index} resource={resource} />;
+          })}
         </div>
       </div>
     </div>

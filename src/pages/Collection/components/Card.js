@@ -8,7 +8,7 @@ const Card = () => {
             class="flex flex-row flex justify-between
       flex items-center
       w-[248px] h-[16px]
-      text-white  text-[12px] leading-[16px] font-Montserrat mt-3 pb-[4px]
+      text-white  text-[12px] leading-[16px] font-Montserrat mt-3 pb-[4px] 
        "
           >
             <p class=" ml-1 font-medium">Modernist Masks</p>

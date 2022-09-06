@@ -13,10 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-family: Montserrat;
-
   background-color: #0c111a;
-  font-family: Montserrat;
-
 }
 
 html,
@@ -405,4 +402,9 @@ code {
   box-shadow: 0px 8px 36px rgba(132, 145, 179, 0.18);
 
   border-radius: 16px;
+}
+
+.active-dark {
+  color: darkred;
+  border-bottom: #0c111a;
 }
