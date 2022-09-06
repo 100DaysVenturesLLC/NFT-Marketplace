@@ -42,9 +42,11 @@ const CreateNFT = () => {
 
 
   const [fileUrl, setFileUrl] = useState(null);
+  const [fileImage, setFileImage] = useState()
 
   async function onChange(e) {
     const file = e.target.files[0];
+    setFileImage(URL.createObjectURL(file));
     let ipfsResponse;
     try {
       ipfsResponse = await ipfs.add(file);
@@ -57,6 +59,8 @@ const CreateNFT = () => {
   }
   async function selectImage1(e) {
     const file = e.target.files[0];
+    setFileImage(URL.createObjectURL(file));
+
     let ipfsResponse;
     try {
       ipfsResponse = await ipfs.add(file);
@@ -170,7 +174,7 @@ const CreateNFT = () => {
               </p>
               <div class="flex flex-col justify-center items-center">
                 <div class="flex items-center justify-start w-full">
-                  {fileUrl ?
+                  {fileImage ?
                     <label className="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
                       <label htmlFor="upload-document">
                         <input
@@ -182,7 +186,7 @@ const CreateNFT = () => {
                         />
                         <img
                           className="w-full h-[327px] rounded-lg object-cover cursor-pointer"
-                          src={fileUrl}
+                          src={fileImage}
                           alt=""
                         />
                       </label></label>

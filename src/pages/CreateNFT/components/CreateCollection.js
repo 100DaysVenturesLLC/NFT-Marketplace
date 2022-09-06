@@ -4,6 +4,8 @@ import Button from "../../../components/Button/Button";
 import { useWeb3React } from "@web3-react/core";
 import { create } from "ipfs-http-client";
 import { BACKEND_URL } from "../../../utils/config/config";
+import { createCollection } from "../../../contracts/nftCollection";
+import { useConnectWallet } from "@web3-onboard/react";
 import axios from "axios"
 import Web3 from "web3";
 
@@ -22,13 +24,12 @@ const ipfs = create({
 
 
 const CreateCollection = () => {
-
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
   const [avatarFile, setAvatarFile] = useState();
   const [fileUrl, setFileUrl] = useState(null);
   const [avatarfileUrl, setAvatarFileUrl] = useState(null);
-  const { account, active } = useWeb3React();
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -60,20 +61,23 @@ const CreateCollection = () => {
     symbol: "",
     description: "",
   });
+  
+  const account = wallet?.accounts[0].address
 
   const sendCollectionData = async () => {
     var form_data = new FormData();
-    const { name, description, customCollectionURL, symbol } = formInput;
-    // const collectionAddress = await createCollection(name, symbol, account)
-    // console.log("collectionAddress", collectionAddress)
+    const { name, customCollectionURL, symbol } = formInput;
+    console.log(account,"ye acc address hai")
+    const collectionAddress = await createCollection(name, symbol, account)
+    console.log("collectionAddress", collectionAddress)
     // form_data.append('description', description);
     form_data.append('avatar', avatarfileUrl);
-    form_data.append('contractAddress', "abc");
+    form_data.append('contractAddress', collectionAddress);
     form_data.append('name', name);
     form_data.append('symbol', symbol);
     form_data.append('customCollectionURL', customCollectionURL);
     form_data.append('banner', fileUrl);
-    form_data.append('createdBy', "abc");
+    form_data.append('createdBy', account);
     form_data.append('nsfw', true);
 
     console.log("form data ye hai", form_data);
@@ -100,18 +104,20 @@ const CreateCollection = () => {
       });
   };
 
-  async function createCollectionData() {
-    if (active) {
-      try {
-        sendCollectionData();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    else {
-      alert("connect wallet")
-    }
-  }
+
+
+  // async function createCollectionData() {
+  //   if (active) {
+  //     try {
+  //       sendCollectionData();
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   else {
+  //     alert("connect wallet")
+  //   }
+  // }
   useEffect(() => {
     const checkConnection = async () => {
       // Check if browser is running Metamask
@@ -181,11 +187,11 @@ const CreateCollection = () => {
           <div>
             {avatarFile ?
               <label class="flex flex-col w-[143px] h-[143px] border-2 rounded-lg border-dashed border-gray-500">
-                <label htmlFor="upload-document">
+                <label htmlFor="upload-document-2">
                   <input
                     class="hidden"
-                    id="upload-document"
-                    name="upload-document"
+                    id="upload-document-2"
+                    name="upload-document-2"
                     type="file"
                     onChange={selectImage2}
                   />
