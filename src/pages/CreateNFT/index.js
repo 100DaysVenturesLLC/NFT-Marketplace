@@ -75,23 +75,23 @@ const CreateNFT = () => {
                   </label>
                   <textarea
                     className="
-                  form-control
-                  block
-                  w-full
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded-lg
-                  transition
-                  bg-[#0c111a]
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700  focus:border-blue-600 focus:outline-none
-        "
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded-lg
+                    transition
+                    bg-[#0c111a]
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700  focus:border-blue-600 focus:outline-none
+          "
                     id="exampleFormControlTextarea1"
                     rows={6}
                     placeholder="Your message"
@@ -102,9 +102,12 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown title="No Collection Found" />
-                  <div className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                
+                  <label   htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer">
                     Create Collection
-                  </div>
+                  </label>
+                  
+               
                 </div>
               </div>
               <div className=" mt-24">
@@ -286,7 +289,7 @@ const CreateNFT = () => {
             <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
               <label
                 for="my-modal-3"
-                className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
+                className="bg-transparent cursor-pointer absolute right-0 px-8 text-2xl text-foreground-primary"
               >
                 ✕
               </label>
