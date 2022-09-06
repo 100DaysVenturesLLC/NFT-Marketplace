@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import CollectionCard from '../../../components/Cards/CollectionCard'
 import cards from "./mockdata.json"
 import { BiFilterAlt, BiArrowToLeft } from "react-icons/bi"
@@ -8,8 +8,20 @@ import poly from "../../../assets/filter-icons/polygon-matic-logo 1.png"
 import flow from "../../../assets/filter-icons/flow.png"
 import solana from "../../../assets/filter-icons/solana-sol-logo 1.png"
 import tezos from "../../../assets/filter-icons/Tezos.png"
+import getAllCollections from '../../../hook/queries/getAllCollections'
 
 const Collections = () => {
+    const [collection,setCollection] = useState()
+    const getCollections = async() => {
+       const response = await getAllCollections()
+       setCollection(response)
+    }
+
+    useEffect(() => {
+        getCollections()
+    }, [])
+    
+console.log(collection,"ye state hai")
     return (
         <section className="py-3">
             <div class="drawer h-full">
@@ -24,9 +36,9 @@ const Collections = () => {
                     </label>
                     <div className="flex justify-center">
                         <div className="grid grid-cols-4 gap-6">
-                            {cards.map((item) => {
+                            {collection?.data.map((item) => {
                                 return (
-                                    <CollectionCard />
+                                    <CollectionCard resource={item} />
                                 )
                             })}
 

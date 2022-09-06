@@ -49,12 +49,13 @@ const Collection = ({ option, setOption, title }) => {
         <div class="relative pb-40">
           <div className="w-full">
             <img
+            alt="img"
               src={Rectangle}
               className="h-[275px] w-full rounded-2xl object-cover"
             />
           </div>
           <div className="absolute top-[180px] left-10">
-            <img src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
+            <img alt="img" src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
           </div>
           <div></div>
         </div>
@@ -137,7 +138,7 @@ const Collection = ({ option, setOption, title }) => {
                     0xae5...e6c2
                   </p>
                  
-                  <img src={copybutton} className="ml-2" />
+                  <img alt="img" src={copybutton} className="ml-2" />
                   </div>
             
                 </CopyToClipboard>
