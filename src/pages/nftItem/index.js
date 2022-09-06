@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image1 from "../../assets/images/image1.jpg";
 import TopSection from "./components/topsection/topSection";
 import Overview from "./components/overview/overview";
@@ -8,6 +8,9 @@ import Activity from "./components/activity/activity";
 import NftItemCard from "../../components/Card/nftItemCard/nftItemCard";
 import { collectioncard_data } from "../../mocdata/collectionSpotlight";
 import Carousel from "react-multi-carousel";
+import { useNavigate, useParams } from "react-router-dom";
+import { BACKEND_URL } from "../../utils/config/config";
+import axios from "axios";
 
 const sections = [
   { name: "Overview", id: 1 },
@@ -37,7 +40,27 @@ const responsive = {
 
 function NftItem() {
   const [selected, setSelected] = useState("Overview");
-  console.log(selected);
+  const [metadata, setMetadata] = useState({});
+  const [nftData, setNftData] = useState({});
+  const navigate = useNavigate();
+  const { contractAddress, tokenId } = useParams();
+  const fetchNFTData = async () => {
+    if (contractAddress && tokenId) {
+      const { data } = await axios.get(
+        `${BACKEND_URL}/collectibles/details/${contractAddress}/${tokenId}`
+      );
+      if (data) {
+        console.log(JSON.parse(data.data.metadata));
+        setNftData(data.data);
+        setMetadata(JSON.parse(data.data.metadata));
+      } else alert("asset not found");
+    } else {
+      navigate("/404");
+    }
+  };
+  useEffect(() => {
+    fetchNFTData();
+  }, []);
   return (
     <div className="nft-item-center dark:bg-white">
       <div className="px-40 h-full nft-item ">
@@ -45,7 +68,7 @@ function NftItem() {
           <div className="basis-1/2 ">
             <div className="px-14">
               <figure className="flex justify-center pb-6 ">
-                <img className="w-full" src={image1} alt="pic" />
+                <img className="w-full" src={metadata.image} alt="pic" />
               </figure>
               <div className="pt-6 flex justify-center pb-14">
                 <div className="w-full h-[80px] bg-[#303f50] backdrop-blur-2xl bg-opacity-20 rounded-2xl p-4 py-3 flex justify-around">
@@ -79,7 +102,7 @@ function NftItem() {
             </div>
           </div>
           <div>
-            <TopSection />
+            <TopSection metadata={metadata} nftData={nftData}/>
           </div>
         </div>
         <div className="grid grid-cols-1  items-center  pl-12 ">

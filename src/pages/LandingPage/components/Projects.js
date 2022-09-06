@@ -30,7 +30,7 @@ const Projects = () => {
   return (
     <div className="collection-spotlight container max-h-full  mx-auto  max-w-full dark:bg-white">
       <p className="font-bold text-white text-3xl pb-12 mx-auto text-shadow container px-8 pt-12 dark:text-foreground-secondary">
-        Collections on spotlight
+        Most Popular
       </p>
       <div>
         <div className="overlay-carousel"></div>

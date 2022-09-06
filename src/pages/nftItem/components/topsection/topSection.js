@@ -13,7 +13,7 @@ import PurchaseProcessing from "./buySections/purchaseProcessing";
 import PurchaseComplete from "./buySections/purchaseComplete";
 import loader from "../../../../assets/icons/loader.svg";
 
-function TopSection() {
+function TopSection({metadata,nftData}) {
   const [owner, setOwner] = useState(true);
   const [step, setStep] = useState(1);
   const [buyStep, setBuyStep] = useState(1);
@@ -23,7 +23,7 @@ function TopSection() {
         Modernist Masks
       </div>
       <div className="text-3xl font-bold text-foreground-primary pb-10 dark:text-foreground-secondary">
-        Cratey's #108
+        {metadata.name}
       </div>
       <div className="columns-2 pb-6">
         <div className="flex border-r">
@@ -34,7 +34,7 @@ function TopSection() {
               Creator
             </div>
             <div className="text-foreground-primary text-base font-semibold dark:text-foreground-secondary">
-              Pransky
+              {nftData?.createdBy?.slice(0,8)}..
             </div>
           </div>
         </div>
