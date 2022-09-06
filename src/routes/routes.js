@@ -18,7 +18,7 @@ export const PublicRoutes = () => {
       <Route path="/explore" element={<Explore />} />
       <Route path="/profile" element={<Profile />} />
 
-      <Route path="/nftitem" element={<NftItem />} />
+      <Route path="/collectible/:contractAddress/:tokenId" element={<NftItem />} />
       <Route path="/stats" element={<Stats />} />
     </Routes>
 </div>

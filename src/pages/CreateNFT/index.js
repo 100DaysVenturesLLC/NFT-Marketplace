@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import upload from "../../assets/images/upload.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import overlay from "../../assets/images/Ellipse 3.png";
 import Dropdown from "../../components/DropDown";
 import { useWeb3React } from "@web3-react/core";
@@ -13,7 +14,9 @@ import { create } from "ipfs-http-client";
 import { CollectionAddress } from "../../utils/constants/constants";
 import { mintNFT } from "../../contracts/nftCollection";
 import { useConnectWallet } from "@web3-onboard/react";
-
+import useCreateNft from "../../hook/auth/useCreateNFT";
+import { BACKEND_URL } from "../../utils/config/config";
+import axios from "axios";
 
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
@@ -35,26 +38,33 @@ const CreateNFT = () => {
   const [level, setLevel] = useState(1);
   const [stats, setStats] = useState(1);
   const [step, setStep] = useState(1);
-  const [open,setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [fileUrl, setFileUrl] = useState(null);
+  const [fileImage, setFileImage] = useState()
+  const [formValues, setFormValues] = useState([]);
+  const [formLevelsValues, setFormLevelsValues] = useState([]);
+  const [userCollections,setUserCollections] =useState();
+  const [selectedCollection, setSelectedCollection] = useState(0);
+  const [formStatsValues, setFormStatsValues] = useState([]);
+  const [tokenId,setTokenId] = useState()
   const [formInput, updateFormInput] = useState({
     externallink: "",
     name: "",
     description: "",
   });
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-
+  const navigate = useNavigate()
 
   const account = wallet?.accounts[0].address
 
+
+
   async function mintnft(collection, url) {
-    console.log("checking 3 parameters", collection, url, );
-    const receipt = await mintNFT(collection, url, account);
+    console.log("checking 3 parameters", collection, url,);
+    const {receipt,tokenId} = await mintNFT(collection, url, account);
+    setTokenId(tokenId)
     console.log(receipt);
   }
-
-
-  const [fileUrl, setFileUrl] = useState(null);
-  const [fileImage, setFileImage] = useState()
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -69,6 +79,7 @@ const CreateNFT = () => {
     const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
     setFileUrl(url);
   }
+
   async function selectImage1(e) {
     const file = e.target.files[0];
     setFileImage(URL.createObjectURL(file));
@@ -84,7 +95,6 @@ const CreateNFT = () => {
     setFileUrl(url);
   };
 
-  const [formValues, setFormValues] = useState([]);
   let addFormFields = () => {
     setFormValues([...formValues, { trait_type: "", value: "" }]);
   };
@@ -94,7 +104,6 @@ const CreateNFT = () => {
     setFormValues(newFormValues);
   };
 
-  const [formLevelsValues, setFormLevelsValues] = useState([]);
   let addLevelsFields = () => {
     setFormLevelsValues([...formLevelsValues, { trait_type: "", value: "" }]);
   };
@@ -104,7 +113,6 @@ const CreateNFT = () => {
     setFormLevelsValues(newFormLevelsValues);
   };
 
-  const [formStatsValues, setFormStatsValues] = useState([]);
   let addStatsFields = () => {
     setFormStatsValues([...formStatsValues, { trait_type: "", value: "" }]);
   };
@@ -123,45 +131,74 @@ const CreateNFT = () => {
     setUnlockableCheck(!unlockableCheck);
   };
 
-  const [selectedCollection, setSelectedCollection] = useState(CollectionAddress);
 
   async function createData() {
-      try {
-        const { name, description } = formInput;
+    try {
+      const { name, description } = formInput;
 
-        if (!name || !description || !fileUrl) return;
-        /* first, upload to IPFS */
+      if (!name || !description || !fileUrl) return;
+      /* first, upload to IPFS */
 
-        if (formLevelsValues.length !== 0) {
-          Array.prototype.push.apply(formValues, formLevelsValues);
-        }
-        if (formStatsValues.length != 0) {
-          Array.prototype.push.apply(formValues, formStatsValues);
-        }
-
-        /* Checkboxes */
-
-        const data = JSON.stringify({
-          name,
-          description,
-          image: fileUrl,
-          attributes: [...formValues],
-          unlockable: unlockableCheck,
-          explicit: explicitCheck,
-          // externalUrl,
-          // attributes,
-        });
-
-        console.log("ye create karne ka data hai", data);
-        let ipfsResponse = await ipfs.add(data);
-        const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
-        /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
-        console.log(url);
-        await mintnft(selectedCollection, url);
-      } catch (error) {
-        console.log("Error uploading file: ", error);
+      if (formLevelsValues.length !== 0) {
+        Array.prototype.push.apply(formValues, formLevelsValues);
       }
+      if (formStatsValues.length != 0) {
+        Array.prototype.push.apply(formValues, formStatsValues);
+      }
+
+      /* Checkboxes */
+
+      const data = {
+        name,
+        description,
+        image: fileUrl,
+        attributes: [...formValues],
+        unlockable: unlockableCheck,
+        explicit: explicitCheck,
+      };
+      const backendPayload = {
+        metadata: JSON.stringify(data),
+        contractAddress: "0xa30ddc46cbbfa2c0563eb26a3e3e9c6bf32bfa0c",
+        owner: account,
+        tokenId
+      }
+
+      console.log("ye create karne ka data hai", data);
+      let ipfsResponse = await ipfs.add(JSON.stringify(data));
+      const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
+      /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
+      console.log(url);
+      await mintnft(selectedCollection, url);
+      var config = {
+        method: 'post',
+        url: `${BACKEND_URL}/collectibles/create`,
+        data: backendPayload
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(response.data);
+          setFileUrl(null)
+          navigate(`/collectible/${0}/${tokenId}`)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
   }
+  const fetchUserCollections = async () =>{
+    const response = await axios.get(`${BACKEND_URL}/account/collections/${account}`)
+    console.log(response.data.data)
+    setUserCollections(response.data.data)
+  }
+  useEffect(()=>{
+    if(wallet){
+      //TODO fetch collections for this user
+      fetchUserCollections()
+    }
+  },[wallet])
 
   return (
     <div className="createnft dark:bg-white">
@@ -246,8 +283,8 @@ const CreateNFT = () => {
                   <label className="text-base text-white font-semibold  mb-2">
                     Collection
                   </label>
-                  <Dropdown title="No Collection Found" />
-                  <label onClick={()=>setOpen(true)}htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <Dropdown options={userCollections} setSelectedIndex={setSelectedCollection} selectedIndex={selectedCollection} />
+                  <label onClick={() => setOpen(true)} htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
                     Create Collection
                   </label>
                 </div>
@@ -438,11 +475,11 @@ const CreateNFT = () => {
               <label
                 for="my-modal-3"
                 className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
-                onClick={()=>setOpen(false)}
+                onClick={() => setOpen(false)}
               >
                 ✕
               </label>
-              <CreateCollection open={open} setOpen={setOpen}/>
+              <CreateCollection open={open} setOpen={setOpen} />
             </div>
           </div>
         </div>

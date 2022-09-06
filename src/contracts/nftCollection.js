@@ -10,8 +10,11 @@ export const mintNFT = async (collection,uri,from) => {
     PixelParkABI,
     collection
   );
+  const tokenId = await collectionInstance.methods.tokenCounter().call();
+
   const receipt = await collectionInstance.methods.createCollectible(uri).send({ from });
-  return receipt;
+  
+  return {receipt,tokenId};
 };
 export const createCollection = async (name,symbol,from) => {
   const web3 = new Web3(window.ethereum);

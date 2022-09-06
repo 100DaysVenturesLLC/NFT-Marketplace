@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { topcollection_data } from "../../../../mocdata/topCollection";
 import Card from "./components/Card";
@@ -11,9 +12,12 @@ const TopCollection = () => {
           <p className="text-3xl text-white font-bold text-shadow dark:text-foreground-secondary">
             Top Collection
           </p>
-          <p className="text-background-highlight font-bold text-sm">
+          <Link to="/collection">
+          <p className="text-background-highlight font-bold text-sm cursor-pointer">
             See All Collection
           </p>
+          </Link>
+      
         </div>
         <div className="grid grid-cols-2  grid-rows-5  items-center gap-4 ">
           {topcollection_data.map((resource, index) => {

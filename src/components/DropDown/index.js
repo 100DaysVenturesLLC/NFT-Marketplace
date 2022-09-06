@@ -2,16 +2,15 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-const Dropdown = (props) => {
-  const [option, setOption, title] = useState("");
+const Dropdown = ({ options,selectedIndex,setSelectedIndex }) => {
   return (
     <>
+    {options&&
       <div className="">
         <Menu as="div" className="relative inline-block text-left w-full">
           <div className="place-items-center flex relative">
             <Menu.Button className="inline-flex w-full rounded-lg bg-[#0c111a]  px-8  py-4 text-sm  font-bold text-white border border-gray-700 ">
-              {props.title}
-          
+              {options[selectedIndex].name}
               <svg
                 className="fill-current ml-auto"
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,83 +35,27 @@ const Dropdown = (props) => {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="relative right-0 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              <div className="px-1 py-1 ">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
+              {options.map((option, index) => {
+                return(<div className="px-1 py-1 ">
+                  <Menu.Item onClick={()=>setSelectedIndex(index)}>
+                    {({ active }) => (
+                      <button
+                        className={`${active
                           ? "bg-foreground-accent text-white"
                           : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {props.option}
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {props.option}
-                    </button>
-                  )}
-                </Menu.Item>
-              </div>
-              <div className="px-1 py-1">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {props.option}
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {props.option}
-                    </button>
-                  )}
-                </Menu.Item>
-              </div>
-              <div className="px-1 py-1">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active
-                          ? "bg-foreground-accent text-white"
-                          : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {props.option}
-                    </button>
-                  )}
-                </Menu.Item>
-              </div>
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      >
+                        {option.name}
+                      </button>
+                    )}
+                  </Menu.Item>
+                </div>)
+              })}
             </Menu.Items>
           </Transition>
         </Menu>
-      </div>
-    </>
-  );
+      </div>}
+    </>)
 };
 
 export default Dropdown;
