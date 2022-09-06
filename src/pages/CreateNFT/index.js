@@ -11,6 +11,9 @@ import PutOnSale from "../nftItem/components/topsection/sellSections/putOnSale";
 import CreateCollection from "./components/CreateCollection";
 import { create } from "ipfs-http-client";
 import { CollectionAddress } from "../../utils/constants/constants";
+import { mintNFT } from "../../contracts/nftCollection";
+import { useConnectWallet } from "@web3-onboard/react";
+
 
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
@@ -32,13 +35,22 @@ const CreateNFT = () => {
   const [level, setLevel] = useState(1);
   const [stats, setStats] = useState(1);
   const [step, setStep] = useState(1);
-  const { account, active } = useWeb3React();
   const [open,setOpen] = useState(false)
   const [formInput, updateFormInput] = useState({
     externallink: "",
     name: "",
     description: "",
   });
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+
+
+  const account = wallet?.accounts[0].address
+
+  async function mintnft(collection, url) {
+    console.log("checking 3 parameters", collection, url, );
+    const receipt = await mintNFT(collection, url, account);
+    console.log(receipt);
+  }
 
 
   const [fileUrl, setFileUrl] = useState(null);
@@ -114,13 +126,8 @@ const CreateNFT = () => {
   const [selectedCollection, setSelectedCollection] = useState(CollectionAddress);
 
   async function createData() {
-    if (active) {
       try {
         const { name, description } = formInput;
-
-        // if (validate({ name, description, externallink })) {
-        //   return
-        // }
 
         if (!name || !description || !fileUrl) return;
         /* first, upload to IPFS */
@@ -150,14 +157,10 @@ const CreateNFT = () => {
         const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
         /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
         console.log(url);
-        // await mintnft(selectedCollection, url);
+        await mintnft(selectedCollection, url);
       } catch (error) {
         console.log("Error uploading file: ", error);
       }
-    }
-    else {
-      alert("connect wallet");
-    }
   }
 
   return (
