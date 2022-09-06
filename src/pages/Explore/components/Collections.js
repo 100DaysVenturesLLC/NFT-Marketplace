@@ -111,6 +111,7 @@ const Collections = () => {
                         </div>
                     </ul>
                 </div>
+           
             </div>
         </section>
     )
