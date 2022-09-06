@@ -5,7 +5,7 @@ import { FiUser } from "react-icons/fi";
 import DarkModeToggle from "react-dark-mode-toggle";
 import Button from "../Button/Button";
 import useDarkMode from "../../hook/useDarkMode";
-import user from "../../assets/icons/user.svg"
+import user from "../../assets/icons/user.svg";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,66 +119,73 @@ function Navbar() {
                 // onClick={handleThemeSwitch}
               />
               <div className="hidden md:block ">
-
                 <div className="flex items-center space-x-8">
-                  <FiUser size={"1.5em"} color="white" className="dark:fill-black"/>
+                  {/* <FiUser
+                    size={"1.5em"}
+                    color="white"
+                    className="dark:fill-black"
+                  /> */}
 
-                <div className="flex items-center space-x-8  ">
-                  <FiUser size={"1.5em"} color="black " />
+                  <div className="flex items-center space-x-8   ">
+                    <FiUser
+                      className="text-white dark:text-black
+                    "
+                      size={"1.5em"}
+                    />
 
-                  <Button className="text-white border-1 dark:text-foreground-secondary dark:border-black">
-                    Connect Wallet
-                  </Button>
+                    <Button className="text-white border-1 dark:text-foreground-secondary dark:border-black">
+                      Connect Wallet
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="mr-2 flex md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-              >
-                <span className="sr-only text-white">Open main menu</span>
-                {!isOpen ? (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
-              </button>
+              <div className="mr-2 flex md:hidden">
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  type="button"
+                  className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                >
+                  <span className="sr-only text-white">Open main menu</span>
+                  {!isOpen ? (
+                    <svg
+                      className="block h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="block h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <Transition
