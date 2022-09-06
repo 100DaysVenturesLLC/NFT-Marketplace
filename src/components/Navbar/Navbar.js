@@ -123,10 +123,15 @@ function Navbar() {
               <div className="hidden md:block ">
                 <div className="flex items-center space-x-8">
                   <div className="flex items-center space-x-8  ">
-                     <a href="/profile">
-                     <FiUser size={"1.5em"} color="white" />
-                     </a>
-                   
+                   <a href="/profile">
+                   <FiUser
+                      className="text-white dark:text-black
+                    "
+                      size={"1.5em"}
+                    />
+                    </a> 
+              
+
 
                     <Button className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
                       Connect Wallet
