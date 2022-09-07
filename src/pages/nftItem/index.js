@@ -50,7 +50,7 @@ function NftItem() {
         `${BACKEND_URL}/collectibles/details/${contractAddress}/${tokenId}`
       );
       if (data) {
-        console.log(JSON.parse(data.data.metadata));
+        console.log(data.data);
         setNftData(data.data);
         setMetadata(JSON.parse(data.data.metadata));
       } else alert("asset not found");

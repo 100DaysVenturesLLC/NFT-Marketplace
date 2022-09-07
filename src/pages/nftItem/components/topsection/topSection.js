@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { MdIosShare } from "react-icons/md";
 import PutOnSale from "./sellSections/putOnSale";
@@ -11,12 +11,41 @@ import CompleteBuyCheckout from "./buySections/completeBuyCheckout";
 import CheckoutProcess from "./buySections/checkoutProcess";
 import PurchaseProcessing from "./buySections/purchaseProcessing";
 import PurchaseComplete from "./buySections/purchaseComplete";
-import loader from "../../../../assets/icons/loader.svg";
+import { useConnectWallet } from "@web3-onboard/react";
+import useListNft from "../../../../hook/auth/useListNft";
 
 function TopSection({ metadata, nftData }) {
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [owner, setOwner] = useState(true);
   const [step, setStep] = useState(1);
   const [buyStep, setBuyStep] = useState(1);
+  const account = wallet?.accounts[0].address
+  const [listingData, setListingData] = useState()
+
+  useEffect(() => {
+    setListingData({
+      ...listingData,
+      contractAddress: nftData?.contractAddress,
+      tokenId: nftData?.tokenId,
+      listingId: nftData?._id,
+      createdBy: account
+    })
+  }, [nftData])
+
+  useEffect(() => {
+    if (listingData) {
+      console.log("divyanshu bol rha print nhi ho rha", listingData)
+    }
+  }, [listingData])
+
+  const CreateListing = async () => {
+    console.log("listing data while creating", listingData)
+    const response = await useListNft(listingData)
+    console.log(response,"ye listing  create ka response hai")
+  }
+
+
+
   return (
     <div className="px-14 basis-1/2">
       <div className="sticky top-20">
@@ -42,7 +71,6 @@ function TopSection({ metadata, nftData }) {
             <div className="w-12 h-12 rounded-full mr-6 bg-gradient-to-r from-[#FD3DCE] to-[#00F0FF]"></div>
             <div>
               <div className="text-foreground-primary text-xs font-normal dark:text-[#121A23]">
-                {" "}
                 Current Owner
               </div>
               <div className="text-foreground-primary text-base font-semibold dark:text-foreground-secondary">
@@ -55,7 +83,7 @@ function TopSection({ metadata, nftData }) {
           <div className="flex">
             <div className="flex text-[#BFCBD9] dark:text-foreground-secondary">
               <FaRegHeart className="text-xl " />
-              <div className="pl-4">225</div>
+              <div className="pl-4">10</div>
             </div>
             <div className="flex text-[#BFCBD9] dark:text-foreground-secondary pl-6">
               <MdIosShare className="text-xl" />
@@ -136,9 +164,9 @@ function TopSection({ metadata, nftData }) {
             >
               ✕
             </label>
-            {step === 1 && <PutOnSale setStep={setStep} />}
-            {step === 2 && <FixedPrice setStep={setStep} />}
-            {step === 3 && <TimedAuction setStep={setStep} />}
+            {step === 1 && <PutOnSale setStep={setStep} setListingData={setListingData} listingData={listingData} />}
+            {step === 2 && <FixedPrice setStep={setStep} setListingData={setListingData} listingData={listingData} create={CreateListing} />}
+            {step === 3 && <TimedAuction setStep={setStep} setListingData={setListingData} listingData={listingData} />}
             {step === 4 && <CompleteCheckout setStep={setStep} />}
             {step === 5 && <Completion />}
           </div>
