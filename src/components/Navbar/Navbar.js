@@ -8,7 +8,7 @@ import useDarkMode from "../../hook/useDarkMode";
 import user from "../../assets/icons/user.svg";
 import { CgMenuRight, CgClose } from "react-icons/cg";
 import { useConnectWallet } from "@web3-onboard/react";
-
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,6 @@ function Navbar() {
 
   return (
     <nav className="bg-[#0c111a] sticky dark:bg-white sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-10">
-      <nav className="  ">
         <div className="max-w-8xl container  lg:py-2  lg:px-8 mx-auto  ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -68,29 +67,29 @@ function Navbar() {
                         Search
                       </label>
                       <div class="relative w-full">
-                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg
-                          aria-hidden="true"
-                          class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
+                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                          <svg
+                            aria-hidden="true"
+                            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                        <input
+                          type="text"
+                          id="simple-search"
+                          class="bg-[#303F50] w-5/6 border border-[#303F50] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Search"
+                          required
+                        />
                       </div>
-                      <input
-                        type="text"
-                        id="simple-search"
-                        class="bg-[#303F50] w-5/6 border border-[#303F50] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search"
-                        required
-                      />
-                    </div>
                     </form>
                   </div>
                   <a
@@ -121,22 +120,22 @@ function Navbar() {
                 onChange={toggleDarkMode}
                 checked={lightToggle}
                 size={56}
-                // onClick={handleThemeSwitch}
+              // onClick={handleThemeSwitch}
               />
               <div className="hidden md:block ">
                 <div className="flex items-center space-x-8">
                   <div className="flex items-center space-x-8  ">
-                   <a href="/profile">
-                   <FiUser
-                      className="text-white dark:text-black
+                    <Link to="/profile">
+                      <FiUser
+                        className="text-white dark:text-black
                     "
-                      size={"1.5em"}
-                    />
-                    </a> 
-            
-                    {wallet ? <Button onClick={async() => {await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
+                        size={"1.5em"}
+                      />
+                    </Link>
+
+                    {wallet ? <Button onClick={async () => { await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
                       {wallet?.accounts[0].address.slice(0, 5)}...{wallet?.accounts[0].address.slice(-5)}
-                    </Button> : <Button onClick={async() => {await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
+                    </Button> : <Button onClick={async () => { await connect() }} className="text-white border-1 rounded-lg dark:text-foreground-secondary dark:border-black">
                       Connect Wallet
                     </Button>}
                   </div>
@@ -150,19 +149,16 @@ function Navbar() {
                 >
                   <div className="absolute w-5 transform dark:bg-black -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
                     <span
-                      className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
-                        isOpen ? "rotate-45 delay-200" : "-translate-y-1.5"
-                      }`}
+                      className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${isOpen ? "rotate-45 delay-200" : "-translate-y-1.5"
+                        }`}
                     ></span>
                     <span
-                      className={`absolute h-0.5 bg-white dark:bg-black transform transition-all duration-200 ease-in-out ${
-                        isOpen ? "w-0 opacity-50" : "w-5 delay-200 opacity-100"
-                      }`}
+                      className={`absolute h-0.5 bg-white dark:bg-black transform transition-all duration-200 ease-in-out ${isOpen ? "w-0 opacity-50" : "w-5 delay-200 opacity-100"
+                        }`}
                     ></span>
                     <span
-                      className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
-                        isOpen ? "-rotate-45 delay-200" : "translate-y-1.5"
-                      }`}
+                      className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${isOpen ? "-rotate-45 delay-200" : "translate-y-1.5"
+                        }`}
                     ></span>
                   </div>
                 </button>
@@ -224,7 +220,6 @@ function Navbar() {
             </div>
           )}
         </Transition>
-      </nav>
     </nav>
   );
 }

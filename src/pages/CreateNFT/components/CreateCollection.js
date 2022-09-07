@@ -182,7 +182,7 @@ const CreateCollection = ({setOpen,open}) => {
         <div class="flex justify-start mt-4 mb-4">
           <div class="flex flex-col mr-5">
             {bannerFile ?
-              <label className="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 hover:bg-gray-100 hover:border-gray-300">
+              <label className="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 hover:bg-gray-100 hover:border-gray-300 cursor-pointer">
                 <label htmlFor="upload-document">
                   <input
                     class="hidden"
@@ -197,7 +197,7 @@ const CreateCollection = ({setOpen,open}) => {
                     alt=""
                   />
                 </label></label>
-              : <label class="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500">
+              : <label class="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 cursor-pointer">
                 <div class="flex flex-col place-items-center justify-center items-center mt-6">
                   <img src={upload} />
                 </div>

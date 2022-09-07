@@ -9,9 +9,13 @@ import flow from "../../../assets/filter-icons/flow.png"
 import solana from "../../../assets/filter-icons/solana-sol-logo 1.png"
 import tezos from "../../../assets/filter-icons/Tezos.png"
 import getAllCollections from '../../../hook/queries/getAllCollections'
+import { useNavigate } from "react-router-dom";
 
 const Collections = () => {
+    const navigate= useNavigate()
     const [collection,setCollection] = useState()
+
+
     const getCollections = async() => {
        const response = await getAllCollections()
        setCollection(response)
@@ -38,7 +42,8 @@ console.log(collection,"ye state hai")
                         <div className="grid grid-cols-4 gap-6">
                             {collection?.data.map((item) => {
                                 return (
-                                    <CollectionCard resource={item} />
+                                    <div onClick={()=> {navigate(`/collections/${item.contractAddress}`)}}><CollectionCard  resource={item} /></div>
+                                    
                                 )
                             })}
 

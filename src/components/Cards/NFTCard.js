@@ -1,16 +1,25 @@
-import Frame from "../../assets/images/Rectangle 3.png";
+import { useNavigate } from "react-router-dom";
+
 const NFTCard = ({ resource, index }) => {
+  const navigate = useNavigate()
+  const metadata = JSON.parse(resource?.metadata)
+  console.log(resource,"ye to resource hai")
+
+  const handleOpenItem = () => {
+    navigate(`/collectible/${resource?.contractAddress}/${resource?.tokenId}`)
+  }
+
   return (
-    <div class="card card-compact w-[280px] h-[358px] bg-black nft-card dark:bg-white">
+    <div onClick={handleOpenItem} class="card card-compact w-[280px] h-[358px] cursor-pointer bg-black nft-card dark:bg-white">
       <div class="mt-1">
         <div class=" grid justify-items-center">
           <div class="flex flex-row flex justify-between flex items-center w-[248px] h-[16px] text-white  text-[12px] leading-[16px] font-Montserrat mt-3 pb-[4px ] dark:text-foreground-secondary">
-            <p class=" ml-1 font-bold">{resource.title}</p>
-            <p class="font-light mr-1">{}</p>
+            <p class=" ml-1 font-bold">{metadata.name}</p>
+            <p class="font-light mr-1">11:22:30</p>
           </div>
         </div>
         <figure>
-          <img class="mt-3  w-[248px] h-[216px]" src={Frame} alt="Shoes" />
+          <img class="mt-3 object-cover w-[248px] h-[216px]" src={metadata.image} alt="img" />
         </figure>
         <div class="card-body ">
           <div class="flex justify-between items-center text-white rounded-lg w-[248px] h-[63px] ">

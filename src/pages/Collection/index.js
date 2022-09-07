@@ -1,32 +1,36 @@
 import Rectangle from "../../assets/images/Rectangle.jpeg";
 import Robo from "../../assets/images/Robo.jpeg";
-import { FiUserPlus, FiShare } from "react-icons/fi";
-import { BsThreeDots } from "react-icons/bs";
-import download from "../../assets/images/download.png";
-import dot from "../../assets/images/3dot.png";
-import { TbCopy } from "react-icons/tb";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import twitter from "../../assets/icons/twitter.png";
 import ethicon from "../../assets/icons/etherscan.png";
 import icon from "../../assets/icons/Vector (2).png";
-import Button from "../../components/Button/Button";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { MdShare } from "react-icons/md";
 import Dropdown from "../../components/DropDown";
 import NFTCard from "../../components/Cards/NFTCard";
-import card_data from "../../mocdata/trendingNFT";
-import CollectionCard from "../../components/Cards/CollectionCard";
 import { collection_data } from "../../mocdata/collectiondata";
-import { collectioncard_data } from "../../mocdata/collectionSpotlight";
 import copybutton from "../../assets/images/carbon_copy.png";
-const Collection = ({ option, setOption, title }) => {
+import getCollection from "../../hook/queries/getCollection";
+import { useParams } from "react-router-dom";
+
+const Collection = ({ option, setOption, title, data }) => {
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("trending");
-
   const [copyText, setCopyText] = useState("");
+  const [collectionDetails, setCollectionDetails] = useState();
+
+  const {contractAddress} = useParams();
+  const getCollectionDetails = async () => {
+    const response = await getCollection(contractAddress)
+    setCollectionDetails(response.data);
+  }
+
+  useEffect(() => {
+    getCollectionDetails()
+  }, [])    
+
+
 
   const handleClick = () => {
     setSnackOpen(true);
@@ -49,13 +53,13 @@ const Collection = ({ option, setOption, title }) => {
         <div class="relative pb-40">
           <div className="w-full">
             <img
-            alt="img"
-              src={Rectangle}
+              alt="img"
+              src={`https://pixelpark-images.s3.amazonaws.com/${collectionDetails?.bannerImageURI}`}
               className="h-[275px] w-full rounded-2xl object-cover"
             />
           </div>
           <div className="absolute top-[180px] left-10">
-            <img alt="img" src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
+            <img alt="img" src={`https://pixelpark-images.s3.amazonaws.com/${collectionDetails?.avatarImageURI}`} className="h-[180px] w-[180px] rounded-2xl object-cover" />
           </div>
           <div></div>
         </div>
@@ -63,10 +67,10 @@ const Collection = ({ option, setOption, title }) => {
           <div className="ml-10">
             <div className="token-group">
               <div class="text-white dark:text-foreground-secondary">
-                <h3 class="text-3xl font-bold pb-3">PROOF Collective</h3>
+                <h3 class="text-3xl font-bold pb-3">{collectionDetails?.name}</h3>
                 <div class="flex pb-6">
                   <p class="font-thin mr-2"> Created by</p>
-                  <p class=""> XYZ Official</p>
+                  <p class="">{collectionDetails?.createdBy}</p>
                 </div>
                 <p className="text-[#BFCBD9] dark:text-[#121A23]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -126,11 +130,11 @@ const Collection = ({ option, setOption, title }) => {
                 <p className="pb-2   ml-auto">Ethereum</p>
                 <CopyToClipboard>
                   <div className="flex">
-                  <p className="font-semibold text-base text-white">
-                    0xae5...e6c2
-                  </p>
-                 
-                  <img alt="img" src={copybutton} className="ml-2" />
+                    <p className="font-semibold text-base text-white">
+                      0xae5...e6c2
+                    </p>
+
+                    <img alt="img" src={copybutton} className="ml-2" />
                   </div>
                 </CopyToClipboard>
               </div>
