@@ -9,17 +9,18 @@ import Dropdown from "../../components/DropDown";
 import copybutton from "../../assets/images/carbon_copy.png";
 import AllNFTs from "./components/AllNFTs";
 import { useConnectWallet } from "@web3-onboard/react";
-
-
+import Button from "../../components/Button/Button";
+import Setting from "./components/SettingModal";
 
 const Profile = ({ option, setOption, title }) => {
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("All");
+  const [open, setOpen] = useState(false)
   const [copyText, setCopyText] = useState("");
 
-  const account = wallet?.accounts[0].address
+  const account = wallet?.accounts[0].address;
 
   const handleClick = () => {
     setSnackOpen(true);
@@ -55,9 +56,10 @@ const Profile = ({ option, setOption, title }) => {
           <div className="ml-10">
             <div className="token-group">
               <div class="text-white">
-                <h3 class="text-3xl font-bold pb-3">{account.slice(0,10)}...{account.slice(-5)}</h3>
+                <h3 class="text-3xl font-bold pb-3">
+                  {account.slice(0, 10)}...{account.slice(-5)}
+                </h3>
                 <div class="flex pb-6">
-       
                   <p class=""> 100days user</p>
                 </div>
                 <div className="flex items-center gap-6">
@@ -75,7 +77,6 @@ const Profile = ({ option, setOption, title }) => {
               </div>
             </div>
 
-
             {/* <div class="flex flex-row justify-between">
           <div class="mt-[25px]">
             <button class="btn bg-white text-black    w-[147px] h-[48px] ">
@@ -91,51 +92,58 @@ const Profile = ({ option, setOption, title }) => {
           </div>
         </div> */}
           </div>
+          <div>
+          <label
+                for="my-modal-4" onClick={() => setOpen(true)}      className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mb-2 w-1/4 btn ml-auto flex">
+              Edit
+            </label>
+            <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
+              <div className="flex justify-between p-8">
+                <div className="">
+                  <p className="pb-2 font-light text-base text-white">Floor</p>
+                  <p className="pb-2 font-light text-base text-white">Volume</p>
 
-          <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
-            <div className="flex justify-between p-8">
-              <div className="">
-                <p className="pb-2 font-light text-base text-white">Floor</p>
-                <p className="pb-2 font-light text-base text-white">Volume</p>
+                  <p className="font-light text-base text-white">Items</p>
+                </div>
 
-                <p className="font-light text-base text-white">Items</p>
+                <div>
+                  <p className="pb-2 font-semibold text-base text-white">
+                    0.07 ETH
+                  </p>
+                  <p className="pb-2 font-semibold text-base text-white">
+                    3.12 ETH
+                  </p>
+                  <p className=" font-semibold text-base text-white">49</p>
+                </div>
+              </div>
+              <div className="px-4">
+                <div className="border-b-2 border-[#6A8099] w-full  "></div>
               </div>
 
-              <div>
-                <p className="pb-2 font-semibold text-base text-white">
-                  0.07 ETH
-                </p>
-                <p className="pb-2 font-semibold text-base text-white">
-                  3.12 ETH
-                </p>
-                <p className=" font-semibold text-base text-white">49</p>
-              </div>
-            </div>
-            <div className="px-4">
-              <div className="border-b-2 border-[#6A8099] w-full  "></div>
-            </div>
+              <div className="flex justify-between p-8 items-center">
+                <div className="">
+                  <p className="pb-2 font-light text-base text-white">
+                    Blockchain
+                  </p>
+                  <p className="pb-2 font-light text-base text-white">
+                    Address
+                  </p>
+                </div>
 
-            <div className="flex justify-between p-8 items-center">
-              <div className="">
-                <p className="pb-2 font-light text-base text-white">
-                  Blockchain
-                </p>
-                <p className="pb-2 font-light text-base text-white">Address</p>
-              </div>
+                <div className="flex flex-col ml-auto">
+                  <p className="pb-2  font-semibold text-base text-white ml-auto">
+                    Ethereum
+                  </p>
+                  <CopyToClipboard>
+                    <div className="flex">
+                      <p className="font-semibold text-base text-white">
+                        0xae5...e6c2
+                      </p>
 
-              <div className="flex flex-col ml-auto">
-                <p className="pb-2  font-semibold text-base text-white ml-auto">
-                  Ethereum
-                </p>
-                <CopyToClipboard>
-                  <div className="flex">
-                    <p className="font-semibold text-base text-white">
-                      0xae5...e6c2
-                    </p>
-
-                    <img src={copybutton} className="ml-2" />
-                  </div>
-                </CopyToClipboard>
+                      <img src={copybutton} className="ml-2" />
+                    </div>
+                  </CopyToClipboard>
+                </div>
               </div>
             </div>
           </div>
@@ -221,15 +229,26 @@ const Profile = ({ option, setOption, title }) => {
               <Dropdown title="Price Range" />
             </div>
             <div className="flex flex-col">
-
               <p class="text-[#BFCBD9]">Sort By</p>
               <Dropdown title="Recently Listed " />
             </div>
           </div>
         </div>
-
+        <input type="checkbox" checked={open} id="my-modal-4" class="modal-toggle" />
+          <div class="modal bg-blur-2xl">
+            <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
+              <label
+                for="my-modal-4"
+                className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
+                onClick={() => setOpen(false)}
+              >
+                ✕
+              </label>
+              <Setting open={open} setOpen={setOpen} />
+            </div>
+          </div>
         {activeTab === "All" && <AllNFTs />}
-         {/* {activeTab === "trending" && <SingleCollections />}
+        {/* {activeTab === "trending" && <SingleCollections />}
           {activeTab === "top" && <AllCollectionCard />}
           {activeTab === "art" && <NoItems />}
           {activeTab === "collectibles" && <NoItems />}
@@ -243,9 +262,7 @@ const Profile = ({ option, setOption, title }) => {
 
         {/* Dropdown */}
 
-
         {/* Card */}
-      
       </div>
     </div>
   );

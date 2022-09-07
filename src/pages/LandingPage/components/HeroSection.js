@@ -1,10 +1,14 @@
 import React from "react";
 import Button from "../../../components/Button/Button";
 import heroimage from "../../../assets/images/NFT Frame Art 1.png";
+import Navbar from "../../../components/Navbar/Navbar";
 
 const HeroSection = () => {
   return (
-    <div className="hero-section dark:bg-white">
+
+  
+
+      <div className="hero-section dark:bg-white">
       <div className="container mx-auto px-8 max-h-screen py-16 ">
         <div class="grid lg:grid-cols-2 sm:grid-cols-3 gap-4  items-center">
           <div>
@@ -30,6 +34,8 @@ const HeroSection = () => {
         </div>
       </div>
     </div>
+  
+  
   );
 };
 
