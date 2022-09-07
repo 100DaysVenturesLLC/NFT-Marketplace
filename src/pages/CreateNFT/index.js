@@ -43,7 +43,7 @@ const CreateNFT = () => {
   const [fileImage, setFileImage] = useState()
   const [formValues, setFormValues] = useState([]);
   const [formLevelsValues, setFormLevelsValues] = useState([]);
-  const [userCollections,setUserCollections] =useState();
+  const [userCollections, setUserCollections] = useState();
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [formStatsValues, setFormStatsValues] = useState([]);
   const [formInput, updateFormInput] = useState({
@@ -60,7 +60,7 @@ const CreateNFT = () => {
 
   async function mintnft(collection, url) {
     console.log("checking 3 parameters", collection, url,);
-    const {receipt,tokenId} = await mintNFT(collection, url, account);
+    const { receipt, tokenId } = await mintNFT(collection, url, account);
     console.log(receipt);
     return tokenId
   }
@@ -155,14 +155,14 @@ const CreateNFT = () => {
         unlockable: unlockableCheck,
         explicit: explicitCheck,
       };
-      
+
 
       console.log("ye create karne ka data hai", data);
       let ipfsResponse = await ipfs.add(JSON.stringify(data));
       const url = `https://ipfs.io/ipfs/${ipfsResponse.path}`;
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       console.log(url);
-      const {contractAddress} = userCollections[selectedCollection]
+      const { contractAddress } = userCollections[selectedCollection]
       const tokenId = await mintnft(contractAddress, url);
       const backendPayload = {
         metadata: JSON.stringify(data),
@@ -189,17 +189,17 @@ const CreateNFT = () => {
       console.log("Error uploading file: ", error);
     }
   }
-  const fetchUserCollections = async () =>{
+  const fetchUserCollections = async () => {
     const response = await axios.get(`${BACKEND_URL}/account/collections/${account}`)
     console.log(response.data.data)
     setUserCollections(response.data.data)
   }
-  useEffect(()=>{
-    if(wallet){
+  useEffect(() => {
+    if (wallet) {
       //TODO fetch collections for this user
       fetchUserCollections()
     }
-  },[wallet])
+  }, [wallet])
 
   return (
     <div className="createnft dark:bg-white">
@@ -215,7 +215,7 @@ const CreateNFT = () => {
               </p>
               <div class="flex flex-col justify-center items-center">
                 <div class="flex items-center justify-start w-full">
-                  {fileImage ?
+                  {/* {fileImage ?
                     <label className="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
                       <label htmlFor="upload-document">
                         <input
@@ -231,7 +231,7 @@ const CreateNFT = () => {
                           alt=""
                         />
                       </label></label>
-                    :
+                    : */}
                     <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
                       <div class="flex flex-col place-items-center justify-center mt-32">
                         <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
@@ -246,7 +246,7 @@ const CreateNFT = () => {
                       </div>
                       <input type="file" class="opacity-0" id="upload-photo" onChange={onChange} />
                     </label>
-                  }
+                  {/* } */}
                 </div>
               </div>
               <div className="flex flex-col mt-16">
@@ -285,7 +285,7 @@ const CreateNFT = () => {
                     Collection
                   </label>
                   <Dropdown options={userCollections} setSelectedIndex={setSelectedCollection} selectedIndex={selectedCollection} />
-                  <label onClick={() => setOpen(true)} htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2">
+                  <label onClick={() => setOpen(true)} htmlFor="my-modal-3" className="flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer hover:underline">
                     Create Collection
                   </label>
                 </div>
@@ -457,15 +457,28 @@ const CreateNFT = () => {
                 Create
               </label>
             </div>
-            <div className="">
-              <div className="columns-xs sticky top-20 ">
+            <div >
+              <div className="columns-xs flex flex-col sticky top-20 w-[280px] h-[330px]">
                 <p className="mt-12 mb-2 font-semibold text-xl text-white">
                   Preview
                 </p>
-                <div className="preview-box grid place-items-center items-center p-8 text-center w-[280px] h-[330px]">
-                  Upload file and choose collection to preview your brand new
-                  NFT
-                </div>
+                {
+                  fileUrl ?
+
+                    <img
+                      className="w-full h-[330px] rounded-lg object-cover cursor-pointer"
+                      src={fileImage}
+                      alt=""
+                    />
+                    : <div>
+
+                      <div className="preview-box grid place-items-center items-center p-8 text-center">
+                        Upload file and choose collection to preview your brand new
+                        NFT
+                      </div>
+                    </div>
+                }
+
               </div>
             </div>
           </div>

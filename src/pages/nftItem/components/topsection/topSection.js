@@ -91,7 +91,7 @@ function TopSection({ metadata, nftData }) {
             </div>
           </div>
         </div>
-        {owner ? (
+        {!owner ? (
           <div>
             <div className="text-xs font-semibold text-foreground-primary opacity-60 pb-6 dark:text-[#121A23]">
               Last sale price

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from "./components/Navbar/Navbar.js";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
@@ -9,8 +9,8 @@ function App() {
 
   return (
     <div className="">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <PublicRoutes />
       </BrowserRouter>
     </div>

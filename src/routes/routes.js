@@ -17,7 +17,6 @@ export const PublicRoutes = () => {
       <Route path="/collections/:contractAddress" element={<Collection />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/profile" element={<Profile />} />
-
       <Route path="/collectible/:contractAddress/:tokenId" element={<NftItem />} />
       <Route path="/stats" element={<Stats />} />
     </Routes>

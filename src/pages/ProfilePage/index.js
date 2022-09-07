@@ -1,32 +1,25 @@
 import Rectangle from "../../assets/images/Rectangle.jpeg";
 import Robo from "../../assets/images/Robo.jpeg";
-import { FiUserPlus, FiShare, FiDownload, FiUpload } from "react-icons/fi";
+import { FiUserPlus, FiUpload } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
-import download from "../../assets/images/download.png";
-import dot from "../../assets/images/3dot.png";
-import { TbCopy } from "react-icons/tb";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
-import twitter from "../../assets/icons/twitter.png";
-import ethicon from "../../assets/icons/etherscan.png";
-import icon from "../../assets/icons/Vector (2).png";
-import Button from "../../components/Button/Button";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { MdShare } from "react-icons/md";
 import Dropdown from "../../components/DropDown";
-import NFTCard from "../../components/Cards/NFTCard";
-import card_data from "../../mocdata/trendingNFT";
-import CollectionCard from "../../components/Cards/CollectionCard";
-import { collection_data } from "../../mocdata/collectiondata";
-import { collectioncard_data } from "../../mocdata/collectionSpotlight";
 import copybutton from "../../assets/images/carbon_copy.png";
+import AllNFTs from "./components/AllNFTs";
+import { useConnectWallet } from "@web3-onboard/react";
+
+
+
 const Profile = ({ option, setOption, title }) => {
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("trending");
-
+  const [activeTab, setActiveTab] = useState("All");
   const [copyText, setCopyText] = useState("");
+
+  const account = wallet?.accounts[0].address
 
   const handleClick = () => {
     setSnackOpen(true);
@@ -62,10 +55,10 @@ const Profile = ({ option, setOption, title }) => {
           <div className="ml-10">
             <div className="token-group">
               <div class="text-white">
-                <h3 class="text-3xl font-bold pb-3">0x5d8e2c078...52b1</h3>
+                <h3 class="text-3xl font-bold pb-3">{account.slice(0,10)}...{account.slice(-5)}</h3>
                 <div class="flex pb-6">
-                  <p class="font-thin mr-2"> Created by</p>
-                  <p class=""> XYZ Official</p>
+       
+                  <p class=""> 100days user</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <div class="flex items-center btn  bg-white text-black px-6  ">
@@ -81,7 +74,7 @@ const Profile = ({ option, setOption, title }) => {
                 </div>
               </div>
             </div>
-   
+
 
             {/* <div class="flex flex-row justify-between">
           <div class="mt-[25px]">
@@ -147,86 +140,96 @@ const Profile = ({ option, setOption, title }) => {
             </div>
           </div>
         </div>
-<div>
-<div className="collections-tab-group ">
-          <button
-            className={
-              activeTab === "OnSale"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("OnSale")}
-          >
-OnSale
-          </button>
-          <button
-            className={
-              activeTab === "Sold"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("Sold")}
-          >
-            Sold
-          </button>
-          <button
-            className={
-              activeTab === "Owned"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("Owned")}
-          >
-          Owned
-          </button>
-          <button
-            className={
-              activeTab === "Created"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("Created")}
-          >
-            Created
-          </button>
-          <button
-            className={
-              activeTab === "Live"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("Live")}
-          >
-            Live
-          </button>
-          <button
-            className={
-              activeTab === "Activity"
-                ? "collection-tab-active"
-                : "collection-tab-non-active"
-            }
-            onClick={() => setActiveTab("Activity")}
-          >
-            Activity
-          </button>
-        </div>
-<div className="flex justify-between items-center">
-          <div className="flex gap-4">
-            <Dropdown setOption={setOption} title="Blockchain" />
-            <Dropdown title="Category" />
-            <Dropdown title="Sale Type" />
-            <Dropdown title="Price Range" />
+        <div>
+          <div className="collections-tab-group ">
+            <button
+              className={
+                activeTab === "All"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("All")}
+            >
+              All NFTs
+            </button>
+            <button
+              className={
+                activeTab === "OnSale"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("OnSale")}
+            >
+              OnSale
+            </button>
+            <button
+              className={
+                activeTab === "Sold"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("Sold")}
+            >
+              Sold
+            </button>
+            <button
+              className={
+                activeTab === "Owned"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("Owned")}
+            >
+              Owned
+            </button>
+            <button
+              className={
+                activeTab === "Created"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("Created")}
+            >
+              Created
+            </button>
+            {/* <button
+              className={
+                activeTab === "Live"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("Live")}
+            >
+              Live
+            </button> */}
+            <button
+              className={
+                activeTab === "Activity"
+                  ? "collection-tab-active"
+                  : "collection-tab-non-active"
+              }
+              onClick={() => setActiveTab("Activity")}
+            >
+              Activity
+            </button>
           </div>
-          <div className="flex flex-col">
-        
-            <p class="text-[#BFCBD9]">Sort By</p>
-     <Dropdown title="Recently Listed "/>
-          </div>
-        </div>
-</div>
-      
+          <div className="flex justify-between items-center">
+            <div className="flex gap-4">
+              <Dropdown setOption={setOption} title="Blockchain" />
+              <Dropdown title="Category" />
+              <Dropdown title="Sale Type" />
+              <Dropdown title="Price Range" />
+            </div>
+            <div className="flex flex-col">
 
-        {/* {activeTab === "trending" && <SingleCollections />}
+              <p class="text-[#BFCBD9]">Sort By</p>
+              <Dropdown title="Recently Listed " />
+            </div>
+          </div>
+        </div>
+
+        {activeTab === "All" && <AllNFTs />}
+         {/* {activeTab === "trending" && <SingleCollections />}
           {activeTab === "top" && <AllCollectionCard />}
           {activeTab === "art" && <NoItems />}
           {activeTab === "collectibles" && <NoItems />}
@@ -236,17 +239,13 @@ OnSale
           {activeTab === "sports" && <NoItems />}
           {activeTab === "tradingcards" && <NoItems />}
           {activeTab === "utility" && <NoItems />}
-          {activeTab === "virtualworlds" && <NoItems />} */}
+          {activeTab === "virtualworlds" && <NoItems />}  */}
 
         {/* Dropdown */}
-     
+
 
         {/* Card */}
-        <div className="grid grid-cols-4 grid-rows-3 gap-4 pt-12">
-          {collection_data.map((resource, index) => {
-            return <NFTCard index={index} resource={resource} />;
-          })}
-        </div>
+      
       </div>
     </div>
   );
