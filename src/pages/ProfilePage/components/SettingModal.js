@@ -4,9 +4,9 @@ import Button from "../../../components/Button/Button";
 import { useWeb3React } from "@web3-react/core";
 import { create } from "ipfs-http-client";
 import { BACKEND_URL } from "../../../utils/config/config";
-import { createCollection } from "../../../contracts/nftCollection";
 import { useConnectWallet } from "@web3-onboard/react";
-import axios from "axios"
+import useUpdateAccount from "../../../hook/queries/account/useUpdateAccount";
+import axios from "axios";
 import Web3 from "web3";
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
@@ -22,9 +22,8 @@ const ipfs = create({
   },
 });
 
-
-const SettingModal = ({setOpen,open}) => {
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+const SettingModal = ({ setOpen, open }) => {
+  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
   const [avatarFile, setAvatarFile] = useState();
@@ -47,41 +46,36 @@ const SettingModal = ({setOpen,open}) => {
     const file = e.target.files[0];
     setBannerFile(URL.createObjectURL(file));
     setFileUrl(file);
-  };
+  }
 
   async function selectImage2(e) {
     const file = e.target.files[0];
     setAvatarFile(URL.createObjectURL(file));
     setAvatarFileUrl(file);
-  };
+  }
 
   const [formInput, updateFormInput] = useState({
     customCollectionURL: "",
     name: "",
-    symbol: "",
-    description: "",
+    bio: "",
   });
-  
-  const account = wallet?.accounts[0].address
 
-  const sendCollectionData = async () => {
-    if(!account){
-      alert("Plese connect your wallet")
+  const account = wallet?.accounts[0].address;
+
+  const SendProfileData = async () => {
+    if (!account) {
+      alert("Plese connect your wallet");
     }
     var form_data = new FormData();
-    const { name, customCollectionURL, symbol } = formInput;
-    console.log(account,"ye acc address hai")
-    const collectionAddress = await createCollection(name, symbol, account)
-    console.log("collectionAddress", collectionAddress)
+    const { name, customCollectionURL, bio } = formInput;
+    console.log(account, "ye acc address hai");
     // form_data.append('description', description);
-    form_data.append('avatar', avatarfileUrl);
-    form_data.append('contractAddress', collectionAddress);
-    form_data.append('name', name);
-    form_data.append('symbol', symbol);
-    form_data.append('customCollectionURL', customCollectionURL);
-    form_data.append('banner', fileUrl);
-    form_data.append('createdBy', account);
-    form_data.append('nsfw', true);
+    form_data.append("avatar", avatarfileUrl);
+    form_data.append("name", name);
+    form_data.append("address", account);
+    form_data.append("bio", bio);
+    form_data.append("customCollectionURL", customCollectionURL);
+    form_data.append("banner", fileUrl);
 
     console.log("form data ye hai", form_data);
 
@@ -92,48 +86,28 @@ const SettingModal = ({setOpen,open}) => {
     //   alert("connect wallet")
     // }
 
-    var config = {
-      method: 'post',
-      url: `${BACKEND_URL}/collections/create`,
-      data: form_data
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));  
-        setFileUrl(null)
-        setAvatarFileUrl(null)
-        wipeData()
-        setOpen(false)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const res = useUpdateAccount(form_data);
+    console.log(res);
   };
-  const wipeData = () =>{
-    setAvatarFileUrl(null)
-    setAvatarFile(null)
-    setBannerFile(null)
-    setFileUrl(null)
-    setAddress(null)
+  const wipeData = () => {
+    setAvatarFileUrl(null);
+    setAvatarFile(null);
+    setBannerFile(null);
+    setFileUrl(null);
+    setAddress(null);
     updateFormInput({
       customCollectionURL: "",
       name: "",
       symbol: "",
       description: "",
-    })
-  }
-  useEffect(()=>{
-    if(!open){
-      wipeData()
-    }
-  },[open])
+    });
+  };
   useEffect(() => {
-   
-  }, [fileUrl,avatarfileUrl,formInput])
-  
-
-
+    if (!open) {
+      wipeData();
+    }
+  }, [open]);
+  useEffect(() => {}, [fileUrl, avatarfileUrl, formInput]);
 
   // async function createCollectionData() {
   //   if (active) {
@@ -181,7 +155,7 @@ const SettingModal = ({setOpen,open}) => {
       <div className=" ">
         <div class="flex justify-start mt-4 mb-4">
           <div class="flex flex-col mr-5">
-            {bannerFile ?
+            {bannerFile ? (
               <label className="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 hover:bg-gray-100 hover:border-gray-300 cursor-pointer">
                 <label htmlFor="upload-document">
                   <input
@@ -196,14 +170,16 @@ const SettingModal = ({setOpen,open}) => {
                     src={bannerFile}
                     alt=""
                   />
-                </label></label>
-              : <label class="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 cursor-pointer">
+                </label>
+              </label>
+            ) : (
+              <label class="flex flex-col w-[331px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 cursor-pointer">
                 <div class="flex flex-col place-items-center justify-center items-center mt-6">
                   <img src={upload} />
                 </div>
                 <input type="file" class="opacity-0" onChange={onChange} />
               </label>
-            }
+            )}
             <p className="text-white font-semibold text-base mt-6">
               Cover Image
             </p>
@@ -214,7 +190,7 @@ const SettingModal = ({setOpen,open}) => {
             </p>
           </div>
           <div>
-            {avatarFile ?
+            {avatarFile ? (
               <label class="flex flex-col w-[143px] h-[143px] border-2 rounded-lg border-dashed border-gray-500">
                 <label htmlFor="upload-document-2">
                   <input
@@ -229,14 +205,20 @@ const SettingModal = ({setOpen,open}) => {
                     src={avatarFile}
                     alt=""
                   />
-                </label></label>
-              : <label class="flex flex-col w-[143px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 cursor-pointer">
+                </label>
+              </label>
+            ) : (
+              <label class="flex flex-col w-[143px] h-[143px] border-2 rounded-lg border-dashed border-gray-500 cursor-pointer">
                 <div class="flex flex-col place-items-center justify-center items-center mt-6">
                   <img src={upload} />
                 </div>
-                <input type="file" class="opacity-0" onChange={onChangeAvatar} />
+                <input
+                  type="file"
+                  class="opacity-0"
+                  onChange={onChangeAvatar}
+                />
               </label>
-            }
+            )}
             <p className="text-white font-semibold text-base mt-6">
               Profile Avatar
             </p>
@@ -260,26 +242,28 @@ const SettingModal = ({setOpen,open}) => {
               updateFormInput({ ...formInput, name: e.target.value })
             }
           />
-          <p className="text-[#BFCBD9] text-sm font-normal">Token name cannot be changed in the future</p>
+          <p className="text-[#BFCBD9] text-sm font-normal">
+            Token name cannot be changed in the future
+          </p>
         </div>
-      
+
         <div className="mt-4 mb-4">
           <label htmlFor="" className="font-semibold text-base text-white">
-             Bio  (Optional)
+            Bio (Optional)
           </label>
           <input
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
-            value={formInput.description}
+            value={formInput.bio}
             onChange={(e) =>
-              updateFormInput({ ...formInput, description: e.target.value })
+              updateFormInput({ ...formInput, bio: e.target.value })
             }
           />
         </div>
         <div className="mt-4 mb-4">
           <label htmlFor="" className="font-semibold text-base text-white">
-            External url 
+            External url
           </label>
           <input
             type="text"
@@ -287,13 +271,19 @@ const SettingModal = ({setOpen,open}) => {
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
             value={formInput.customCollectionURL}
             onChange={(e) =>
-              updateFormInput({ ...formInput, customCollectionURL: e.target.value })
+              updateFormInput({
+                ...formInput,
+                customCollectionURL: e.target.value,
+              })
             }
           />
         </div>
         <div className="flex justify-end">
-          <Button className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0  w-full btn" onClick={sendCollectionData}>
-            Create Collection
+          <Button
+            className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0  w-full btn"
+            onClick={SendProfileData}
+          >
+            Update Profile
           </Button>
         </div>
       </div>
