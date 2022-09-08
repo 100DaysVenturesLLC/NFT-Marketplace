@@ -63,30 +63,20 @@ const SettingModal = ({ setOpen, open }) => {
   const account = wallet?.accounts[0].address;
 
   const SendProfileData = async () => {
-    if (!account) {
-      alert("Plese connect your wallet");
-    }
     var form_data = new FormData();
     const { name, customCollectionURL, bio } = formInput;
     console.log(account, "ye acc address hai");
-    // form_data.append('description', description);
     form_data.append("avatar", avatarfileUrl);
-    form_data.append("name", name);
+    form_data.append("nickname", name);
     form_data.append("address", account);
     form_data.append("bio", bio);
     form_data.append("customCollectionURL", customCollectionURL);
     form_data.append("banner", fileUrl);
-
     console.log("form data ye hai", form_data);
-
-    // if (active) {
-    //   data.append('createdBy', account);
-    // }
-    // else {
-    //   alert("connect wallet")
-    // }
-
-    const res = useUpdateAccount(form_data);
+    const res = useUpdateAccount(form_data).then(
+      wipeData(),
+      setOpen(false)
+    );
     console.log(res);
   };
   const wipeData = () => {
@@ -107,7 +97,7 @@ const SettingModal = ({ setOpen, open }) => {
       wipeData();
     }
   }, [open]);
-  useEffect(() => {}, [fileUrl, avatarfileUrl, formInput]);
+  useEffect(() => { }, [fileUrl, avatarfileUrl, formInput]);
 
   // async function createCollectionData() {
   //   if (active) {

@@ -93,9 +93,9 @@ const Profile = ({ option, setOption, title }) => {
         </div> */}
           </div>
           <div>
-          <label
-                for="my-modal-4" onClick={() => setOpen(true)}      className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mb-2 w-1/4 btn ml-auto flex">
-              Edit
+            <label
+              for="my-modal-4" onClick={() => setOpen(true)} className="mb-6 flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer hover:underline">
+              Edit Profile
             </label>
             <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
               <div className="flex justify-between p-8">
@@ -235,18 +235,18 @@ const Profile = ({ option, setOption, title }) => {
           </div>
         </div>
         <input type="checkbox" checked={open} id="my-modal-4" class="modal-toggle" />
-          <div class="modal bg-blur-2xl">
-            <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
-              <label
-                for="my-modal-4"
-                className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
-                onClick={() => setOpen(false)}
-              >
-                ✕
-              </label>
-              <Setting open={open} setOpen={setOpen} />
-            </div>
+        <div class="modal bg-blur-2xl">
+          <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
+            <label
+              for="my-modal-4"
+              className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </label>
+            <Setting open={open} setOpen={setOpen} />
           </div>
+        </div>
         {activeTab === "All" && <AllNFTs />}
         {/* {activeTab === "trending" && <SingleCollections />}
           {activeTab === "top" && <AllCollectionCard />}
