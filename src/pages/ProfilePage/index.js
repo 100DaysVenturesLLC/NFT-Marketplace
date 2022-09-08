@@ -11,6 +11,7 @@ import AllNFTs from "./components/AllNFTs";
 import { useConnectWallet } from "@web3-onboard/react";
 import Button from "../../components/Button/Button";
 import Setting from "./components/SettingModal";
+import fetchAccount from "../../hook/queries/account/fetchAccount";
 
 const Profile = ({ option, setOption, title }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -19,9 +20,18 @@ const Profile = ({ option, setOption, title }) => {
   const [activeTab, setActiveTab] = useState("All");
   const [open, setOpen] = useState(false)
   const [copyText, setCopyText] = useState("");
-
+  const [accDetails, setAccDetails] = useState()
   const account = wallet?.accounts[0].address;
 
+  const fetchAccountDetails = async () => {
+    if (account) {
+      const response = await fetchAccount(account);
+      setAccDetails(response.data)
+    }
+  }
+  useEffect(() => {
+    fetchAccountDetails()
+  }, [account])
   const handleClick = () => {
     setSnackOpen(true);
     toast.success("Copied to clipboard", {
@@ -43,12 +53,14 @@ const Profile = ({ option, setOption, title }) => {
         <div class="relative pb-40">
           <div className="w-full">
             <img
-              src={Rectangle}
+              src={accDetails?.bannerImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.bannerImageURI}` : Rectangle}
               className="h-[275px] w-full rounded-2xl object-cover"
             />
           </div>
           <div className="absolute top-[180px] left-10">
-            <img src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
+            <img
+              src={accDetails?.avatarImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.avatarImageURI}` : Robo}
+              className="h-[180px] w-[180px] rounded-2xl" />
           </div>
           <div></div>
         </div>
@@ -60,7 +72,10 @@ const Profile = ({ option, setOption, title }) => {
                   {account.slice(0, 10)}...{account.slice(-5)}
                 </h3>
                 <div class="flex pb-6">
-                  <p class=""> 100days user</p>
+                  <p class=""> {accDetails?.nickname}</p>
+                </div>
+                <div class="flex pb-6">
+                  <p class=""> {accDetails?.bio}</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <div class="flex items-center btn  bg-white text-black px-6  ">
@@ -93,17 +108,16 @@ const Profile = ({ option, setOption, title }) => {
         </div> */}
           </div>
           <div>
-          <label
-                for="my-modal-4" onClick={() => setOpen(true)}      className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] border-0 text-white rounded-lg font-sm font-bold  outline-0 mb-2 w-1/4 btn ml-auto flex">
-              Edit
+            <label
+              for="my-modal-4" onClick={() => setOpen(true)} className="mb-6 flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer hover:underline">
+              Edit Profile
             </label>
             <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
               <div className="flex justify-between p-8">
                 <div className="">
-                  <p className="pb-2 font-light text-base text-white">Floor</p>
-                  <p className="pb-2 font-light text-base text-white">Volume</p>
-
-                  <p className="font-light text-base text-white">Items</p>
+                  <p className="pb-2 font-light text-base text-white">Followers</p>
+                  <p className="pb-2 font-light text-base text-white">Items</p>
+                  {/* <p className="font-light text-base text-white">Items</p> */}
                 </div>
 
                 <div>
@@ -122,25 +136,21 @@ const Profile = ({ option, setOption, title }) => {
 
               <div className="flex justify-between p-8 items-center">
                 <div className="">
-                  <p className="pb-2 font-light text-base text-white">
+                  {/* <p className="pb-2 font-light text-base text-white">
                     Blockchain
-                  </p>
+                  </p> */}
                   <p className="pb-2 font-light text-base text-white">
                     Address
                   </p>
                 </div>
 
                 <div className="flex flex-col ml-auto">
-                  <p className="pb-2  font-semibold text-base text-white ml-auto">
-                    Ethereum
-                  </p>
-                  <CopyToClipboard>
+                  <CopyToClipboard text={account}>
                     <div className="flex">
                       <p className="font-semibold text-base text-white">
-                        0xae5...e6c2
+                        {account.slice(0, 6)}...{account.slice(-4)}
                       </p>
-
-                      <img src={copybutton} className="ml-2" />
+                      <img src={copybutton} className="ml-2 cursor-pointer" />
                     </div>
                   </CopyToClipboard>
                 </div>
@@ -235,18 +245,18 @@ const Profile = ({ option, setOption, title }) => {
           </div>
         </div>
         <input type="checkbox" checked={open} id="my-modal-4" class="modal-toggle" />
-          <div class="modal bg-blur-2xl">
-            <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
-              <label
-                for="my-modal-4"
-                className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
-                onClick={() => setOpen(false)}
-              >
-                ✕
-              </label>
-              <Setting open={open} setOpen={setOpen} />
-            </div>
+        <div class="modal bg-blur-2xl">
+          <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
+            <label
+              for="my-modal-4"
+              className="bg-transparent absolute right-0 px-8 text-2xl text-foreground-primary"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </label>
+            <Setting open={open} setOpen={setOpen} accDetails={accDetails} />
           </div>
+        </div>
         {activeTab === "All" && <AllNFTs />}
         {/* {activeTab === "trending" && <SingleCollections />}
           {activeTab === "top" && <AllCollectionCard />}

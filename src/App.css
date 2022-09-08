@@ -21,7 +21,6 @@ body,
 #root {
   margin: 0;
   padding: 0;
-
 }
 
 code {
@@ -406,4 +405,12 @@ code {
 .active-dark {
   color: darkred;
   border-bottom: #0c111a;
+}
+
+#toast-message {
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid #fd3dce;
+  /* box-shadow: 0px 1px 24px #fd3dce; */
+  color: #fff;
 }

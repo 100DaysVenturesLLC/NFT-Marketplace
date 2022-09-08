@@ -22,7 +22,7 @@ const ipfs = create({
   },
 });
 
-const SettingModal = ({ setOpen, open }) => {
+const SettingModal = ({ setOpen, open, accDetails }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
@@ -55,7 +55,7 @@ const SettingModal = ({ setOpen, open }) => {
   }
 
   const [formInput, updateFormInput] = useState({
-    customCollectionURL: "",
+    externalURL: "",
     name: "",
     bio: "",
   });
@@ -63,51 +63,43 @@ const SettingModal = ({ setOpen, open }) => {
   const account = wallet?.accounts[0].address;
 
   const SendProfileData = async () => {
-    if (!account) {
-      alert("Plese connect your wallet");
-    }
     var form_data = new FormData();
     const { name, customCollectionURL, bio } = formInput;
     console.log(account, "ye acc address hai");
-    // form_data.append('description', description);
     form_data.append("avatar", avatarfileUrl);
-    form_data.append("name", name);
+    form_data.append("nickname", name);
     form_data.append("address", account);
     form_data.append("bio", bio);
     form_data.append("customCollectionURL", customCollectionURL);
     form_data.append("banner", fileUrl);
-
     console.log("form data ye hai", form_data);
-
-    // if (active) {
-    //   data.append('createdBy', account);
-    // }
-    // else {
-    //   alert("connect wallet")
-    // }
-
-    const res = useUpdateAccount(form_data);
+    const res = useUpdateAccount(form_data).then(
+      wipeData(),
+      setOpen(false)
+    );
     console.log(res);
   };
   const wipeData = () => {
-    setAvatarFileUrl(null);
-    setAvatarFile(null);
-    setBannerFile(null);
-    setFileUrl(null);
-    setAddress(null);
-    updateFormInput({
-      customCollectionURL: "",
-      name: "",
-      symbol: "",
-      description: "",
-    });
+    if (accDetails) {
+      setAvatarFileUrl(null);
+      setAvatarFile(`https://pixelpark-images.s3.amazonaws.com/${accDetails.avatarImageURI}`);
+      setBannerFile(`https://pixelpark-images.s3.amazonaws.com/${accDetails.bannerImageURI}`);
+      setFileUrl(null);
+      setAddress(null);
+      const { externalURL, nickname, bio } = accDetails
+      updateFormInput({
+        externalURL,
+        name: nickname,
+        bio
+      });
+    }
   };
   useEffect(() => {
     if (!open) {
       wipeData();
     }
   }, [open]);
-  useEffect(() => {}, [fileUrl, avatarfileUrl, formInput]);
+  useEffect(() => { }, [fileUrl, avatarfileUrl, formInput]);
 
   // async function createCollectionData() {
   //   if (active) {
@@ -269,11 +261,11 @@ const SettingModal = ({ setOpen, open }) => {
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
-            value={formInput.customCollectionURL}
+            value={formInput.externalURL}
             onChange={(e) =>
               updateFormInput({
                 ...formInput,
-                customCollectionURL: e.target.value,
+                externalURL: e.target.value,
               })
             }
           />
