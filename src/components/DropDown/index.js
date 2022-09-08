@@ -9,7 +9,7 @@ const Dropdown = ({ options,selectedIndex,setSelectedIndex }) => {
       <div className="">
         <Menu as="div" className="relative inline-block text-left w-full">
           <div className="place-items-center flex relative">
-            <Menu.Button className="inline-flex w-full rounded-lg bg-[#0c111a]  px-8  py-4 text-sm  font-bold text-white border border-gray-700 ">
+          {options[selectedIndex]?<Menu.Button className="inline-flex w-full rounded-lg bg-[#0c111a]  px-8  py-4 text-sm  font-bold text-white border border-gray-700 ">
               {options[selectedIndex].name}
               <svg
                 className="fill-current ml-auto"
@@ -20,7 +20,8 @@ const Dropdown = ({ options,selectedIndex,setSelectedIndex }) => {
               >
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
-            </Menu.Button>
+            </Menu.Button>:'You Dont have any collections, create new'}
+            
             {/* <i className="absolute items-center place-items-center mx-0">
 <IoIosArrowDown/>
 </i> */}
@@ -35,7 +36,7 @@ const Dropdown = ({ options,selectedIndex,setSelectedIndex }) => {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="relative right-0 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              {options.map((option, index) => {
+              {options?.map((option, index) => {
                 return(<div className="px-1 py-1 ">
                   <Menu.Item onClick={()=>setSelectedIndex(index)}>
                     {({ active }) => (
