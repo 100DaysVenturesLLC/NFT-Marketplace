@@ -11,6 +11,7 @@ import AllNFTs from "./components/AllNFTs";
 import { useConnectWallet } from "@web3-onboard/react";
 import Button from "../../components/Button/Button";
 import Setting from "./components/SettingModal";
+import fetchAccount from "../../hook/queries/account/fetchAccount";
 
 const Profile = ({ option, setOption, title }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -19,9 +20,18 @@ const Profile = ({ option, setOption, title }) => {
   const [activeTab, setActiveTab] = useState("All");
   const [open, setOpen] = useState(false)
   const [copyText, setCopyText] = useState("");
-
+  const [accDetails, setAccDetails] = useState()
   const account = wallet?.accounts[0].address;
 
+  const fetchAccountDetails = async () => {
+    if (account) {
+      const response = await fetchAccount(account);
+      setAccDetails(response.data)
+    }
+  }
+  useEffect(() => {
+    fetchAccountDetails()
+  }, [account])
   const handleClick = () => {
     setSnackOpen(true);
     toast.success("Copied to clipboard", {
@@ -43,12 +53,14 @@ const Profile = ({ option, setOption, title }) => {
         <div class="relative pb-40">
           <div className="w-full">
             <img
-              src={Rectangle}
+              src={accDetails?.bannerImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.bannerImageURI}` : Rectangle}
               className="h-[275px] w-full rounded-2xl object-cover"
             />
           </div>
           <div className="absolute top-[180px] left-10">
-            <img src={Robo} className="h-[180px] w-[180px] rounded-2xl" />
+            <img
+              src={accDetails?.avatarImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.avatarImageURI}` : Robo}
+              className="h-[180px] w-[180px] rounded-2xl" />
           </div>
           <div></div>
         </div>
@@ -60,7 +72,10 @@ const Profile = ({ option, setOption, title }) => {
                   {account.slice(0, 10)}...{account.slice(-5)}
                 </h3>
                 <div class="flex pb-6">
-                  <p class=""> 100days user</p>
+                  <p class=""> {accDetails?.nickname}</p>
+                </div>
+                <div class="flex pb-6">
+                  <p class=""> {accDetails?.bio}</p>
                 </div>
                 <div className="flex items-center gap-6">
                   <div class="flex items-center btn  bg-white text-black px-6  ">
@@ -244,7 +259,7 @@ const Profile = ({ option, setOption, title }) => {
             >
               ✕
             </label>
-            <Setting open={open} setOpen={setOpen} />
+            <Setting open={open} setOpen={setOpen} accDetails={accDetails} />
           </div>
         </div>
         {activeTab === "All" && <AllNFTs />}

@@ -22,7 +22,7 @@ const ipfs = create({
   },
 });
 
-const SettingModal = ({ setOpen, open }) => {
+const SettingModal = ({ setOpen, open, accDetails }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
@@ -55,7 +55,7 @@ const SettingModal = ({ setOpen, open }) => {
   }
 
   const [formInput, updateFormInput] = useState({
-    customCollectionURL: "",
+    externalURL: "",
     name: "",
     bio: "",
   });
@@ -80,17 +80,19 @@ const SettingModal = ({ setOpen, open }) => {
     console.log(res);
   };
   const wipeData = () => {
-    setAvatarFileUrl(null);
-    setAvatarFile(null);
-    setBannerFile(null);
-    setFileUrl(null);
-    setAddress(null);
-    updateFormInput({
-      customCollectionURL: "",
-      name: "",
-      symbol: "",
-      description: "",
-    });
+    if (accDetails) {
+      setAvatarFileUrl(null);
+      setAvatarFile(`https://pixelpark-images.s3.amazonaws.com/${accDetails.avatarImageURI}`);
+      setBannerFile(`https://pixelpark-images.s3.amazonaws.com/${accDetails.bannerImageURI}`);
+      setFileUrl(null);
+      setAddress(null);
+      const { externalURL, nickname, bio } = accDetails
+      updateFormInput({
+        externalURL,
+        name: nickname,
+        bio
+      });
+    }
   };
   useEffect(() => {
     if (!open) {
@@ -259,11 +261,11 @@ const SettingModal = ({ setOpen, open }) => {
             type="text"
             placeholder="Type here"
             class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
-            value={formInput.customCollectionURL}
+            value={formInput.externalURL}
             onChange={(e) =>
               updateFormInput({
                 ...formInput,
-                customCollectionURL: e.target.value,
+                externalURL: e.target.value,
               })
             }
           />
