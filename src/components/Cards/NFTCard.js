@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 
 const NFTCard = ({ resource, index }) => {
   const navigate = useNavigate()
-  const metadata = JSON.parse(resource?.metadata)
-  console.log(resource,"ye to resource hai")
-
+  let metadata;
+  if(resource?.metadata) metadata = JSON.parse(resource?.metadata)
+  else metadata = null
   const handleOpenItem = () => {
     navigate(`/collectible/${resource?.contractAddress}/${resource?.tokenId}`)
   }
 
-  return (
+  return metadata&&(
     <div onClick={handleOpenItem} class="card card-compact w-[280px] h-[358px] cursor-pointer bg-black nft-card dark:bg-white">
       <div class="mt-1">
         <div class=" grid justify-items-center">

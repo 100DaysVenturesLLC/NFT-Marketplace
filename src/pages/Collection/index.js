@@ -19,11 +19,13 @@ const Collection = ({ option, setOption, title, data }) => {
   const [activeTab, setActiveTab] = useState("trending");
   const [copyText, setCopyText] = useState("");
   const [collectionDetails, setCollectionDetails] = useState();
-
+  const [collectibles, setCollectibles] = useState();
   const {contractAddress} = useParams();
+
   const getCollectionDetails = async () => {
     const response = await getCollection(contractAddress)
     setCollectionDetails(response.data);
+    setCollectibles(response.data.collectibles)
   }
 
   useEffect(() => {
@@ -46,9 +48,9 @@ const Collection = ({ option, setOption, title, data }) => {
     });
   };
 
-  return (
+  return collectionDetails&&(
     <div className="collection max-w-screen dark:bg-white ">
-      <div class=" mx-auto lg:py-32 container lg:px-8  ">
+      <div class=" mx-auto lg:py-8 container lg:px-8  ">
         {/* Pics */}
         <div class="relative pb-40">
           <div className="w-full">
@@ -187,7 +189,7 @@ const Collection = ({ option, setOption, title, data }) => {
 
         {/* Card */}
         <div className="grid grid-cols-4 grid-rows-3 gap-4 pt-12">
-          {collection_data.map((resource, index) => {
+          {collectibles.map((resource, index) => {
             return <NFTCard index={index} resource={resource} />;
           })}
         </div>
