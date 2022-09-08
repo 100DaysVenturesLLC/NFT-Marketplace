@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import avatar from "../../../assets/icons/avatar.png";
 import { collectioncard_data } from "../../../mocdata/collectionSpotlight";
 import { useNavigate } from "react-router-dom";
+import { collection_data } from "../../../mocdata/collectiondata";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -78,12 +79,12 @@ const Projects = () => {
                   <div class="w-full p-5  overlay h-2/5 absolute bottom-0 bg-black drop-shadow-lg dark:bg-white ">
                     <div className="absolute bottom-10  ">
                       <h2 class="card-title text-white text-shadow dark:text-foreground-secondary  ">
-                        Life hack
+                        {resource.name}
                       </h2>
                       <div className="flex">
                         <img src={avatar} alt="" />
                         <p className="text-white ml-2 dark:text-foreground-secondary ">
-                          Recur
+                          S.T.F.U
                         </p>
                       </div>
                     </div>

@@ -4,6 +4,8 @@ function ActivityTable({nftData}) {
   console.log("nft data in activity table",nftData)
   const metadata = JSON.parse(nftData?.metadata)
   console.log("ye metadata hai",metadata)
+  const date = new Date()
+  
   return (
     <div class="overflow-x-auto">
       <table class="table w-full">
