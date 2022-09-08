@@ -8,6 +8,7 @@ import { createCollection } from "../../../contracts/nftCollection";
 import { useConnectWallet } from "@web3-onboard/react";
 import axios from "axios"
 import Web3 from "web3";
+import { useSpinner } from "../../../context/Spinner";
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
 const projectSecret = "287cf1e138ac39c18b1f38b12463ceef";
@@ -23,14 +24,14 @@ const ipfs = create({
 });
 
 
-const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
+const CreateCollection = ({ setOpen, open, fetchUserCollections }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
   const [avatarFile, setAvatarFile] = useState();
   const [fileUrl, setFileUrl] = useState(null);
   const [avatarfileUrl, setAvatarFileUrl] = useState(null);
-
+  const spinner = useSpinner();
   async function onChange(e) {
     const file = e.target.files[0];
     setBannerFile(URL.createObjectURL(file));
@@ -61,16 +62,18 @@ const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
     symbol: "",
     description: "",
   });
-  
+
   const account = wallet?.accounts[0].address
 
   const sendCollectionData = async () => {
-    if(!account){
+
+    spinner.setLoadingState(true);
+    if (!account) {
       alert("Plese connect your wallet")
     }
     var form_data = new FormData();
     const { name, customCollectionURL, symbol } = formInput;
-    console.log(account,"ye acc address hai")
+    console.log(account, "ye acc address hai")
     const collectionAddress = await createCollection(name, symbol, account)
     console.log("collectionAddress", collectionAddress)
     // form_data.append('description', description);
@@ -100,17 +103,19 @@ const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
 
     axios(config)
       .then(function (response) {
+        setOpen(false)
         fetchUserCollections();
         setFileUrl(null)
         setAvatarFileUrl(null)
         wipeData()
-        setOpen(false)
       })
       .catch(function (error) {
         console.log(error);
       });
+    spinner.setLoadingState(false);
   };
-  const wipeData = () =>{
+
+  const wipeData = () => {
     setAvatarFileUrl(null)
     setAvatarFile(null)
     setBannerFile(null)
@@ -123,15 +128,15 @@ const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
       description: "",
     })
   }
-  useEffect(()=>{
-    if(!open){
+  useEffect(() => {
+    if (!open) {
       wipeData()
     }
-  },[open])
+  }, [open])
   useEffect(() => {
-   
-  }, [fileUrl,avatarfileUrl,formInput])
-  
+
+  }, [fileUrl, avatarfileUrl, formInput])
+
 
 
 
@@ -292,7 +297,7 @@ const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
         </div>
         <div className="mt-4 mb-4">
           <label htmlFor="" className="font-semibold text-base text-white">
-            External url 
+            External url
           </label>
           <input
             type="text"

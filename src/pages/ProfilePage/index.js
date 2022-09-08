@@ -115,10 +115,9 @@ const Profile = ({ option, setOption, title }) => {
             <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
               <div className="flex justify-between p-8">
                 <div className="">
-                  <p className="pb-2 font-light text-base text-white">Floor</p>
-                  <p className="pb-2 font-light text-base text-white">Volume</p>
-
-                  <p className="font-light text-base text-white">Items</p>
+                  <p className="pb-2 font-light text-base text-white">Followers</p>
+                  <p className="pb-2 font-light text-base text-white">Items</p>
+                  {/* <p className="font-light text-base text-white">Items</p> */}
                 </div>
 
                 <div>
@@ -137,25 +136,21 @@ const Profile = ({ option, setOption, title }) => {
 
               <div className="flex justify-between p-8 items-center">
                 <div className="">
-                  <p className="pb-2 font-light text-base text-white">
+                  {/* <p className="pb-2 font-light text-base text-white">
                     Blockchain
-                  </p>
+                  </p> */}
                   <p className="pb-2 font-light text-base text-white">
                     Address
                   </p>
                 </div>
 
                 <div className="flex flex-col ml-auto">
-                  <p className="pb-2  font-semibold text-base text-white ml-auto">
-                    Ethereum
-                  </p>
-                  <CopyToClipboard>
+                  <CopyToClipboard text={account}>
                     <div className="flex">
                       <p className="font-semibold text-base text-white">
-                        0xae5...e6c2
+                        {account.slice(0, 6)}...{account.slice(-4)}
                       </p>
-
-                      <img src={copybutton} className="ml-2" />
+                      <img src={copybutton} className="ml-2 cursor-pointer" />
                     </div>
                   </CopyToClipboard>
                 </div>

@@ -232,20 +232,20 @@ const CreateNFT = () => {
                         />
                       </label></label>
                     : */}
-                    <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
-                      <div class="flex flex-col place-items-center justify-center mt-32">
-                        <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
-                          Choose File
-                        </div>
-                        <p className="mt-12 text-white text-base font-semibold">
-                          Files Supported
-                        </p>
-                        <p className="text-[#BFCBD9] font-light text-base">
-                          JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
-                        </p>
+                  <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
+                    <div class="flex flex-col place-items-center justify-center mt-32">
+                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
+                        Choose File
                       </div>
-                      <input type="file" class="opacity-0" id="upload-photo" onChange={onChange} />
-                    </label>
+                      <p className="mt-12 text-white text-base font-semibold">
+                        Files Supported
+                      </p>
+                      <p className="text-[#BFCBD9] font-light text-base">
+                        JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
+                      </p>
+                    </div>
+                    <input type="file" class="opacity-0" id="upload-photo" onChange={onChange} />
+                  </label>
                   {/* } */}
                 </div>
               </div>
@@ -464,15 +464,14 @@ const CreateNFT = () => {
                 </p>
                 {
                   fileUrl ?
-
                     <img
-                      className="w-full h-[330px] rounded-lg object-cover cursor-pointer"
+                      className="w-full h-[330px] min-h-[330px] rounded-lg object-cover cursor-pointer"
                       src={fileImage}
                       alt=""
                     />
                     : <div>
 
-                      <div className="preview-box grid place-items-center items-center p-8 text-center">
+                      <div className="preview-box h-[330px] grid place-items-center items-center text-center p-8">
                         Upload file and choose collection to preview your brand new
                         NFT
                       </div>
@@ -493,7 +492,7 @@ const CreateNFT = () => {
               >
                 ✕
               </label>
-              <CreateCollection open={open} setOpen={setOpen} fetchUserCollections={fetchUserCollections}/>
+              <CreateCollection open={open} setOpen={setOpen} fetchUserCollections={fetchUserCollections} />
             </div>
           </div>
         </div>

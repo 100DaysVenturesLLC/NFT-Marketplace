@@ -9,6 +9,7 @@ import user from "../../assets/icons/user.svg";
 import { CgMenuRight, CgClose } from "react-icons/cg";
 import { useConnectWallet } from "@web3-onboard/react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,11 @@ function Navbar() {
   const [lightToggle, setLightToggle] = React.useState(
     colorTheme === "dark" ? true : false
   );
-
+  useEffect(() => {
+    if (wallet) {
+      toast.success("Wallet connected", { toastId: "toast-message" });
+    }
+  }, [wallet])
   const toggleDarkMode = (checked) => {
     setTheme(colorTheme);
     setLightToggle(checked);
@@ -120,7 +125,7 @@ function Navbar() {
               onChange={toggleDarkMode}
               checked={lightToggle}
               size={56}
-              // onClick={handleThemeSwitch}
+            // onClick={handleThemeSwitch}
             />
             <div className="hidden md:block ">
               <div className="flex items-center space-x-8">
@@ -164,19 +169,16 @@ function Navbar() {
               >
                 <div className="absolute w-5 transform dark:bg-black -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
                   <span
-                    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
-                      isOpen ? "rotate-45 delay-200" : "-translate-y-1.5"
-                    }`}
+                    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${isOpen ? "rotate-45 delay-200" : "-translate-y-1.5"
+                      }`}
                   ></span>
                   <span
-                    className={`absolute h-0.5 bg-white dark:bg-black transform transition-all duration-200 ease-in-out ${
-                      isOpen ? "w-0 opacity-50" : "w-5 delay-200 opacity-100"
-                    }`}
+                    className={`absolute h-0.5 bg-white dark:bg-black transform transition-all duration-200 ease-in-out ${isOpen ? "w-0 opacity-50" : "w-5 delay-200 opacity-100"
+                      }`}
                   ></span>
                   <span
-                    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${
-                      isOpen ? "-rotate-45 delay-200" : "translate-y-1.5"
-                    }`}
+                    className={`absolute h-0.5 w-5 bg-white dark:bg-black transform transition duration-300 ease-in-out ${isOpen ? "-rotate-45 delay-200" : "translate-y-1.5"
+                      }`}
                   ></span>
                 </div>
               </button>

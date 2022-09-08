@@ -42,7 +42,7 @@ function NftItem() {
   const [selected, setSelected] = useState("Overview");
   const [metadata, setMetadata] = useState({});
   const [nftData, setNftData] = useState({});
-  const [moreCollections,setMoreCollections]  = useState([]);
+  const [moreCollections, setMoreCollections] = useState([]);
   const navigate = useNavigate();
   const { contractAddress, tokenId } = useParams();
   const fetchNFTData = async () => {
@@ -85,7 +85,7 @@ function NftItem() {
             <div className="px-14">
               <div className="flex justify-center pb-6">
                 <div className="rounded-2xl w-[580px] h-[478px]">
-                <img className="w-full h-full object-cover rounded-" src={metadata.image} alt="pic" />
+                  <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" />
                 </div>
               </div>
               <div className="pt-6 flex justify-center pb-14">
@@ -109,22 +109,22 @@ function NftItem() {
                 </div>
               </div>
               <div className="pb-10">
-                {selected === "Overview" && <Overview metadata={metadata} nftData={nftData}/>}
+                {selected === "Overview" && <Overview metadata={metadata} nftData={nftData} />}
                 {selected === "Bids" && <Bids />}
-                {selected === "Properties" && <Properties metadata={metadata}/>}
-                {selected === "Activity" && <Activity nftData={nftData}/>}
+                {selected === "Properties" && <Properties metadata={metadata} />}
+                {selected === "Activity" && <Activity nftData={nftData} />}
               </div>
               <div className="text-foreground-primary text-shadow text-xl font-semibold pb-10 dark:text-foreground-secondary">
                 More From This Collection
               </div>
             </div>
           </div>
-            <TopSection metadata={metadata} nftData={nftData}/>
+          <TopSection metadata={metadata} nftData={nftData} />
         </div>
         <div className="grid grid-cols-1  items-center  pl-12 pb-10">
           <Carousel responsive={responsive}>
             {moreCollections.map((collectible, index) => {
-              return <NftItemCard collectible={collectible}/>;
+              return <NftItemCard collectible={collectible} />;
             })}
           </Carousel>
         </div>
