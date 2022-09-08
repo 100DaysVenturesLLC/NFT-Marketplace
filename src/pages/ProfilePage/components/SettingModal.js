@@ -8,6 +8,7 @@ import { useConnectWallet } from "@web3-onboard/react";
 import useUpdateAccount from "../../../hook/queries/account/useUpdateAccount";
 import axios from "axios";
 import Web3 from "web3";
+import { useSpinner } from "../../../context/Spinner";
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
 const projectSecret = "287cf1e138ac39c18b1f38b12463ceef";
@@ -24,6 +25,7 @@ const ipfs = create({
 
 const SettingModal = ({ setOpen, open, accDetails }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  const spinner= useSpinner();
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
   const [avatarFile, setAvatarFile] = useState();
@@ -63,6 +65,7 @@ const SettingModal = ({ setOpen, open, accDetails }) => {
   const account = wallet?.accounts[0].address;
 
   const SendProfileData = async () => {
+    spinner.setLoadingState(true);
     var form_data = new FormData();
     const { name, customCollectionURL, bio } = formInput;
     console.log(account, "ye acc address hai");
@@ -73,11 +76,12 @@ const SettingModal = ({ setOpen, open, accDetails }) => {
     form_data.append("customCollectionURL", customCollectionURL);
     form_data.append("banner", fileUrl);
     console.log("form data ye hai", form_data);
-    const res = useUpdateAccount(form_data).then(
+    const res = await useUpdateAccount(form_data).then(
       wipeData(),
       setOpen(false)
     );
     console.log(res);
+    spinner.setLoadingState(false);
   };
   const wipeData = () => {
     if (accDetails) {
@@ -142,7 +146,7 @@ const SettingModal = ({ setOpen, open, accDetails }) => {
   return (
     <div className="container ">
       <p className="text-3xl text-white font-bold text-shadow w-full mb-6">
-        Create Profile
+        Update Profile
       </p>
       <div className=" ">
         <div class="flex justify-start mt-4 mb-4">

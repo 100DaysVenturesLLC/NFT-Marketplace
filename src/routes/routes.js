@@ -7,7 +7,7 @@ import NftItem from "../pages/nftItem";
 import Explore from "../pages/Explore"
 import Stats from "../pages/Stats";
 import Profile from "../pages/ProfilePage";
-
+import STFU from "../pages/stfu";
 export const PublicRoutes = () => {
   return (
 <div className="">
@@ -19,6 +19,7 @@ export const PublicRoutes = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/collectible/:contractAddress/:tokenId" element={<NftItem />} />
       <Route path="/stats" element={<Stats />} />
+      <Route path="/drops/stfu" element={<STFU />} />
     </Routes>
 </div>
   
