@@ -42,6 +42,7 @@ function NftItem() {
   const [selected, setSelected] = useState("Overview");
   const [metadata, setMetadata] = useState({});
   const [nftData, setNftData] = useState({});
+  const [moreCollections,setMoreCollections]  = useState([]);
   const navigate = useNavigate();
   const { contractAddress, tokenId } = useParams();
   const fetchNFTData = async () => {
@@ -59,8 +60,22 @@ function NftItem() {
       navigate("/404");
     }
   };
+  const fetchMoreItems = async () => {
+    if (contractAddress && tokenId) {
+      const { data } = await axios.get(
+        `${BACKEND_URL}/collections/details/${contractAddress}/`
+      );
+
+      if (data) {
+        setMoreCollections(data.data.collectibles);
+      } else alert("asset not found");
+    } else {
+      setMoreCollections([])
+    }
+  };
   useEffect(() => {
     fetchNFTData();
+    fetchMoreItems();
   }, []);
   return (
     <div className="nft-item-center dark:bg-white">
@@ -94,9 +109,9 @@ function NftItem() {
                 </div>
               </div>
               <div className="pb-10">
-                {selected === "Overview" && <Overview />}
+                {selected === "Overview" && <Overview metadata={metadata} nftData={nftData}/>}
                 {selected === "Bids" && <Bids />}
-                {selected === "Properties" && <Properties />}
+                {selected === "Properties" && <Properties metadata={metadata}/>}
                 {selected === "Activity" && <Activity nftData={nftData}/>}
               </div>
               <div className="text-foreground-primary text-shadow text-xl font-semibold pb-10 dark:text-foreground-secondary">
@@ -108,8 +123,8 @@ function NftItem() {
         </div>
         <div className="grid grid-cols-1  items-center  pl-12 pb-10">
           <Carousel responsive={responsive}>
-            {collectioncard_data.map((resource, index) => {
-              return <NftItemCard />;
+            {moreCollections.map((collectible, index) => {
+              return <NftItemCard collectible={collectible}/>;
             })}
           </Carousel>
         </div>

@@ -17,7 +17,7 @@ function PurchaseComplete({setBuyStep}) {
                     <div className='pl-8 '>
                         <div className='text-sm text-[#23AEE3] font-bold pb-6'>Modernist Masks</div>
                         <div className='text-foreground-primary font-semibold pb-2'>Crateys #108</div>
-                        <div className='text-base font-semibold background-linear-gradient'>0.001 ETH</div>
+                        <div className='text-base font-semibold background-linear-gradient'>0.001 MATIC</div>
                     </div>
                 </div>
                 <div className='basis-1/2 flex flex-col justify-end'>

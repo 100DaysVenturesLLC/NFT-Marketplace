@@ -111,8 +111,8 @@ const Collection = ({ option, setOption, title, data }) => {
               </div>
 
               <div class="font-semibold text-base text-white dark:text-foreground-secondary">
-                <p className="pb-2 ">0.07 ETH</p>
-                <p className="pb-2 ">3.12 ETH</p>
+                <p className="pb-2 ">0.07 MATIC</p>
+                <p className="pb-2 ">3.12 MATIC</p>
                 <p className=" ">49</p>
               </div>
             </div>

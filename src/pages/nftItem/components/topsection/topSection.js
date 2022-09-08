@@ -73,7 +73,7 @@ function TopSection({ metadata, nftData }) {
                 Current Owner
               </div>
               <div className="text-foreground-primary text-base font-semibold dark:text-foreground-secondary">
-              {nftData?.createdBy?.slice(0, 6)}..
+              {nftData?.owner?.slice(0, 6)}..
               </div>
             </div>
           </div>
@@ -90,40 +90,40 @@ function TopSection({ metadata, nftData }) {
             </div>
           </div>
         </div>
-        <div className="bg-[#121a23] backdrop-blur-xl bg-opacity-20 w-full h-32 rounded-lg border mb-6">
-          <div className="columns-2 p-6">
+        {!nftData.activeListing?(<div className="bg-[#121a23] backdrop-blur-xl bg-opacity-20 w-full h-32 rounded-lg border mb-6">
+          <div className="columns-1 p-6">
             <div>
               <div className="text-foreground-primary opacity-60 text-xs font-semibold pb-2 dark:text-[#121A23]">
                 Price
               </div>
               <div className="text-foreground-primary text-xl font-semibold pb-2 dark:text-foreground-secondary">
-                81.8 ETH
+                {nftData.activeListing?.price} MATIC
               </div>
               <div className="text-foreground-primary opacity-60 text-xs font-semibold dark:text-[#121A23]">
-                $143868
+                $~{nftData.activeListing?.price * 0.83}$
               </div>
             </div>
-            <div>
+            {/* <div>
               <div>
                 <div className="text-foreground-primary opacity-60 text-xs font-semibold pb-2 dark:text-[#121A23]">
                   Price
                 </div>
                 <div className="background-linear-gradient text-foreground-primary text-xl font-semibold pb-2">
-                  0.1 w-ETH
+                  0.1 w-MATIC
                 </div>
                 <div className="text-foreground-primary opacity-60 text-xs font-semibold dark:text-[#121A23]">
                   by <span class="dark:text-foreground-secondary">Penguin</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
-        </div>
-        {!owner ? (
+        </div>):''}
+        {wallet?.accounts[0].address?.toLowerCase()!=nftData.owner?.toLowerCase() ? (
           <div>
             <div className="text-xs font-semibold text-foreground-primary opacity-60 pb-6 dark:text-[#121A23]">
               Last sale price
               <span className="text-base text-foreground-primary font-semibold pl-2  opacity-100   dark:text-foreground-secondary">
-                81.8 ETH
+                {nftData.lastTradedPrice} MATIC
               </span>
             </div>
             <div className="flex">

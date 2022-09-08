@@ -13,23 +13,23 @@ function TimedAuction({ setStep }) {
                 <div className='basis-1/2'>
                     <div className='text-base font-semibold text-foreground-primary pb-2'>Method</div>
                     <select className="select border-[#303F50] w-full max-w-xs bg-transparent mb-6" >
-                        <option disabled selected>ETH</option>
+                        <option disabled selected>MATIC</option>
                         <option>Han Solo</option>
                         <option>Greedo</option>
                     </select>
                     <div className='text-base font-semibold text-foreground-primary pb-2'>Asking Price</div>
                     <select className="select border-[#303F50] w-full max-w-xs bg-transparent mb-6" >
-                        <option disabled selected>ETH</option>
+                        <option disabled selected>MATIC</option>
                         <option>Han Solo</option>
                         <option>Greedo</option>
                     </select>
                     <div className='flex pb-2 justify-between'>
                         <div className='text-xs font-normal text-[#BFCBD9]'>Service Fee</div>
-                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>0.025 ETH<span className='pl-2 text-sm font-bold text-foreground-primary'>2.5%</span></div>
+                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>0.025 MATIC<span className='pl-2 text-sm font-bold text-foreground-primary'>2.5%</span></div>
                     </div>
                     <div className='flex pb-2 justify-between'>
                         <div className='text-xs font-normal text-[#BFCBD9]'>You Will Receive</div>
-                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>$ 1616<span className='pl-2 text-sm font-bold text-foreground-primary'>0.925 ETH</span></div>
+                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>$ 1616<span className='pl-2 text-sm font-bold text-foreground-primary'>0.925 MATIC</span></div>
                     </div>
                 </div>
                 <div className='basis-1/2'>

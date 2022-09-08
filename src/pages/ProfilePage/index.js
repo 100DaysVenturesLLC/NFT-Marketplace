@@ -108,10 +108,10 @@ const Profile = ({ option, setOption, title }) => {
 
                 <div>
                   <p className="pb-2 font-semibold text-base text-white">
-                    0.07 ETH
+                    0.07 MATIC
                   </p>
                   <p className="pb-2 font-semibold text-base text-white">
-                    3.12 ETH
+                    3.12 MATIC
                   </p>
                   <p className=" font-semibold text-base text-white">49</p>
                 </div>

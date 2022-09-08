@@ -1,6 +1,7 @@
 import React from "react";
 
-function PropertiesTable() {
+function PropertiesTable({metadata}) {
+
   return (
     <div class="overflow-x-auto">
       <table className="table w-full ">
@@ -18,14 +19,15 @@ function PropertiesTable() {
           </tr>
         </thead>
         <tbody>
-          <tr className="border-none dark:bg-white">
+          {metadata?.attributes?.map((attribute)=>{
+            <tr className="border-none dark:bg-white">
             {/* <th></th> */}
             <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
               <div className="flex ">
-                <div className="text-[#BFCBD9] text-sm pr-2 ">Background</div>
+                <div className="text-[#BFCBD9] text-sm pr-2 ">{attribute.trait_type}</div>
               </div>
               <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                Purple
+                {attribute.value}
               </div>
             </td>
             <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
@@ -34,54 +36,8 @@ function PropertiesTable() {
               </div>
             </td>
           </tr>
-          <tr className="border-none">
-            {/* <th></th> */}
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="flex">
-                <div className="text-[#BFCBD9] text-sm pr-2">Background</div>
-              </div>
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                Purple
-              </div>
-            </td>
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                <span className="float-right">12.9%</span>
-              </div>
-            </td>
-          </tr>
-          <tr className="border-none">
-            {/* <th></th> */}
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="flex">
-                <div className="text-[#BFCBD9] text-sm pr-2">Background</div>
-              </div>
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                Purple
-              </div>
-            </td>
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                <span className="float-right">12.9%</span>
-              </div>
-            </td>
-          </tr>
-          <tr className="border-none">
-            {/* <th></th> */}
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="flex">
-                <div className="text-[#BFCBD9] text-sm pr-2">Background</div>
-              </div>
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                Purple
-              </div>
-            </td>
-            <td className="bg-[#121a23] backdrop-blur-xl bg-opacity-30 border-none dark:bg-white">
-              <div className="text-base font-semibold text-foreground-primary dark:text-foreground-secondary">
-                <span className="float-right">12.9%</span>
-              </div>
-            </td>
-          </tr>
+          })}
+          
         </tbody>
       </table>
     </div>

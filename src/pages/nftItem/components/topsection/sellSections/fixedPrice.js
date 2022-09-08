@@ -22,11 +22,11 @@ function FixedPrice({ setStep, setListingData, listingData, create }) {
                     </div>
                     <div className='flex pb-2 justify-between'>
                         <div className='text-xs font-normal text-[#BFCBD9]'>Service Fee</div>
-                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>0.025 ETH<span className='pl-2 text-sm font-bold text-foreground-primary'>2.5%</span></div>
+                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>0.025 MATIC<span className='pl-2 text-sm font-bold text-foreground-primary'>2.5%</span></div>
                     </div>
                     <div className='flex pb-2 justify-between'>
                         <div className='text-xs font-normal text-[#BFCBD9]'>You Will Receive</div>
-                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>$ 1616<span className='pl-2 text-sm font-bold text-foreground-primary'>0.925 ETH</span></div>
+                        <div className=' text-sm font-normal pr-10 text-foreground-primary'>$ 1616<span className='pl-2 text-sm font-bold text-foreground-primary'>0.925 MATIC</span></div>
                     </div>
                 </div>
                 <div className='basis-1/2'>
