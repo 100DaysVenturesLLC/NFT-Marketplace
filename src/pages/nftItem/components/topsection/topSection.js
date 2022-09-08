@@ -34,7 +34,7 @@ function TopSection({ metadata, nftData }) {
                 Creator
               </div>
               <div className="text-foreground-primary text-base font-semibold dark:text-foreground-secondary">
-                {nftData?.createdBy?.slice(0, 8)}..
+                {nftData?.createdBy?.slice(0, 6)}..
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ function TopSection({ metadata, nftData }) {
                 Current Owner
               </div>
               <div className="text-foreground-primary text-base font-semibold dark:text-foreground-secondary">
-                Cradle
+              {nftData?.createdBy?.slice(0, 6)}..
               </div>
             </div>
           </div>

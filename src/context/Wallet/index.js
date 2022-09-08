@@ -21,7 +21,7 @@ import OnboardConfig, { onboardConfigFactory } from "./OnboardConfig";
 
 const onboard = init(
   onboardConfigFactory({
-    name: "Martel Invest",
+    name: "100 Days Ventures",
     icon: "https://martelinvest.s3.amazonaws.com/2022/5/8/1654685957817/icon128.jpg",
     description: "Connect your wallet to purchase tokens",
   })

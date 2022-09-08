@@ -23,7 +23,7 @@ const ipfs = create({
 });
 
 
-const CreateCollection = ({setOpen,open}) => {
+const CreateCollection = ({setOpen,open,fetchUserCollections}) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
   const [address, setAddress] = useState([]);
   const [bannerFile, setBannerFile] = useState();
@@ -100,7 +100,7 @@ const CreateCollection = ({setOpen,open}) => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));  
+        fetchUserCollections();
         setFileUrl(null)
         setAvatarFileUrl(null)
         wipeData()
@@ -283,7 +283,7 @@ const CreateCollection = ({setOpen,open}) => {
           <input
             type="text"
             placeholder="Type here"
-            class="input input-bordered w-full text-sm bg-[#0C111A] text-white  border border-gray-500"
+            class="input input-bordered w-full text-sm bg-[#0C111A] text-white border border-gray-500"
             value={formInput.description}
             onChange={(e) =>
               updateFormInput({ ...formInput, description: e.target.value })
