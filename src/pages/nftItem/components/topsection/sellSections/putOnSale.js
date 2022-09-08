@@ -14,7 +14,6 @@ function PutOnSale({ setStep, setListingData, listingData }) {
         setStep(3)
     }
 
-    console.log(listingData,"listingData")
     return (
         <div>
             <div className='text-foreground-primary text-shadow text-3xl font-bold pb-6'>
