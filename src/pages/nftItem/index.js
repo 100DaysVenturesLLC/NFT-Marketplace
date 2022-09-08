@@ -49,6 +49,7 @@ function NftItem() {
       const { data } = await axios.get(
         `${BACKEND_URL}/collectibles/details/${contractAddress}/${tokenId}`
       );
+
       if (data) {
         console.log(data.data);
         setNftData(data.data);
@@ -96,7 +97,7 @@ function NftItem() {
                 {selected === "Overview" && <Overview />}
                 {selected === "Bids" && <Bids />}
                 {selected === "Properties" && <Properties />}
-                {selected === "Activity" && <Activity />}
+                {selected === "Activity" && <Activity nftData={nftData}/>}
               </div>
               <div className="text-foreground-primary text-shadow text-xl font-semibold pb-10 dark:text-foreground-secondary">
                 More From This Collection

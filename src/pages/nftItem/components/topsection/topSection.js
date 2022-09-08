@@ -32,14 +32,13 @@ function TopSection({ metadata, nftData }) {
     })
   }, [nftData])
 
-  useEffect(() => {
-    if (listingData) {
-      console.log("divyanshu bol rha print nhi ho rha", listingData)
-    }
-  }, [listingData])
+  // useEffect(() => {
+  //   if (listingData) {
+  //     console.log("divyanshu bol rha print nhi ho rha", listingData)
+  //   }
+  // }, [listingData])
 
   const CreateListing = async () => {
-    console.log("listing data while creating", listingData)
     const response = await useListNft(listingData)
     console.log(response,"ye listing  create ka response hai")
   }
