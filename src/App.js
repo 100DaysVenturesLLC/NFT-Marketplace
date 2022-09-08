@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="">
       <BrowserRouter>
-        <Navbar />
+   <Navbar/>
         <PublicRoutes />
       </BrowserRouter>
     </div>
