@@ -69,7 +69,7 @@ const Profile = ({ option, setOption, title }) => {
             <div className="token-group">
               <div class="text-white">
                 <h3 class="text-3xl font-bold pb-3">
-                  {account.slice(0, 10)}...{account.slice(-5)}
+                  {account?.slice(0, 10)}...{account?.slice(-5)}
                 </h3>
                 <div class="flex pb-6">
                   <p class=""> {accDetails?.nickname}</p>
@@ -122,10 +122,7 @@ const Profile = ({ option, setOption, title }) => {
 
                 <div>
                   <p className="pb-2 font-semibold text-base text-white">
-                    0.07 MATIC
-                  </p>
-                  <p className="pb-2 font-semibold text-base text-white">
-                    3.12 MATIC
+                    450
                   </p>
                   <p className=" font-semibold text-base text-white">49</p>
                 </div>
@@ -148,7 +145,7 @@ const Profile = ({ option, setOption, title }) => {
                   <CopyToClipboard text={account}>
                     <div className="flex">
                       <p className="font-semibold text-base text-white">
-                        {account.slice(0, 6)}...{account.slice(-4)}
+                        {account?.slice(0, 6)}...{account?.slice(-4)}
                       </p>
                       <img src={copybutton} className="ml-2 cursor-pointer" />
                     </div>
