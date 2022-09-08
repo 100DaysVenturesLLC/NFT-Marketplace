@@ -13,96 +13,96 @@ export const collection_data = [
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  
   {
     title: "Modernist Masks",
     time:"20h : 35m : 08s",
-    lastTraded: "0.001 ETH",
-    instantPrice: "0.001 ETH",
+    lastTraded: "0.001 MATIC",
+    instantPrice: "0.001 MATIC",
     imageUrl: avatar,
   },
  

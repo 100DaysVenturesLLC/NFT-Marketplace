@@ -20,11 +20,11 @@ const CollectionCard = ({resource,index}) => {
                     <div class="flex justify-around flex items-center bg-[#303F50] text-white rounded-lg w-[248px] h-[63px]">
                         <div>
                             <p class="text-[12px] leading-[16px]">Total Volume</p>
-                            <p class="collection-card-title">0.001 ETH</p>
+                            <p class="collection-card-title">0.001 MATIC</p>
                         </div>
                         <div>
                             <p class="text-[12px] leading-[16px]">Floor Price</p>
-                            <p class="collection-card-title">0.001 ETH</p>
+                            <p class="collection-card-title">0.001 MATIC</p>
                         </div>
                     </div>
                 </div>

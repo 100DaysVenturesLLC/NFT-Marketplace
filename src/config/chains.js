@@ -15,7 +15,7 @@ export const MATIC_MAINNET = {
   export const Chains = [
     // {
     //   id: "0x1",
-    //   token: "ETH",
+    //   token: "MATIC",
     //   label: "Ethereum Mainnet",
     //   rpcUrl: ETH_MAINNET_RPC,
     // },

@@ -28,12 +28,12 @@ const Card = () => {
             <div class="ml-3 ">
               <p class="text-[12px] leading-[14px]">Last Traded</p>
               <p class="text-[16px] leading-[24px] mt-[10px] font-thin ">
-                0.001 ETH
+                0.001 MATIC
               </p>
             </div>
             <div class="mr-7">
               <p class="text-[12px] leading-[16px]">Instant Price</p>
-              <p class="text-[16px] leading-[24px]  mt-[10px]">0.001 ETH</p>
+              <p class="text-[16px] leading-[24px]  mt-[10px]">0.001 MATIC</p>
             </div>
           </div>
         </div>

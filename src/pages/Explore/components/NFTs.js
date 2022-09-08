@@ -239,7 +239,7 @@ const NFTs = () => {
                                             Collection Name
                                         </p>
                                         <p className="text-xs">
-                                            Floor: 16.48 ETH
+                                            Floor: 16.48 MATIC
                                         </p>
                                     </div>
                                 </div>
