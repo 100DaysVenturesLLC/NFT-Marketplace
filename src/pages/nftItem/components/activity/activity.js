@@ -1,8 +1,8 @@
 import React from 'react'
 import ActivityTable from './activityTable/activityTable'
-function Activity() {
+function Activity({nftData}) {
   return (
-    <div><ActivityTable/></div>
+    <div><ActivityTable nftData={nftData}/></div>
   )
 }
 
