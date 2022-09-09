@@ -11,6 +11,9 @@ module.exports = {
       sans: ["Poppins", "sans-serif"],
       mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
     },
+    boxShadow: {
+      '2xl': '0px 8px 36px rgba(132, 145, 179, 0.18)',
+    },
 
     fontWeight: {
       hairline: 100,
