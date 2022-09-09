@@ -9,7 +9,7 @@ const Card = ({ resource, index }) => {
       onClick={() => {
         navigate("/collection");
       }}
-      className=" cursor-pointer collection-card-container justify-between flex items-center px-8 py-4 dark:bg-white  "
+      className=" cursor-pointer collection-card-container justify-between flex items-center px-8 py-4 dark:bg-white border border-[#6A8099] dark:border-0 dark:backdrop-blur-xl"
     >
       <div className="flex items-center ">
         <div className="flex ">
