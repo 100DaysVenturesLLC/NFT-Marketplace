@@ -56,9 +56,9 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <a href="/">
+              <Link to="/">
                 <img className="h-8 w-8" src={Logo} alt="Workflow" />
-              </a>
+              </Link>
             </div>
 
             <div className="hidden md:block">
@@ -97,26 +97,26 @@ function Navbar() {
                     </div>
                   </form>
                 </div>
-                <a
-                  href="/explore"
+                <Link
+                  to="/explore"
                   className=" dark:text-foreground-secondary text-white px-6 py-2 dark:text-red rounded-md text-md font-bold"
                 >
                   Explore
-                </a>
+                </Link>
 
-                <a
-                  href="/stats"
+                <Link
+                  to="/stats"
                   className="text-white dark:text-foreground-secondary hover:text-white px-6 py-2 rounded-md text-md font-bold"
                 >
                   Stats
-                </a>
+                </Link>
 
-                <a
-                  href="/createnft"
+                <Link
+                  to="/createnft"
                   className="text-white dark:text-foreground-secondary  hover:text-white px-6 py-2 rounded-md text-md font-bold"
                 >
                   Create
-                </a>
+                </Link>
               </div>
             </div>
           </div>

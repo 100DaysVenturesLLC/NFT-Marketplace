@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import CollectionCard from '../../../components/Cards/CollectionCard'
 import cards from "./mockdata.json"
 import { BiFilterAlt, BiArrowToLeft } from "react-icons/bi"
@@ -12,20 +12,20 @@ import getAllCollections from '../../../hook/queries/getAllCollections'
 import { useNavigate } from "react-router-dom";
 
 const Collections = () => {
-    const navigate= useNavigate()
-    const [collection,setCollection] = useState()
+    const navigate = useNavigate()
+    const [collection, setCollection] = useState()
 
 
-    const getCollections = async() => {
-       const response = await getAllCollections()
-       setCollection(response)
+    const getCollections = async () => {
+        const response = await getAllCollections()
+        setCollection(response)
     }
 
     useEffect(() => {
         getCollections()
     }, [])
-    
-console.log(collection,"ye state hai")
+
+    console.log(collection, "ye state hai")
     return (
         <section className="py-3">
             <div class="drawer h-full">
@@ -42,28 +42,24 @@ console.log(collection,"ye state hai")
                         <div className="grid grid-cols-4 gap-6">
                             {collection?.data.map((item) => {
                                 return (
-                                    <div onClick={()=> {navigate(`/collections/${item.contractAddress}`)}}><CollectionCard  resource={item} /></div>
-                                    
+                                    <div onClick={() => { navigate(`/collections/${item.contractAddress}`) }}><CollectionCard resource={item} /></div>
+
                                 )
                             })}
 
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between">
-                  <div class="font-bold flex gap-3 items-center">
-                    <img src={tezos} alt="icon" />
-                    Tezos
-                  </div>
-                  <input
-                    type="radio"
-                    name="radio-6"
-                    class="radio bg-grey checked:bg-blue-500"
-                  />
+                <div class="drawer-side">
+                    <label for="my-drawer" class="drawer-overlay"></label>
+                    <ul class="menu p-4 overflow-y-auto bg-[#0C111A] w-80 text-base-content flex flex-col gap-3">
+
+                    </ul>
                 </div>
-              </div>
-    </section>
-  );
+            </div>
+
+        </section>
+    );
 };
 
 export default Collections;
