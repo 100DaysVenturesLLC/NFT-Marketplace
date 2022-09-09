@@ -66,14 +66,14 @@ const Projects = () => {
               <div
                 onClick={() => navigate("/nftitem")}
                 key={index}
-                class="card w-[380px] h-[480px] mr-6 my-3 cursor-pointer  "
+                class="card bg-[#040720] border border-[#000] w-[380px] h-[480px] mr-6 my-3 cursor-pointer"
               >
-                <div className="relative w-full h-full  ">
+                <div className="relative w-full h-full">
                   <div className="w-full h-full">
                     <img
                       src={resource.imageUrl}
                       alt="car!"
-                      className="w-full h-full "
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   <div class="w-full p-5  overlay h-2/5 absolute bottom-0 bg-black drop-shadow-lg dark:bg-white ">

@@ -17,6 +17,8 @@ import { useConnectWallet } from "@web3-onboard/react";
 import useCreateNft from "../../hook/auth/useCreateNFT";
 import { BACKEND_URL } from "../../utils/config/config";
 import axios from "axios";
+import { useSpinner } from "../../context/Spinner";
+import { toast } from "react-toastify";
 
 
 const projectId = "2E7kseWOlNiuhKeOt2dGpkYRhT2";
@@ -130,9 +132,12 @@ const CreateNFT = () => {
     setUnlockableCheck(!unlockableCheck);
   };
 
+  const spinner = useSpinner();
 
   async function createData() {
+    spinner.setLoadingState(true);
     try {
+
       const { name, description } = formInput;
 
       if (!name || !description || !fileUrl) return;
@@ -179,8 +184,10 @@ const CreateNFT = () => {
       axios(config)
         .then(function (response) {
           console.log(response.data);
-          setFileUrl(null)
+          setFileUrl(null);
+          spinner.setLoadingState(false);
           navigate(`/collectible/${contractAddress}/${tokenId}`)
+          toast.success("NFT Created Successfully", { toastId: "toast-message" })
         })
         .catch(function (error) {
           console.log(error);
