@@ -205,7 +205,7 @@ const CreateNFT = () => {
     <div className="createnft dark:bg-white">
       <div className="container mx-auto">
         <div className="pl-60  lg:py-16 flex flex-col">
-          <p className="text-3xl text-white font-bold text-shadow ">
+          <p className="text-3xl text-white font-bold text-shadow dark:text-foreground-secondary">
             Create NFT
           </p>
           <div className="flex ">
@@ -234,13 +234,13 @@ const CreateNFT = () => {
                     : */}
                   <label class="flex flex-col w-full h-[330px] box-border border-2 rounded-lg border-dashed border-gray-500">
                     <div class="flex flex-col place-items-center justify-center mt-32">
-                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm">
+                      <div className="btn bg-white text-black px-8 py-2 font-bold text-sm dark:text-foreground-secondary">
                         Choose File
                       </div>
-                      <p className="mt-12 text-white text-base font-semibold">
+                      <p className="mt-12 text-white text-base font-semibold dark:text-foreground-secondary">
                         Files Supported
                       </p>
-                      <p className="text-[#BFCBD9] font-light text-base">
+                      <p className="text-[#BFCBD9] font-light text-base dark:text-foreground-secondary">
                         JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF
                       </p>
                     </div>
@@ -251,7 +251,7 @@ const CreateNFT = () => {
               </div>
               <div className="flex flex-col mt-16">
                 <div className="flex flex-col ">
-                  <label className="text-base text-white font-semibold  mb-2">
+                  <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary">
                     Name
                   </label>
                   <input
