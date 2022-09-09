@@ -409,7 +409,7 @@ code {
 
 #toast-message {
   border-radius: 5px;
-  background-color: transparent;
+  background-color: #040720;
   border: 2px solid #fd3dce;
   /* box-shadow: 0px 1px 24px #fd3dce; */
   color: #fff;
