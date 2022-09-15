@@ -50,7 +50,6 @@ function NftItem() {
       const { data } = await axios.get(
         `${BACKEND_URL}/collectibles/details/${contractAddress}/${tokenId}`
       );
-
       if (data) {
         console.log(data.data);
         setNftData(data.data);
@@ -85,7 +84,11 @@ function NftItem() {
             <div className="px-14">
               <div className="flex justify-center pb-6">
                 <div className="rounded-2xl w-[580px] h-[478px]">
-                  <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" />
+                  {metadata.animation_url ? <video>
+                    <source src={metadata.animation_url}
+                      type="video/mp4" />
+                  </video> : <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" />}
+                  {/* <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" /> */}
                 </div>
               </div>
               <div className="pt-6 flex justify-center pb-14">
