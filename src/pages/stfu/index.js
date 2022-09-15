@@ -22,21 +22,27 @@ const data = {
     uri: "https://ipfs.io/ipfs/",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
+    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    metadata: {},
   },
   thorite: {
     uri: "https://ipfs.io/ipfs/",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
+    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    metadata: {},
   },
   nano: {
     uri: "https://ipfs.io/ipfs/",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
+    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    metadata: {},
   },
 };
 const STFU = ({ option, setOption, title }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-  const spinner = useSpinner()
+  const spinner = useSpinner();
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("All");
@@ -47,9 +53,13 @@ const STFU = ({ option, setOption, title }) => {
   const account = wallet?.accounts[0].address;
 
   const handleMint = async () => {
-    spinner.setLoadingState(true)
-    const response = await mintNFT("0x4262a0867b653144794e8eab397d7b6e3e695ea5",data[tier].uri,account);
-    spinner.setLoadingState(false)
+    spinner.setLoadingState(true);
+    const response = await mintNFT(
+      "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+      data[tier].uri,
+      account
+    );
+    spinner.setLoadingState(false);
   };
   useEffect(() => {}, []);
   const handleClick = () => {
@@ -125,7 +135,10 @@ const STFU = ({ option, setOption, title }) => {
               </label>
             </div>
             <div className="card-actions justify-end">
-              <Button className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3" onClick={handleMint}>
+              <Button
+                className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
+                onClick={handleMint}
+              >
                 Mint License
               </Button>
             </div>
