@@ -157,6 +157,7 @@ const CreateNFT = () => {
         description,
         image: fileUrl,
         attributes: [...formValues],
+        animation_url:'https://ipfs.io/ipfs/QmQFQThd2H4MAWQkxvxAR9TD3i5JquarpTQgxdcsfdpHP4',
         unlockable: unlockableCheck,
         explicit: explicitCheck,
       };
