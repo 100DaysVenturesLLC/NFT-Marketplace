@@ -4,19 +4,7 @@ import getAllNft from '../../../hook/queries/account/getAllNft';
 import { useConnectWallet } from "@web3-onboard/react";
 
 
-const AllNFTs = () => {
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-  const account = wallet?.accounts[0].address
-  const [NftDetails, setNftDetails] = useState()
-  const getNftDetails = async () => {
-    const response = await getAllNft(account)
-    console.log(response, "hello")
-    setNftDetails(response)
-  }
-
-  useEffect(() => {
-    getNftDetails()
-  }, [wallet])
+const AllNFTs = ({NftDetails}) => {
 
 
   return (

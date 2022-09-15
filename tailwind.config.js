@@ -41,7 +41,7 @@ module.exports = {
         },
         background: {
           primary: "#0C111A",
-          secondary: "#ffffff",
+          secondary: "#FD3DCE",
           highlight: "#23AEE3",
           Error: "#EA3A3D",
           success: " #01FF85",

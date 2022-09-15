@@ -32,12 +32,12 @@ export const createCollection = async (name, symbol, from) => {
     .send({ from });
   return receipt.events[0].address;
 };
-export const mintDropNFTWithUSDC = async (collection, from) => {
+export const mintDropNFTWithUSDC = async (collection, from, noOfTokens) => {
   const web3 = new Web3(window.ethereum);
   const contractInstance = new web3.eth.Contract(DropNFTABI, collection);
   const tokenId = await contractInstance.methods.tokenCounter().call();
   const receipt = await contractInstance.methods
-    .mintUsingTokens(from)
+    .mintUsingTokens(from,noOfTokens)
     .send({ from });
   return { receipt, tokenId };
 };

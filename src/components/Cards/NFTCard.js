@@ -15,11 +15,11 @@ const NFTCard = ({ resource, index }) => {
         <div class=" grid justify-items-center">
           <div class="flex flex-row flex justify-between flex items-center w-[248px] h-[16px] text-white  text-[12px] leading-[16px] font-Montserrat mt-3 pb-[4px ] dark:text-foreground-secondary">
             <p class=" ml-1 font-bold">{metadata.name}</p>
-            <p class="font-light mr-1">11:22:30</p>
+            <p class="font-light mr-1">#{resource.tokenId}</p>
           </div>
         </div>
         <figure>
-          <img class="mt-3 object-cover w-[248px] h-[216px]" src={metadata.image} alt="img" />
+          <img class="mt-3 object-contain w-[248px] h-[216px]" src={metadata.image} alt="img" />
         </figure>
         <div class="card-body ">
           <div class="flex justify-between items-center text-white rounded-lg w-[248px] h-[63px] ">
@@ -28,7 +28,7 @@ const NFTCard = ({ resource, index }) => {
                 Last Traded
               </p>
               <p class="text-[16px] leading-[24px] mt-[10px] font-thin dark:text-[#121A23] ">
-                {resource.lastTraded}
+                -{}
               </p>
             </div>
             <div class="mr-7">

@@ -7,16 +7,17 @@ import thoriteImage from "../../assets/images/image 3 (4).png";
 import ironImage from "../../assets/images/image 3 (3).png";
 import nanoImage from "../../assets/images/image 3 (5).png";
 import Button from "../../components/Button/Button";
-import { mintNFT,mintDropNFTWithUSDC } from "../../contracts/nftCollection";
+import { mintNFT, mintDropNFTWithUSDC } from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
+import CountSlider from "./components/Slider";
 const data = {
   iron: {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
     collection: "0xbb78Eb4a7Ddf49c239eb5ead4E5055C59D52b6C1",
-    price:150,
+    price: 150,
     metadata: {
       name: "STFU: IRON PILOT LICENSE",
       description:
@@ -34,8 +35,8 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmSTvHqQfQzPFFCjE6VqftbAoh9dpFBRYMTGVVvGGRgpNL",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
-    collection: "0x0F5B11Da3D6fB16d3B9725416CF968D7F0674B39",
-    price:350,
+    collection: "0x28287dA7D0fAb3a1460C7eabAE7Af3e5060467CD",
+    price: 350,
     metadata: {
       name: "STFU: THORITE PILOT LICENSE",
       description:
@@ -54,7 +55,7 @@ const data = {
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
     collection: "0x9Fc182a8Ff20f02862634a183cbffC25d8C1f318",
-    price:1000,
+    price: 1000,
     metadata: {
       name: "STFU: NANO PILOT LICENSE",
       description:
@@ -74,14 +75,18 @@ const STFU = ({ option, setOption, title }) => {
   const navigate = useNavigate();
   const spinner = useSpinner();
   const [tier, setTier] = useState("iron");
+  const [tokens,setTokens] = useState(1)
   const account = wallet?.accounts[0].address;
 
   const handleMint = async () => {
     spinner.setLoadingState(true);
-    const response = await mintDropNFTWithUSDC(
-      data[tier].collection,
-      account
-    );
+    if (!account) {
+      toast.error("Please connect your wallet");
+      spinner.setLoadingState(false);
+      return;
+    }
+    try{
+      const response = await mintDropNFTWithUSDC(data[tier].collection, account,tokens);
     console.log(response);
     //TODO create backend entry
     const backendPayload = {
@@ -100,16 +105,25 @@ const STFU = ({ option, setOption, title }) => {
       .then(function (response) {
         console.log(response.data);
         spinner.setLoadingState(false);
-        navigate(`/collectible/${data[tier].collection}/${backendPayload.tokenId}`);
+        navigate(
+          `/collectible/${data[tier].collection}/${backendPayload.tokenId}`
+        );
         toast.success("NFT Created Successfully", { toastId: "toast-message" });
       })
       .catch(function (error) {
         console.log(error);
       });
-    spinner.setLoadingState(false);
     toast.success("Minting Successful", {
       toastId: "toast-message",
     });
+    }catch(err){
+      toast.error("Minting Failed", {
+        toastId: "toast-message",
+      });
+    }finally{
+      spinner.setLoadingState(false);
+    }
+    
   };
   useEffect(() => {}, []);
 
@@ -120,7 +134,7 @@ const STFU = ({ option, setOption, title }) => {
         <h1 className="text-3xl font-bold text-center text-white">
           Get Your Pilot license now!!
         </h1>
-        <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[400px] mx-auto">
+        <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[480px] mx-auto">
           <figure className="w-1/2 bg-[#040720]">
             {tier === "iron" && (
               <img src={ironImage} className="w-3/4" alt="Album" />
@@ -130,11 +144,16 @@ const STFU = ({ option, setOption, title }) => {
             )}
             {tier === "nano" && (
               <img src={nanoImage} className="w-3/4" alt="Album" />
-            )}
+            )}<br/>
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">Get your {tier} license now</h2>
-            <p>{data[tier].features}<br/><span className="font-bold	">Price: ${data[tier].price}</span></p>
+            <p>
+              {data[tier].features}
+              <br />
+              <span className="font-bold	">Price: ${data[tier].price * tokens}</span>
+            </p>
+            <CountSlider handleUpdate={setTokens}/>
             <div className="form-control">
               <label className="label cursor-pointer hover:border hover:border-[#FD3DCE]">
                 <span className="label-text text-white">Iron Tier</span>
@@ -173,10 +192,10 @@ const STFU = ({ option, setOption, title }) => {
             </div>
             <div className="card-actions justify-end">
               <Button
-                className="bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
+                className="w-[200px] bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
                 onClick={handleMint}
               >
-                Mint License
+                Mint {tokens} License{tokens==1?"":"s"}
               </Button>
             </div>
           </div>

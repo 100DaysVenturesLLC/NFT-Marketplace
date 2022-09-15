@@ -64,7 +64,7 @@ const Projects = () => {
               // </div>
 
               <div
-                onClick={() => navigate("/nftitem")}
+                onClick={() => navigate("/drops/stfu")}
                 key={index}
                 class="card bg-[#040720] border border-[#000] w-[380px] h-[480px] mr-6 my-3 cursor-pointer"
               >

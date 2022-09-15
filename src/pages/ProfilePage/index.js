@@ -12,26 +12,36 @@ import { useConnectWallet } from "@web3-onboard/react";
 import Button from "../../components/Button/Button";
 import Setting from "./components/SettingModal";
 import fetchAccount from "../../hook/queries/account/fetchAccount";
-
+import getAllNft from '../../hook/queries/account/getAllNft';
 const Profile = ({ option, setOption, title }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [active, setActive] = useState("onsale");
   const [snackopen, setSnackOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("All");
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [copyText, setCopyText] = useState("");
-  const [accDetails, setAccDetails] = useState()
+  const [accDetails, setAccDetails] = useState();
   const account = wallet?.accounts[0].address;
+  const [NftDetails, setNftDetails] = useState()
+  const getNftDetails = async () => {
+    const response = await getAllNft(account)
+    console.log(response, "hello")
+    setNftDetails(response)
+  }
+
+  useEffect(() => {
+    getNftDetails()
+  }, [wallet])
 
   const fetchAccountDetails = async () => {
     if (account) {
       const response = await fetchAccount(account);
-      setAccDetails(response.data)
+      setAccDetails(response.data);
     }
-  }
+  };
   useEffect(() => {
-    fetchAccountDetails()
-  }, [account])
+    fetchAccountDetails();
+  }, [account]);
   const handleClick = () => {
     setSnackOpen(true);
     toast.success("Copied to clipboard", {
@@ -53,14 +63,23 @@ const Profile = ({ option, setOption, title }) => {
         <div class="relative pb-40">
           <div className="w-full">
             <img
-              src={accDetails?.bannerImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.bannerImageURI}` : Rectangle}
+              src={
+                accDetails?.bannerImageURI
+                  ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.bannerImageURI}`
+                  : Rectangle
+              }
               className="h-[275px] w-full rounded-2xl object-cover"
             />
           </div>
           <div className="absolute top-[180px] left-10">
             <img
-              src={accDetails?.avatarImageURI ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.avatarImageURI}` : Robo}
-              className="h-[180px] w-[180px] rounded-2xl" />
+              src={
+                accDetails?.avatarImageURI
+                  ? `https://pixelpark-images.s3.amazonaws.com/${accDetails?.avatarImageURI}`
+                  : Robo
+              }
+              className="h-[180px] w-[180px] rounded-2xl"
+            />
           </div>
           <div></div>
         </div>
@@ -78,16 +97,17 @@ const Profile = ({ option, setOption, title }) => {
                   <p class=""> {accDetails?.bio}</p>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div class="flex items-center btn  bg-white text-black px-6  ">
+                  {/* <div class="flex items-center btn  bg-white text-black px-6  ">
                     <FiUserPlus class="mr-2  " />
                     <p> Follow</p>
+                  </div> */}
+                  <div className="flex justify-center rounded-lg w-32 border p-4 border-gray-500">
+                    SHARE 
+                    {/* SHARE <FiUpload /> */}
                   </div>
-                  <div className="rounded-lg border p-4 border-gray-500">
-                    <FiUpload />
-                  </div>
-                  <div className="rounded-lg border p-4 border-gray-500">
+                  {/* <div className="rounded-lg border p-4 border-gray-500">
                     <BsThreeDots />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -109,22 +129,25 @@ const Profile = ({ option, setOption, title }) => {
           </div>
           <div>
             <label
-              for="my-modal-4" onClick={() => setOpen(true)} className="mb-6 flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer hover:underline">
+              for="my-modal-4"
+              onClick={() => setOpen(true)}
+              className="mb-6 flex flex-end justify-end text-background-highlight font-bold text-sm mt-2 cursor-pointer hover:underline"
+            >
               Edit Profile
             </label>
             <div className="w-[380px]  border border-gray-700 rounded-2xl backdrop-blur-lg backdrop-filter ">
               <div className="flex justify-between p-8">
                 <div className="">
-                  <p className="pb-2 font-light text-base text-white">Followers</p>
+                  <p className="pb-2 font-light text-base text-white">
+                    Followers
+                  </p>
                   <p className="pb-2 font-light text-base text-white">Items</p>
                   {/* <p className="font-light text-base text-white">Items</p> */}
                 </div>
 
                 <div>
-                  <p className="pb-2 font-semibold text-base text-white">
-                    450
-                  </p>
-                  <p className=" font-semibold text-base text-white">49</p>
+                  <p className="pb-2 font-semibold text-base text-white">-</p>
+                  <p className=" font-semibold text-base text-white">{NftDetails?.data?.length}</p>
                 </div>
               </div>
               <div className="px-4">
@@ -241,7 +264,12 @@ const Profile = ({ option, setOption, title }) => {
             </div>
           </div>
         </div>
-        <input type="checkbox" checked={open} id="my-modal-4" class="modal-toggle" />
+        <input
+          type="checkbox"
+          checked={open}
+          id="my-modal-4"
+          class="modal-toggle"
+        />
         <div class="modal bg-blur-2xl">
           <div className="w-[780px] relative bg-[#121A23] py-10 px-12 rounded-2xl">
             <label
@@ -254,7 +282,7 @@ const Profile = ({ option, setOption, title }) => {
             <Setting open={open} setOpen={setOpen} accDetails={accDetails} />
           </div>
         </div>
-        {activeTab === "All" && <AllNFTs />}
+        {activeTab === "All" && <AllNFTs NftDetails={NftDetails}/>}
         {/* {activeTab === "trending" && <SingleCollections />}
           {activeTab === "top" && <AllCollectionCard />}
           {activeTab === "art" && <NoItems />}
