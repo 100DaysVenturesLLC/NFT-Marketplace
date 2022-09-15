@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.7.15",
-    "@types/react": "^18.0.18",
+    "@types/react": "^16.14.32",
     "@types/react-dom": "^18.0.6",
     "@web3-onboard/coinbase": "^2.1.1",
     "@web3-onboard/dcent": "^2.1.1",
