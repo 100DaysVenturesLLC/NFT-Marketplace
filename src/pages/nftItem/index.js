@@ -69,7 +69,7 @@ function NftItem() {
         setMoreCollections(data.data.collectibles);
       } else alert("asset not found");
     } else {
-      setMoreCollections([])
+      setMoreCollections([]);
     }
   };
   useEffect(() => {
@@ -84,10 +84,20 @@ function NftItem() {
             <div className="px-14">
               <div className="flex justify-center pb-6">
                 <div className="rounded-2xl w-[580px] h-[478px]">
-                  {metadata.animation_url ? <video>
-                    <source src={metadata.animation_url}
-                      type="video/mp4" />
-                  </video> : <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" />}
+                  {metadata.animation_url ? (
+                    <video
+                      className="w-full h-full object-cover rounded-xl  border"
+                      controls
+                    >
+                      <source src={metadata.animation_url} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      className="w-full h-full object-cover rounded-xl  border"
+                      src={metadata.image}
+                      alt="pic"
+                    />
+                  )}
                   {/* <img className="w-full h-full object-cover rounded-xl  border" src={metadata.image} alt="pic" /> */}
                 </div>
               </div>
@@ -112,9 +122,13 @@ function NftItem() {
                 </div>
               </div>
               <div className="pb-10">
-                {selected === "Overview" && <Overview metadata={metadata} nftData={nftData} />}
+                {selected === "Overview" && (
+                  <Overview metadata={metadata} nftData={nftData} />
+                )}
                 {selected === "Bids" && <Bids />}
-                {selected === "Properties" && <Properties metadata={metadata} />}
+                {selected === "Properties" && (
+                  <Properties metadata={metadata} />
+                )}
                 {selected === "Activity" && <Activity nftData={nftData} />}
               </div>
               <div className="text-foreground-primary text-shadow text-xl font-semibold pb-10 dark:text-foreground-secondary">

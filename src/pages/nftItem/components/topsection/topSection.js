@@ -49,7 +49,7 @@ function TopSection({ metadata, nftData }) {
     <div className="px-14 basis-1/2">
       <div className="sticky top-20">
         <div className="text-sm font-bold text-foreground-primary py-6 dark:text-foreground-secondary">
-          Modernist Masks
+          {nftData.collection_name}
         </div>
         <div className="text-3xl font-bold text-foreground-primary pb-10 dark:text-foreground-secondary">
           {metadata.name}
