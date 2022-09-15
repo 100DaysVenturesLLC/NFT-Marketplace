@@ -50,19 +50,15 @@ const STFU = ({ option, setOption, title }) => {
       account
     );
     spinner.setLoadingState(false);
+    toast.success("Minting Successfull", {
+      toastId: "toast-message",
+    })
   };
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   const handleClick = () => {
     setSnackOpen(true);
     toast.success("Copied to clipboard", {
       toastId: "toast-message",
-      position: "bottom-right",
-      autoClose: 1000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
   };
 
