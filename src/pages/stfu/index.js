@@ -1,16 +1,6 @@
-import Rectangle from "../../assets/images/Rectangle.jpeg";
-import Robo from "../../assets/images/Robo.jpeg";
-import { FiUserPlus, FiUpload } from "react-icons/fi";
-import { BsThreeDots } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import Dropdown from "../../components/DropDown";
-import copybutton from "../../assets/images/carbon_copy.png";
 import { useConnectWallet } from "@web3-onboard/react";
-
-import fetchAccount from "../../hook/queries/account/fetchAccount";
-
 import thoriteImage from "../../assets/images/image 3 (4).png";
 import ironImage from "../../assets/images/image 3 (3).png";
 import nanoImage from "../../assets/images/image 3 (5).png";
@@ -55,7 +45,7 @@ const STFU = ({ option, setOption, title }) => {
   const handleMint = async () => {
     spinner.setLoadingState(true);
     const response = await mintNFT(
-      "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+      data[tier].collection,
       data[tier].uri,
       account
     );
@@ -85,13 +75,13 @@ const STFU = ({ option, setOption, title }) => {
         </h1>
         <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[400px] mx-auto">
           <figure className="w-1/2 bg-[#040720]">
-            {tier == "iron" && (
+            {tier === "iron" && (
               <img src={ironImage} className="w-3/4" alt="Album" />
             )}
-            {tier == "thorite" && (
+            {tier === "thorite" && (
               <img src={thoriteImage} className="w-3/4" alt="Album" />
             )}
-            {tier == "nano" && (
+            {tier === "nano" && (
               <img src={nanoImage} className="w-3/4" alt="Album" />
             )}
           </figure>
