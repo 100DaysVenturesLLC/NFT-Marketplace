@@ -10,9 +10,9 @@ const LandingPage = () => {
     <div className=" w-full bg-[#0c111a]">
       <HeroSection />
       <Projects />
-      <TopCollection />
+      {/* <TopCollection />
       <RecommendedCreators/>
-      <PopularCategory/>
+      <PopularCategory/> */}
       
     </div>
   );

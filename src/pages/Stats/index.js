@@ -6,10 +6,10 @@ const Stats = () => {
   const [activeTab, setActiveTab] = useState("rankings");
 
   const tabs = [
-    {
-      label: "Rankings",
-      link: "rankings",
-    },
+    // {
+    //   label: "Rankings",
+    //   link: "rankings",
+    // },
     {
       label: "Activity",
       link: "activity",

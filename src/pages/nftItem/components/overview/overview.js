@@ -27,7 +27,7 @@ function Overview({metadata,nftData}) {
         </div>
       </div>
 
-      <div className="w-full h-[280px] text-white py-6 px-6 bg-[#121a23] bg-opacity-30 backdrop-blur-xl rounded-2xl dark:text-[#121A23] dark:bg-white">
+      <div className="w-full h-[250px] text-white py-6 px-6 bg-[#121a23] bg-opacity-30 backdrop-blur-xl rounded-2xl dark:text-[#121A23] dark:bg-white">
         <div className="text-foreground-primary text-shadow text-xl font-semibold pb-4 dark:text-foreground-secondary">
           Details
         </div>
@@ -43,16 +43,16 @@ function Overview({metadata,nftData}) {
         </div>
         <div className="flex justify-between pb-4">
           <div>Token Standard</div>
-          <div className=" text-base font-semibold">CryptoPunks</div>
+          <div className=" text-base font-semibold">ERC721</div>
         </div>
         <div className="flex justify-between pb-4">
           <div>Blockchain</div>
-          <div className=" text-base font-semibold">Matic</div>
+          <div className=" text-base font-semibold">Polygon</div>
         </div>
-        <div className="flex justify-between pb-4">
+        {/* <div className="flex justify-between pb-4">
           <div>Creator Earnings</div>
           <div className=" text-base font-semibold">0%</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import thoriteImage from "../../assets/images/image 3 (4).png";
 import ironImage from "../../assets/images/image 3 (3).png";
 import nanoImage from "../../assets/images/image 3 (5).png";
 import Button from "../../components/Button/Button";
-import { mintNFT } from "../../contracts/nftCollection";
+import { mintNFT,mintDropNFTWithUSDC } from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
 const data = {
@@ -15,7 +15,8 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
-    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    collection: "0xbb78Eb4a7Ddf49c239eb5ead4E5055C59D52b6C1",
+    price:150,
     metadata: {
       name: "STFU: IRON PILOT LICENSE",
       description:
@@ -33,7 +34,8 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmSTvHqQfQzPFFCjE6VqftbAoh9dpFBRYMTGVVvGGRgpNL",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
-    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    collection: "0x0F5B11Da3D6fB16d3B9725416CF968D7F0674B39",
+    price:350,
     metadata: {
       name: "STFU: THORITE PILOT LICENSE",
       description:
@@ -51,7 +53,8 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmRvZdeo2QPUrsMSSX5NkKJqU8Lga99oNQHTneJkLDxq8K",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
-    collection: "0x4262a0867b653144794e8eab397d7b6e3e695ea5",
+    collection: "0x9Fc182a8Ff20f02862634a183cbffC25d8C1f318",
+    price:1000,
     metadata: {
       name: "STFU: NANO PILOT LICENSE",
       description:
@@ -75,9 +78,8 @@ const STFU = ({ option, setOption, title }) => {
 
   const handleMint = async () => {
     spinner.setLoadingState(true);
-    const response = await mintNFT(
+    const response = await mintDropNFTWithUSDC(
       data[tier].collection,
-      data[tier].uri,
       account
     );
     console.log(response);
@@ -132,7 +134,7 @@ const STFU = ({ option, setOption, title }) => {
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">Get your {tier} license now</h2>
-            <p>{data[tier].features}</p>
+            <p>{data[tier].features}<br/><span className="font-bold	">Price: ${data[tier].price}</span></p>
             <div className="form-control">
               <label className="label cursor-pointer hover:border hover:border-[#FD3DCE]">
                 <span className="label-text text-white">Iron Tier</span>
