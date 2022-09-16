@@ -11,6 +11,7 @@ import {
   mintNFT,
   mintDropNFTWithUSDC,
   approve,
+  getTokenCount,
 } from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
@@ -22,6 +23,7 @@ const data = {
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
     collection: "0xE8A92a25783De39242f4d1635dF82688a366D7d2",
     price: 150,
+    supply: 1500,
     metadata: {
       name: "STFU: IRON PILOT LICENSE",
       description:
@@ -41,6 +43,7 @@ const data = {
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
     collection: "0x28287dA7D0fAb3a1460C7eabAE7Af3e5060467CD",
     price: 350,
+    supply: 300,
     metadata: {
       name: "STFU: THORITE PILOT LICENSE",
       description:
@@ -60,6 +63,7 @@ const data = {
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
     collection: "0x3d145f6E6707596CB738ADC765d121266F51Ab80",
     price: 1000,
+    supply: 25,
     metadata: {
       name: "STFU: NANO PILOT LICENSE",
       description:
@@ -80,8 +84,19 @@ const STFU = ({ option, setOption, title }) => {
   const spinner = useSpinner();
   const [tier, setTier] = useState("iron");
   const [tokens, setTokens] = useState(1);
+  const [minted, setMinted] = useState(0);
   const account = wallet?.accounts[0].address;
 
+  useEffect(() => {
+      fetchMinted();
+  }, [tier]);
+  useEffect(() => {
+      fetchMinted();
+  }, []);
+  const fetchMinted = async () => {
+    const count = await getTokenCount(data[tier].collection);
+    setMinted(count);
+  };
   const handleMint = async () => {
     spinner.setLoadingState(true);
     if (!account) {
@@ -113,7 +128,7 @@ const STFU = ({ option, setOption, title }) => {
         contractAddress: data[tier].collection,
         owner: account,
         tokenId: response.tokenId,
-        isBulk: tokens>1?true:false,
+        isBulk: tokens > 1 ? true : false,
         upto: parseInt(response.tokenId) + parseInt(tokens),
       };
       var config = {
@@ -148,7 +163,7 @@ const STFU = ({ option, setOption, title }) => {
       spinner.setLoadingState(false);
     }
   };
-  useEffect(() => {}, []);
+
 
   return (
     <div className="collection max-w-screen min-h-screen dark:bg-white">
@@ -158,7 +173,7 @@ const STFU = ({ option, setOption, title }) => {
           Get Your Pilot license now!!
         </h1>
         <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[520px] mx-auto">
-          <figure className="w-1/2 bg-[#040720]">
+          <figure className="w-1/2 h-[400px] bg-[#040720]">
             {tier === "iron" && (
               <img src={ironImage} className="w-3/4" alt="Album" />
             )}
@@ -168,7 +183,13 @@ const STFU = ({ option, setOption, title }) => {
             {tier === "nano" && (
               <img src={nanoImage} className="w-3/4" alt="Album" />
             )}
-            <br />
+            <figcaption className="absolute bottom-[100px] text-lg -mt-16 text-white px-4">
+              <div>
+                <h1>
+                  Remaining: {data[tier].supply - minted}/{data[tier].supply}
+                </h1>
+              </div>
+            </figcaption>
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">Get your {tier} license now</h2>
