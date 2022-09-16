@@ -93,9 +93,12 @@ const STFU = ({ option, setOption, title }) => {
       const res = await approve(
         "0x694778452b1ea22cf9030a70f9D06b611258cA20",
         data[tier].collection,
-        (data[tier].price * parseInt(tokens)*1e18).toLocaleString("fullwide", {
-          useGrouping: false,
-        }),
+        (data[tier].price * parseInt(tokens) * 1e18).toLocaleString(
+          "fullwide",
+          {
+            useGrouping: false,
+          }
+        ),
         account
       );
       const response = await mintDropNFTWithUSDC(
@@ -135,7 +138,7 @@ const STFU = ({ option, setOption, title }) => {
         toastId: "toast-message",
       });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       toast.error("Minting Failed", {
         toastId: "toast-message",
       });
@@ -173,8 +176,18 @@ const STFU = ({ option, setOption, title }) => {
               <span className="font-bold	">
                 Price: ${data[tier].price * tokens}
               </span>
-            </p>
-            <CountSlider handleUpdate={setTokens} />
+            </p>{" "}
+            <div className="flex flex-col ">
+              <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary ">
+                Number of Tokens
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. 8"
+                class="input input-bordered w-full text-xs text-white bg-[#0C111A] dark:text-foreground-secondary dark:bg-white dark:text-foreground-secondary border dark:border-[#BFCBD9] border-[#6A8099]"
+                onChange={(e) => setTokens(e.target.value)}
+              />
+            </div>
             <div className="form-control">
               <label className="label cursor-pointer hover:border hover:border-[#FD3DCE]">
                 <span className="label-text text-white">Iron Tier</span>

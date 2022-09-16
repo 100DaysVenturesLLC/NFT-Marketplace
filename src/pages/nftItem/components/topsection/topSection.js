@@ -78,7 +78,7 @@ function TopSection({ metadata, nftData }) {
             </div>
           </div>
         </div>
-        <div className="flex justify-between pb-6">
+        {/* <div className="flex justify-between pb-6">
           <div className="flex">
             <div className="flex text-[#BFCBD9] dark:text-foreground-secondary">
               <FaRegHeart className="text-xl " />
@@ -89,8 +89,8 @@ function TopSection({ metadata, nftData }) {
               <div className="pl-4">225</div>
             </div>
           </div>
-        </div>
-        {!nftData.activeListing?(<div className="bg-[#121a23] backdrop-blur-xl bg-opacity-20 w-full h-32 rounded-lg border mb-6">
+        </div> */}
+        {/* {!nftData.activeListing?(<div className="bg-[#121a23] backdrop-blur-xl bg-opacity-20 w-full h-32 rounded-lg border mb-6">
           <div className="columns-1 p-6">
             <div>
               <div className="text-foreground-primary opacity-60 text-xs font-semibold pb-2 dark:text-[#121A23]">
@@ -103,19 +103,6 @@ function TopSection({ metadata, nftData }) {
                 $~{nftData.activeListing?.price * 0.83}$
               </div>
             </div>
-            {/* <div>
-              <div>
-                <div className="text-foreground-primary opacity-60 text-xs font-semibold pb-2 dark:text-[#121A23]">
-                  Price
-                </div>
-                <div className="background-linear-gradient text-foreground-primary text-xl font-semibold pb-2">
-                  0.1 w-MATIC
-                </div>
-                <div className="text-foreground-primary opacity-60 text-xs font-semibold dark:text-[#121A23]">
-                  by <span class="dark:text-foreground-secondary">Penguin</span>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>):''}
         {wallet?.accounts[0].address?.toLowerCase()!=nftData.owner?.toLowerCase() ? (
@@ -145,7 +132,14 @@ function TopSection({ metadata, nftData }) {
           >
             List for Sale
           </label>
-        )}
+        )} */}
+        <div className="flex justify-between">
+          <div className="flex">
+            <div className="flex text-[#BFCBD9] dark:text-foreground-secondary">
+              Selling will be enabled after the minting ends
+            </div>
+          </div>
+        </div>
 
         <input
           type="checkbox"

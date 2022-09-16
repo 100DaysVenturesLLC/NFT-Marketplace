@@ -98,6 +98,12 @@ function Navbar() {
                   </form>
                 </div>
                 <Link
+                  to="/drops/stfu"
+                  className=" dark:text-foreground-secondary text-white px-6 py-2 dark:text-red rounded-md text-md font-bold"
+                >
+                  S.T.F.U
+                </Link>
+                {/* <Link
                   to="/explore"
                   className=" dark:text-foreground-secondary text-white px-6 py-2 dark:text-red rounded-md text-md font-bold"
                 >
@@ -116,7 +122,7 @@ function Navbar() {
                   className="text-white dark:text-foreground-secondary  hover:text-white px-6 py-2 rounded-md text-md font-bold"
                 >
                   Create
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
