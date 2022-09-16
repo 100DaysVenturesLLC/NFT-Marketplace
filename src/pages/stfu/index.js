@@ -104,6 +104,11 @@ const STFU = ({ option, setOption, title }) => {
       spinner.setLoadingState(false);
       return;
     }
+    if(parseInt(tokens)+parseInt(minted)>data[tier].supply){
+      toast.error("Insufficient supply");
+      spinner.setLoadingState(false);
+      return;
+    }
     try {
       const res = await approve(
         "0x694778452b1ea22cf9030a70f9D06b611258cA20",

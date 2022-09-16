@@ -192,7 +192,7 @@ const Profile = ({ option, setOption, title }) => {
               }
               onClick={() => setActiveTab("All")}
             >
-              All NFTs
+              Altitude NFTs
             </button>
             {/* <button
               className={
