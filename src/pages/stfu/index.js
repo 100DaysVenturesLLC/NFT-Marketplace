@@ -7,7 +7,11 @@ import thoriteImage from "../../assets/images/image 3 (4).png";
 import ironImage from "../../assets/images/image 3 (3).png";
 import nanoImage from "../../assets/images/image 3 (5).png";
 import Button from "../../components/Button/Button";
-import { mintNFT, mintDropNFTWithUSDC } from "../../contracts/nftCollection";
+import {
+  mintNFT,
+  mintDropNFTWithUSDC,
+  approve,
+} from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
 import CountSlider from "./components/Slider";
@@ -75,7 +79,7 @@ const STFU = ({ option, setOption, title }) => {
   const navigate = useNavigate();
   const spinner = useSpinner();
   const [tier, setTier] = useState("iron");
-  const [tokens,setTokens] = useState(1)
+  const [tokens, setTokens] = useState(1);
   const account = wallet?.accounts[0].address;
 
   const handleMint = async () => {
@@ -85,45 +89,59 @@ const STFU = ({ option, setOption, title }) => {
       spinner.setLoadingState(false);
       return;
     }
-    try{
-      const response = await mintDropNFTWithUSDC(data[tier].collection, account,tokens);
-    console.log(response);
-    //TODO create backend entry
-    const backendPayload = {
-      metadata: JSON.stringify(data[tier].metadata),
-      contractAddress: data[tier].collection,
-      owner: account,
-      tokenId: response.tokenId,
-    };
-    var config = {
-      method: "post",
-      url: `${BACKEND_URL}/collectibles/create`,
-      data: backendPayload,
-    };
+    try {
+      const res = await approve(
+        "0x694778452b1ea22cf9030a70f9D06b611258cA20",
+        data[tier].collection,
+        (data[tier].price * parseInt(tokens)*1e18).toLocaleString("fullwide", {
+          useGrouping: false,
+        }),
+        account
+      );
+      const response = await mintDropNFTWithUSDC(
+        data[tier].collection,
+        account,
+        tokens
+      );
+      console.log(response);
+      //TODO create backend entry
+      const backendPayload = {
+        metadata: JSON.stringify(data[tier].metadata),
+        contractAddress: data[tier].collection,
+        owner: account,
+        tokenId: response.tokenId,
+      };
+      var config = {
+        method: "post",
+        url: `${BACKEND_URL}/collectibles/create`,
+        data: backendPayload,
+      };
 
-    axios(config)
-      .then(function (response) {
-        console.log(response.data);
-        spinner.setLoadingState(false);
-        navigate(
-          `/collectible/${data[tier].collection}/${backendPayload.tokenId}`
-        );
-        toast.success("NFT Created Successfully", { toastId: "toast-message" });
-      })
-      .catch(function (error) {
-        console.log(error);
+      axios(config)
+        .then(function (response) {
+          console.log(response.data);
+          spinner.setLoadingState(false);
+          navigate(
+            `/collectible/${data[tier].collection}/${backendPayload.tokenId}`
+          );
+          toast.success("NFT Minted Successfully", {
+            toastId: "toast-message",
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      toast.success("Minting Successful", {
+        toastId: "toast-message",
       });
-    toast.success("Minting Successful", {
-      toastId: "toast-message",
-    });
-    }catch(err){
+    } catch (err) {
+      console.log(err)
       toast.error("Minting Failed", {
         toastId: "toast-message",
       });
-    }finally{
+    } finally {
       spinner.setLoadingState(false);
     }
-    
   };
   useEffect(() => {}, []);
 
@@ -144,16 +162,19 @@ const STFU = ({ option, setOption, title }) => {
             )}
             {tier === "nano" && (
               <img src={nanoImage} className="w-3/4" alt="Album" />
-            )}<br/>
+            )}
+            <br />
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">Get your {tier} license now</h2>
             <p>
               {data[tier].features}
               <br />
-              <span className="font-bold	">Price: ${data[tier].price * tokens}</span>
+              <span className="font-bold	">
+                Price: ${data[tier].price * tokens}
+              </span>
             </p>
-            <CountSlider handleUpdate={setTokens}/>
+            <CountSlider handleUpdate={setTokens} />
             <div className="form-control">
               <label className="label cursor-pointer hover:border hover:border-[#FD3DCE]">
                 <span className="label-text text-white">Iron Tier</span>
@@ -195,7 +216,7 @@ const STFU = ({ option, setOption, title }) => {
                 className="w-[200px] bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
                 onClick={handleMint}
               >
-                Mint {tokens} License{tokens==1?"":"s"}
+                Mint {tokens} License{tokens == 1 ? "" : "s"}
               </Button>
             </div>
           </div>

@@ -61,7 +61,7 @@ const Profile = ({ option, setOption, title }) => {
   };
 
   return (
-    <div className="collection max-w-screen">
+    <div className="collection max-w-screen dark:bg-white">
       <div class=" mx-auto lg:py-8 container lg:px-8  ">
         {/* Pics */}
         <div class="relative pb-40">
