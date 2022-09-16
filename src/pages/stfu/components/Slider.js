@@ -14,26 +14,28 @@ function valuetext(value) {
 }
 
 export default function CountSlider({handleUpdate}) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const handleChange = (e,value) =>{
     console.log("slider ka target",value)
     handleUpdate(value)
   }
   return (
-    <div style={{textAlign:'center'}} className={classes.root}>
-      {/* <Slider
-        style={{marginRight:'50px',width:'80%',color:'#FD3DCE'}}
-        color="primary"
-        defaultValue={1}
-        getAriaValueText={valuetext}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={1}
-        marks
-        min={1}
-        max={10}
-        onChange={handleChange}
-      /> */}
-    </div>
+    <div className="">
+      </div>
+    // <div style={{textAlign:'center'}} className={classes.root}>
+    //   {/* <Slider
+    //     style={{marginRight:'50px',width:'80%',color:'#FD3DCE'}}
+    //     color="primary"
+    //     defaultValue={1}
+    //     getAriaValueText={valuetext}
+    //     aria-labelledby="discrete-slider"
+    //     valueLabelDisplay="auto"
+    //     step={1}
+    //     marks
+    //     min={1}
+    //     max={10}
+    //     onChange={handleChange}
+    //   /> */}
+    // </div>
   );
 }
