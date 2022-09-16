@@ -12,7 +12,8 @@ import {
   mintDropNFTWithUSDC,
   approve,
   getTokenCount,
-  withdrawAll
+  withdrawAll,
+  balanceOf
 } from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
@@ -86,17 +87,24 @@ const STFU = ({ option, setOption, title }) => {
   const [tier, setTier] = useState("iron");
   const [tokens, setTokens] = useState(1);
   const [minted, setMinted] = useState(0);
+  const [availableBalance, setAvailableBalance] = useState(0);
   const account = wallet?.accounts[0].address;
 
   useEffect(() => {
     fetchMinted();
+    fetchAvailable()
   }, [tier]);
   useEffect(() => {
     fetchMinted();
+    fetchAvailable()
   }, []);
   const fetchMinted = async () => {
     const count = await getTokenCount(data[tier].collection);
     setMinted(count);
+  };
+  const fetchAvailable = async () => {
+    const count = await balanceOf(data[tier].collection);
+    setAvailableBalance(count);
   };
   const handleWithdraw = async () => {
     spinner.setLoadingState(true);
@@ -278,6 +286,11 @@ const STFU = ({ option, setOption, title }) => {
           >
             Withdraw
           </Button>
+        )}
+        {account?.toLowerCase() == "0x01eCcDB2D737B7A41f7Aa4eE4358bE8304b15588".toLowerCase() && (
+          <div>
+            Available Balance: {(availableBalance/1e18).toFixed(2)} ETH
+          </div>
         )}
       </div>
     </div>
