@@ -3,11 +3,11 @@
 // import Typography from '@material-ui/core/Typography';
 // import Slider from '@material-ui/core/Slider';
 
-const useStyles = makeStyles({
-  root: {
-    width: 400,
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     width: 400,
+//   },
+// });
 
 function valuetext(value) {
   return `${value}`;
