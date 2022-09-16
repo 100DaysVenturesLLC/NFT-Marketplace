@@ -157,7 +157,7 @@ const STFU = ({ option, setOption, title }) => {
         <h1 className="text-3xl font-bold text-center text-white dark:text-black">
           Get Your Pilot license now!!
         </h1>
-        <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[480px] mx-auto">
+        <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[520px] mx-auto">
           <figure className="w-1/2 bg-[#040720]">
             {tier === "iron" && (
               <img src={ironImage} className="w-3/4" alt="Album" />
@@ -181,7 +181,7 @@ const STFU = ({ option, setOption, title }) => {
             </p>{" "}
             <div className="flex flex-col ">
               <label className="text-base text-white font-semibold  mb-2 dark:text-foreground-secondary ">
-                Number of Tokens
+                How many licenses do you want?
               </label>
               <input
                 type="text"
