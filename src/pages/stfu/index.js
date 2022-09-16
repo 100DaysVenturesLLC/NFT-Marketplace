@@ -113,6 +113,8 @@ const STFU = ({ option, setOption, title }) => {
         contractAddress: data[tier].collection,
         owner: account,
         tokenId: response.tokenId,
+        isBulk: tokens==1?false:true,
+        upto: response.tokenId + parseInt(tokens),
       };
       var config = {
         method: "post",
