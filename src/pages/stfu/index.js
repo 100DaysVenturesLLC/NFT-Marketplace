@@ -23,7 +23,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
-    collection: "0xd7893EeF0206D94c73B04D08962ab942D93E8721",
+    collection: "0xbCFC6746f3e8c12f75051809D6D3e552f0388de5",
     price: 150,
     supply: 1500,
     metadata: {
@@ -43,7 +43,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmSTvHqQfQzPFFCjE6VqftbAoh9dpFBRYMTGVVvGGRgpNL",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
-    collection: "0xd3d1250F65f31e0e0f9200f0d50619Ca4810845a",
+    collection: "0xb72d7455C12fCb1156f12C2BD5Fd463C3B7f32Fd",
     price: 350,
     supply: 300,
     metadata: {
@@ -63,7 +63,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmRvZdeo2QPUrsMSSX5NkKJqU8Lga99oNQHTneJkLDxq8K",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
-    collection: "0x74117A19f03FC04f61CE2Eab72Ff4B0Ad56429a9",
+    collection: "0xccAF537f51EBB81e19652926b60b849447e02EAa",
     price: 1000,
     supply: 25,
     metadata: {
