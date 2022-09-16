@@ -13,6 +13,7 @@ const AllNFTs = ({NftDetails}) => {
       {NftDetails?.data.map((resource, index) => {
         return <NFTCard index={index} resource={resource} />;
       })}
+      {!NftDetails?.data.length&&<div className="text-white">No NFTs Found</div>}
     </div>
   )
 }

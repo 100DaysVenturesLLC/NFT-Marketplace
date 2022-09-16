@@ -33,6 +33,10 @@ const Profile = ({ option, setOption, title }) => {
     getNftDetails()
   }, [wallet])
 
+  useEffect(() => {
+    getNftDetails()
+  }, [open])
+
   const fetchAccountDetails = async () => {
     if (account) {
       const response = await fetchAccount(account);
@@ -190,7 +194,7 @@ const Profile = ({ option, setOption, title }) => {
             >
               All NFTs
             </button>
-            <button
+            {/* <button
               className={
                 activeTab === "OnSale"
                   ? "collection-tab-active"
@@ -229,7 +233,7 @@ const Profile = ({ option, setOption, title }) => {
               onClick={() => setActiveTab("Created")}
             >
               Created
-            </button>
+            </button> */}
             {/* <button
               className={
                 activeTab === "Live"
@@ -240,7 +244,7 @@ const Profile = ({ option, setOption, title }) => {
             >
               Live
             </button> */}
-            <button
+            {/* <button
               className={
                 activeTab === "Activity"
                   ? "collection-tab-active"
@@ -249,7 +253,7 @@ const Profile = ({ option, setOption, title }) => {
               onClick={() => setActiveTab("Activity")}
             >
               Activity
-            </button>
+            </button> */}
           </div>
           <div className="flex justify-between items-center">
             <div className="flex gap-4">
@@ -258,10 +262,10 @@ const Profile = ({ option, setOption, title }) => {
               <Dropdown title="Sale Type" />
               <Dropdown title="Price Range" />
             </div>
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <p class="text-[#BFCBD9]">Sort By</p>
               <Dropdown title="Recently Listed " />
-            </div>
+            </div> */}
           </div>
         </div>
         <input

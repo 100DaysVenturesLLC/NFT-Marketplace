@@ -16,7 +16,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
-    collection: "0xbb78Eb4a7Ddf49c239eb5ead4E5055C59D52b6C1",
+    collection: "0xE8A92a25783De39242f4d1635dF82688a366D7d2",
     price: 150,
     metadata: {
       name: "STFU: IRON PILOT LICENSE",
@@ -54,7 +54,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmRvZdeo2QPUrsMSSX5NkKJqU8Lga99oNQHTneJkLDxq8K",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
-    collection: "0x9Fc182a8Ff20f02862634a183cbffC25d8C1f318",
+    collection: "0x3d145f6E6707596CB738ADC765d121266F51Ab80",
     price: 1000,
     metadata: {
       name: "STFU: NANO PILOT LICENSE",
@@ -128,7 +128,7 @@ const STFU = ({ option, setOption, title }) => {
   useEffect(() => {}, []);
 
   return (
-    <div className="collection max-w-screen min-h-screen">
+    <div className="collection max-w-screen min-h-screen dark:bg-white">
       <div className="mx-auto lg:py-16 container lg:px-8">
         {/* Pics */}
         <h1 className="text-3xl font-bold text-center text-white">
