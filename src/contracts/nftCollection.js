@@ -65,7 +65,7 @@ export const withdrawAll = async(contractAddress,from)=>{
 }
 export const balanceOf = async (account) => {
   const web3 = new Web3(window.ethereum);
-  const contractInstance = new web3.eth.Contract(ERC20ABI, "0x694778452b1ea22cf9030a70f9D06b611258cA20");
+  const contractInstance = new web3.eth.Contract(ERC20ABI, "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174");
   const balance = await contractInstance.methods.balanceOf(account).call();
   return balance;
 }

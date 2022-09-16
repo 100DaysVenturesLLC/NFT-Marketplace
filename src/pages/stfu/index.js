@@ -23,7 +23,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
-    collection: "0x6d985b05BC032199c4df4d78e84F5490421DbA21",
+    collection: "0xd7893EeF0206D94c73B04D08962ab942D93E8721",
     price: 150,
     supply: 1500,
     metadata: {
@@ -43,7 +43,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmSTvHqQfQzPFFCjE6VqftbAoh9dpFBRYMTGVVvGGRgpNL",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
-    collection: "0x15BCab24956E8191B3cd5d24858695d3dB7008Be",
+    collection: "0xd3d1250F65f31e0e0f9200f0d50619Ca4810845a",
     price: 350,
     supply: 300,
     metadata: {
@@ -63,7 +63,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmRvZdeo2QPUrsMSSX5NkKJqU8Lga99oNQHTneJkLDxq8K",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
-    collection: "0x4A71CEAB4274d74251d03EB491fef05F04e6e6D5",
+    collection: "0x74117A19f03FC04f61CE2Eab72Ff4B0Ad56429a9",
     price: 1000,
     supply: 25,
     metadata: {
@@ -129,9 +129,9 @@ const STFU = ({ option, setOption, title }) => {
     }
     try {
       const res = await approve(
-        "0x694778452b1ea22cf9030a70f9D06b611258cA20",
+        "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
         data[tier].collection,
-        (data[tier].price * parseInt(tokens) * 1e18).toLocaleString(
+        (data[tier].price * parseInt(tokens) * 1e6).toLocaleString(
           "fullwide",
           {
             useGrouping: false,
@@ -287,9 +287,9 @@ const STFU = ({ option, setOption, title }) => {
             Withdraw
           </Button>
         )}
-        {account?.toLowerCase() == "0x01eCcDB2D737B7A41f7Aa4eE4358bE8304b15588".toLowerCase() && (
+        {account?.toLowerCase() == "0x469958Ff5415f4B6425Cfe763e0469907303d308".toLowerCase() && (
           <div>
-            Available Balance: {(availableBalance/1e18).toFixed(2)} USD
+            Available Balance: {(availableBalance/1e6).toFixed(2)} USD
           </div>
         )}
       </div>
