@@ -88,6 +88,7 @@ function NftItem() {
                     <video
                       className="w-full h-full object-cover rounded-xl  border"
                       controls
+                      autoplay
                     >
                       <source src={metadata.animation_url} type="video/mp4" />
                     </video>

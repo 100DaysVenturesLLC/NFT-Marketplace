@@ -56,3 +56,10 @@ export const getTokenCount = async (contractAddress) => {
   const count = await contractInstance.methods.tokenCounter().call();
   return count;
 };
+
+export const withdrawAll = async(contractAddress,from)=>{
+  const web3 = new Web3(window.ethereum);
+  const contractInstance = new web3.eth.Contract(DropNFTABI, contractAddress);
+  const receipt = await contractInstance.methods.withdrawAll().send({from});
+  return receipt;
+}

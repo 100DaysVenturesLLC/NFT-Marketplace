@@ -12,6 +12,7 @@ import {
   mintDropNFTWithUSDC,
   approve,
   getTokenCount,
+  withdrawAll
 } from "../../contracts/nftCollection";
 import { useSpinner } from "../../context/Spinner";
 import { BACKEND_URL } from "../../utils/config/config";
@@ -21,7 +22,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmPwtXNsfjMSRAkCuTtS3Uj4DKVFH6yTB6KfAyqzKe5myp",
     features:
       "5 Chain Ships,5 Cosmetic Mods,5 Legendary Ships,5 Performance Mod Boosts,Small $STFU Airdrop",
-    collection: "0xE8A92a25783De39242f4d1635dF82688a366D7d2",
+    collection: "0xd7fA5b2aE654Bc849f8C7C82ced6Ff1c464A0cf7",
     price: 150,
     supply: 1500,
     metadata: {
@@ -41,7 +42,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmSTvHqQfQzPFFCjE6VqftbAoh9dpFBRYMTGVVvGGRgpNL",
     features:
       "10 Chain Ships,10 Cosmetic Mods,10 Legendary Ships,1 Small Asteroid Run,10 Performance Mod Boosts,Medium $STFU Airdrop,On-Chain $Thorite Bonus",
-    collection: "0x28287dA7D0fAb3a1460C7eabAE7Af3e5060467CD",
+    collection: "0x7b7E0e01AC79C5BB61c391beD8767323635590d4",
     price: 350,
     supply: 300,
     metadata: {
@@ -61,7 +62,7 @@ const data = {
     uri: "https://ipfs.io/ipfs/QmRvZdeo2QPUrsMSSX5NkKJqU8Lga99oNQHTneJkLDxq8K",
     features:
       "20 Chain Ships,20 Cosmetic Mods,20 Legendary Ships,1 Large Asteroid Run,20 Performance Mod Boosts,Large $STFU Airdrop,On-Chain $Nano Bonus",
-    collection: "0x3d145f6E6707596CB738ADC765d121266F51Ab80",
+    collection: "0x4A71CEAB4274d74251d03EB491fef05F04e6e6D5",
     price: 1000,
     supply: 25,
     metadata: {
@@ -88,15 +89,24 @@ const STFU = ({ option, setOption, title }) => {
   const account = wallet?.accounts[0].address;
 
   useEffect(() => {
-      fetchMinted();
+    fetchMinted();
   }, [tier]);
   useEffect(() => {
-      fetchMinted();
+    fetchMinted();
   }, []);
   const fetchMinted = async () => {
     const count = await getTokenCount(data[tier].collection);
     setMinted(count);
   };
+  const handleWithdraw = async () => {
+    spinner.setLoadingState(true);
+    try {
+      await withdrawAll(data[tier].collection,account);
+      toast.success("Withdrawn Successfully");
+    }catch(e){
+      toast.error("Withdraw Failed");
+    }
+  }
   const handleMint = async () => {
     spinner.setLoadingState(true);
     if (!account) {
@@ -104,7 +114,7 @@ const STFU = ({ option, setOption, title }) => {
       spinner.setLoadingState(false);
       return;
     }
-    if(parseInt(tokens)+parseInt(minted)>data[tier].supply){
+    if (parseInt(tokens) + parseInt(minted) > data[tier].supply) {
       toast.error("Insufficient supply");
       spinner.setLoadingState(false);
       return;
@@ -168,7 +178,6 @@ const STFU = ({ option, setOption, title }) => {
       spinner.setLoadingState(false);
     }
   };
-
 
   return (
     <div className="collection max-w-screen min-h-screen dark:bg-white">
@@ -262,6 +271,14 @@ const STFU = ({ option, setOption, title }) => {
             </div>
           </div>
         </div>
+        {account?.toLowerCase() == "0x01eCcDB2D737B7A41f7Aa4eE4358bE8304b15588".toLowerCase() && (
+          <Button
+            className="w-[200px] bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
+            onClick={handleWithdraw}
+          >
+            Withdraw
+          </Button>
+        )}
       </div>
     </div>
   );

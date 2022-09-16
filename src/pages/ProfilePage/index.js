@@ -100,15 +100,18 @@ const Profile = ({ option, setOption, title }) => {
                 <div class="flex pb-6">
                   <p class=""> {accDetails?.bio}</p>
                 </div>
+                <div class="flex pb-6">
+                  <p class=""> {accDetails?.externalURL}</p>
+                </div>
                 <div className="flex items-center gap-6">
                   {/* <div class="flex items-center btn  bg-white text-black px-6  ">
                     <FiUserPlus class="mr-2  " />
                     <p> Follow</p>
                   </div> */}
-                  <div className="flex justify-center rounded-lg w-32 border p-4 border-gray-500">
+                  {/* <div className="flex justify-center rounded-lg w-32 border p-4 border-gray-500">
                     SHARE 
-                    {/* SHARE <FiUpload /> */}
-                  </div>
+                    SHARE <FiUpload />
+                  </div> */}
                   {/* <div className="rounded-lg border p-4 border-gray-500">
                     <BsThreeDots />
                   </div> */}
