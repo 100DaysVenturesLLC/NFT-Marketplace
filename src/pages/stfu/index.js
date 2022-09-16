@@ -131,7 +131,7 @@ const STFU = ({ option, setOption, title }) => {
     <div className="collection max-w-screen min-h-screen dark:bg-white">
       <div className="mx-auto lg:py-16 container lg:px-8">
         {/* Pics */}
-        <h1 className="text-3xl font-bold text-center text-white">
+        <h1 className="text-3xl font-bold text-center text-white dark:text-black">
           Get Your Pilot license now!!
         </h1>
         <div className="card lg:card-side lg:my-16 bg-[#040720] text-white shadow-xl max-w-[800px] min-h-[480px] mx-auto">
