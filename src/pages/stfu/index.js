@@ -289,7 +289,7 @@ const STFU = ({ option, setOption, title }) => {
         )}
         {account?.toLowerCase() == "0x01eCcDB2D737B7A41f7Aa4eE4358bE8304b15588".toLowerCase() && (
           <div>
-            Available Balance: {(availableBalance/1e18).toFixed(2)} ETH
+            Available Balance: {(availableBalance/1e18).toFixed(2)} USD
           </div>
         )}
       </div>
