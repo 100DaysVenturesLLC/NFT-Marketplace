@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Typography from '@material-ui/core/Typography';
+// import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +21,7 @@ export default function CountSlider({handleUpdate}) {
   }
   return (
     <div style={{textAlign:'center'}} className={classes.root}>
-      <Slider
+      {/* <Slider
         style={{marginRight:'50px',width:'80%',color:'#FD3DCE'}}
         color="primary"
         defaultValue={1}
@@ -33,7 +33,7 @@ export default function CountSlider({handleUpdate}) {
         min={1}
         max={10}
         onChange={handleChange}
-      />
+      /> */}
     </div>
   );
 }
