@@ -279,7 +279,7 @@ const STFU = ({ option, setOption, title }) => {
             </div>
           </div>
         </div>
-        {account?.toLowerCase() == "0x01eCcDB2D737B7A41f7Aa4eE4358bE8304b15588".toLowerCase() && (
+        {account?.toLowerCase() == "0x8808d6e57C2Ab7Dd0DE2925191F23f1F029B8632".toLowerCase() && (
           <Button
             className="w-[200px] bg-gradient-to-r from-[#23AEE3] via-[#9B71D8] to-[#FD3DCE] text-white rounded-lg font-sm font-bold border-0 outline-0 mr-3"
             onClick={handleWithdraw}
@@ -287,7 +287,7 @@ const STFU = ({ option, setOption, title }) => {
             Withdraw
           </Button>
         )}
-        {account?.toLowerCase() == "0x469958Ff5415f4B6425Cfe763e0469907303d308".toLowerCase() && (
+        {account?.toLowerCase() == "0x8808d6e57C2Ab7Dd0DE2925191F23f1F029B8632".toLowerCase() && (
           <div>
             Available Balance: {(availableBalance/1e6).toFixed(2)} USD
           </div>
